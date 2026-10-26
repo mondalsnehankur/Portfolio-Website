@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snehankur Mondal | Software, AI/ML & Data</title>
+    <meta name="description" content="Portfolio of Snehankur Mondal — MCA student at Christ University with a Physics and research background, building software, scientific computing, and data-driven projects.">
+    <meta name="theme-color" content="#080b12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Snehankur's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#exper">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#credentials">Credentials</a></li>
+                    <li><a href="#terminal">Terminal</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">
+                        Resume
+                    </a>
+                    <li class="theme-control"><button type="button" id="command-palette-trigger" class="command-palette-trigger" title="Open quick navigation (Ctrl+K)" aria-haspopup="dialog">⌘ <span>Quick jump</span></button></li>
+                    <li class="theme-control"><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Switch theme"><span class="theme-toggle-icon" aria-hidden="true">☼</span><span class="theme-toggle-label">Light mode</span></button></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="firstsection" id="home">
+            <div class="leftsection">
+                <p class="eyebrow">SOFTWARE • SCIENTIFIC COMPUTING • DATA</p>
+                <h1>Hi, I'm <span class="name-edit">Snehankur Mondal</span>.</h1>
+                <p class="hero-copy">I build practical software solutions with a researcher's mindset — connecting computer science, scientific computing, and data-driven problem solving.</p>
+                <div class="interest"><span class="typing-prefix">Currently exploring</span><span id="element" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">▍</span></div>
+                <div class="hero-actions">
+                    <a class="primary-btn" href="#project">Explore Projects <span aria-hidden="true">↘</span></a>
+                    <a class="secondary-btn" href="resume.pdf" target="_blank" rel="noopener">View Resume <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+            <div class="rightsection">
+                <div class="profile-frame">
+                    <img src="pfpic.jpeg" alt="Portrait of Snehankur Mondal">
+                    <span class="profile-caption">Curious by nature. Builder by practice.</span>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 40px 80px">
+
+        <section class="secondsection" id="about">
+            <p class="section-kicker">A LITTLE ABOUT ME</p>
+            <h2>From understanding systems to building them.</h2>
+            <div class="description">
+                <p>I am an MCA student at Christ University, Delhi NCR, with a completed M.Sc. in Physics and a foundation in scientific and computational problem-solving. Moving from physics into computer science lets me bring analytical thinking to software engineering, data analysis, and AI/ML applications.</p>
+                <p>My work ranges from Python-based scientific tools and numerical simulations to interactive web applications. I enjoy breaking complex problems into manageable parts, learning by building, and making technical work clear and useful.</p>
+                <p>I am currently looking for internship opportunities in software development, data science, and AI/ML where I can contribute to real projects while continuing to grow as an engineer.</p>
+            </div>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="miles-quote-section" aria-label="A personal motto">
+            <div class="journey-art" aria-hidden="true">
+                <div class="journey-grid"></div>
+                <div class="journey-symbol symbol-one">∑</div>
+                <div class="journey-symbol symbol-two">∇</div>
+                <div class="journey-symbol symbol-three">{ }</div>
+                <div class="journey-symbol symbol-four">&lt;/&gt;</div>
+                <div class="journey-symbol symbol-five">∞</div>
+                <svg class="journey-svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="journeyGradient" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="var(--accent)" stop-opacity=".15"/>
+                            <stop offset="48%" stop-color="var(--accent-2)"/>
+                            <stop offset="100%" stop-color="var(--accent)" stop-opacity=".3"/>
+                        </linearGradient>
+                        <filter id="journeyGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <path class="journey-path-flow" d="M40 220 C180 220 160 90 315 120 S470 250 600 155 S780 45 900 115 S1040 190 1160 60"/>
+                    <g class="journey-stop stop-physics"><circle cx="190" cy="151" r="8"/><text x="190" y="184" text-anchor="middle">PHYSICS</text></g>
+                    <g class="journey-stop stop-computing"><circle cx="600" cy="155" r="8"/><text x="600" y="190" text-anchor="middle">COMPUTING</text></g>
+                    <g class="journey-stop stop-ahead"><circle cx="1015" cy="148" r="8"/><text x="1015" y="181" text-anchor="middle">WHAT'S NEXT</text></g>
+                </svg>
+                <div class="journey-stars journey-stars-one"></div>
+                <div class="journey-stars journey-stars-two"></div>
+            </div>
+            <div class="miles-quote-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+            <p class="section-kicker">A LINE I CARRY WITH ME</p>
+            <blockquote class="miles-quote">
+                <span class="quote-mark" aria-hidden="true">“</span>
+                <p>And miles to go before I sleep,<br>And miles to go before I sleep.</p>
+                <footer>— Robert Frost <span>·</span> <cite>Stopping by Woods on a Snowy Evening</cite></footer>
+            </blockquote>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="thirdsection" id="project">
+            <p class="section-kicker">SELECTED WORK</p>
+            <div class="section-heading-row">
+                <div>
+                    <h2>Projects that turn ideas into working systems.</h2>
+                    <p class="section-intro">A focused selection across full-stack development, scientific software, and data analysis.</p>
+                </div>
+                <span class="project-count">03 FEATURED PROJECTS</span>
+            </div>
+
+            <div class="project-explorer" aria-label="Filter projects by category">
+                <span class="filter-label">Explore by focus</span>
+                <div class="project-filters" role="group" aria-label="Project category filters">
+                    <button type="button" class="project-filter is-active" data-filter="all" aria-pressed="true">All projects</button>
+                    <button type="button" class="project-filter" data-filter="web" aria-pressed="false">Web development</button>
+                    <button type="button" class="project-filter" data-filter="science" aria-pressed="false">Scientific software</button>
+                    <button type="button" class="project-filter" data-filter="data" aria-pressed="false">Data analysis</button>
+                </div>
+                <p class="filter-status" id="project-filter-status" aria-live="polite">Showing all 3 featured projects.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card project-bakeverse" data-category="web" data-project-name="BakeVerse">
+                    <a class="project-visual bakeverse-options-trigger" href="#bakeverse-options" aria-haspopup="dialog" aria-controls="bakeverse-options" aria-label="Choose how to explore BakeVerse">
+                        <span class="visual-label">FULL-STACK WEB APP</span>
+                        <div class="mock-window">
+                            <div class="mock-dots"><i></i><i></i><i></i></div>
+                            <div class="mock-cake">✳</div>
+                            <div class="mock-line wide"></div><div class="mock-line"></div>
+                            <div class="mock-pills"><span>Discover</span><span>Customize</span><span>Order</span></div>
+                        </div>
+                        <span class="visual-open">Explore project ↗</span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-number">01 / WEB DEVELOPMENT</div>
+                        <h3>BakeVerse — AI-Integrated Bakery Marketplace</h3>
+                        <p>A bakery-focused marketplace concept bringing customers and bakery owners together through interactive browsing and custom cake requests.</p>
+                        <div class="tech-tags"><span>JavaScript</span><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                        <a class="project-link bakeverse-options-trigger" href="#bakeverse-options" aria-haspopup="dialog" aria-controls="bakeverse-options">Explore project options <span>↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card project-space" data-category="science" data-project-name="Physics Simulator">
+                    <a class="project-visual" href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer" aria-label="Open Physics Simulator GitHub repository">
+                        <span class="visual-label">SCIENTIFIC SOFTWARE</span>
+                        <div class="orbit-scene" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="planet"></span><span class="satellite">✦</span><span class="orbit-label">ORBITAL MECHANICS / CALCULATIONS</span></div>
+                        <span class="visual-open">View repository ↗</span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-number">02 / C PROGRAMMING</div>
+                        <h3>Space Mission Calculator Pro</h3>
+                        <p>A physics-oriented calculator project focused on space and orbital calculations, applying programming fundamentals to scientific problem-solving.</p>
+                        <div class="tech-tags"><span>C</span><span>Physics</span><span>Numerical logic</span></div>
+                        <a class="project-link" href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer">Explore on GitHub <span>↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card project-marine" data-category="data" data-project-name="Marine Data Analysis">
+                    <a class="project-visual" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer" aria-label="Open Marine Automation GitHub repository">
+                        <span class="visual-label">DATA ANALYSIS</span>
+                        <div class="chart-scene" aria-hidden="true"><div class="chart-grid"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chart-caption">MARINE DATA / PYTHON WORKFLOW</div></div>
+                        <span class="visual-open">View repository ↗</span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-number">03 / PYTHON & DATA</div>
+                        <h3>Marine Data Analysis Tool</h3>
+                        <p>Python-based workflows for processing, analysing, and visualising marine science datasets to support clearer interpretation of environmental data.</p>
+                        <div class="tech-tags"><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Data analysis</span></div>
+                        <a class="project-link" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer">Explore on GitHub <span>↗</span></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="case-study-grid" aria-label="Project case studies">
+                <details class="case-study-card">
+                    <summary><span class="case-study-number">CASE STUDY 01</span><strong>BakeVerse</strong><span class="case-study-summary">Product thinking · Marketplace flow · Full-stack architecture</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Problem space</strong><br>Custom cake discovery and ordering can involve scattered communication between customers and bakeries.</p><p><strong>Approach</strong><br>Designed a marketplace experience around customer browsing, custom cake requests, and bakery-side workflows. The project is being developed iteratively, so AI generation and other unfinished integrations should be described as planned or in progress rather than production-ready.</p><p><strong>What to inspect</strong><br>Explore the deployed interface and source repository to review the current implementation.</p><div class="case-study-links"><a href="https://bakeverse-orcin.vercel.app/" target="_blank" rel="noopener noreferrer">Live website ↗</a><a href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div>
+                </details>
+                <details class="case-study-card">
+                    <summary><span class="case-study-number">CASE STUDY 02</span><strong>Physics Simulator</strong><span class="case-study-summary">C programming · Physics calculations · Computational logic</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Goal</strong><br>Apply programming fundamentals to physics-oriented and space-mission calculations.</p><p><strong>Engineering focus</strong><br>Organise calculations into understandable steps, keep inputs and outputs clear, and make scientific concepts easier to explore through software.</p><p><strong>Next improvements</strong><br>Document formulas and units, add input validation and edge-case tests, and include sample runs in the repository README.</p><div class="case-study-links"><a href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></div>
+                </details>
+                <details class="case-study-card">
+                    <summary><span class="case-study-number">CASE STUDY 03</span><strong>Marine Automation</strong><span class="case-study-summary">Python · Scientific data · Visual analysis</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Goal</strong><br>Make marine and environmental data easier to process and interpret using repeatable Python workflows.</p><p><strong>Approach</strong><br>Use data processing and visualisation to turn tabular observations into outputs that are easier to inspect and discuss.</p><p><strong>Next improvements</strong><br>Show a small sample dataset, explain cleaning decisions, label chart units, and document reproducible setup steps.</p><div class="case-study-links"><a href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></div>
+                </details>
+            </div>
+
+            <div class="showmore">
+                <a href="https://github.com/mondalsnehankur?tab=repositories" target="_blank" rel="noopener noreferrer" class="moreshow">Explore all repositories on GitHub <span>↗</span></a>
+            </div>
+        </section>
+
+        <dialog class="project-dialog" id="bakeverse-options" aria-labelledby="bakeverse-dialog-title">
+            <div class="project-dialog-content">
+                <button class="dialog-close" type="button" aria-label="Close project options">&times;</button>
+                <p class="section-kicker">BAKEVERSE / PROJECT LINKS</p>
+                <h2 id="bakeverse-dialog-title">Explore BakeVerse</h2>
+                <p class="dialog-description">Choose how you would like to explore this project.</p>
+                <div class="dialog-actions">
+                    <a class="dialog-action" href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer">
+                        <span class="dialog-action-icon" aria-hidden="true">⌘</span>
+                        <span><strong>View GitHub Repository</strong><small>Browse the source code and project files.</small></span>
+                        <span class="dialog-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="dialog-action" href="https://bakeverse-orcin.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <span class="dialog-action-icon" aria-hidden="true">↗</span>
+                        <span><strong>Visit Live Website</strong><small>Open the deployed BakeVerse experience.</small></span>
+                        <span class="dialog-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog class="project-dialog gallery-dialog" id="flpc-gallery" aria-labelledby="flpc-gallery-title">
+            <div class="project-dialog-content">
+                <button class="dialog-close flpc-gallery-close" type="button" aria-label="Close FLPC photo gallery">&times;</button>
+                <p class="section-kicker">LEADERSHIP / EVENT GALLERY</p>
+                <h2 id="flpc-gallery-title">Future Leaders Programme for Christites</h2>
+                <p class="dialog-description">A few moments from the FLPC event day.</p>
+                <div class="flpc-gallery-content" id="flpc-gallery-content" aria-live="polite">
+                    <div class="gallery-empty-state"><span aria-hidden="true">▧</span><strong>Your FLPC memories belong here.</strong><p>Placeholder filenames are already set to <code>pic1.jpg</code>, <code>pic2.jpg</code>, and <code>pic3.jpg</code>. Add your pictures beside <code>index.html</code>, or change the filenames/URLs in the <code>flpcPhotos</code> array. The gallery will arrange them automatically.</p></div>
+                </div>
+                <div class="gallery-preview" id="flpc-gallery-preview" hidden>
+                    <button type="button" class="gallery-nav" id="flpc-gallery-prev" aria-label="Previous photo">←</button>
+                    <figure><img id="flpc-gallery-large" alt=""><figcaption id="flpc-gallery-caption"></figcaption></figure>
+                    <button type="button" class="gallery-nav" id="flpc-gallery-next" aria-label="Next photo">→</button>
+                </div>
+            </div>
+        </dialog>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="foursection" id="skills">
+            <h1 class="skills">SKILLS</h1>
+
+            <div class="skillgrid">
+                <div class="skillcard">
+                    <h3>Programming Languages</h3>
+                    <div class="skilltags">
+                        <span class="python">Python</span>
+                        <span class="cplus">C / C++</span>
+                        <span class="java">Java</span>
+                    </div>
+                </div>
+                <div class="skillcard">
+                    <h3>Scientific Computing & Data</h3>
+                    <div class="skilltags">
+                        <span class="numpy">NumPy</span>
+                        <span class="matplotlib">Matplotlib</span>
+                        <span class="scipy">SciPy</span>
+                    </div>
+                </div>
+                <div class="skillcard">
+                    <h3>Web Technologies.</h3>
+                    <div class="skilltags">
+                        <span class="html">HTML</span>
+                        <span class="css">CSS</span>
+                        <span class="javascript">JavaScript</span>
+                        <span class="react">React</span>
+                    </div>
+                </div>
+                <div class="skillcard">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skilltags">
+                        <span class="git">Git</span>
+                        <span class="latex">LaTeX</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-explorer">
+                <div class="skills-explorer-heading"><div><p class="section-kicker">CONNECT SKILLS TO EVIDENCE</p><h2>Explore the skills map</h2><p>Choose a skill to see where it fits into the work shown on this page.</p></div><span class="skills-map-hint">Interactive · Select a skill</span></div>
+                <div class="skills-map" role="group" aria-label="Choose a skill">
+                    <button type="button" class="skill-node is-selected" data-skill="JavaScript">JavaScript</button>
+                    <button type="button" class="skill-node" data-skill="React">React</button>
+                    <button type="button" class="skill-node" data-skill="Node.js">Node.js</button>
+                    <button type="button" class="skill-node" data-skill="MongoDB">MongoDB</button>
+                    <button type="button" class="skill-node" data-skill="C">C</button>
+                    <button type="button" class="skill-node" data-skill="Physics">Physics</button>
+                    <button type="button" class="skill-node" data-skill="Python">Python</button>
+                    <button type="button" class="skill-node" data-skill="Pandas">Pandas</button>
+                    <button type="button" class="skill-node" data-skill="Matplotlib">Matplotlib</button>
+                    <button type="button" class="skill-node" data-skill="Git">Git</button>
+                </div>
+                <div class="skill-evidence" id="skill-evidence" aria-live="polite"><strong>JavaScript</strong><p>Used in the interactive portfolio experience and listed in the BakeVerse web application stack.</p><a href="#project">Explore related projects ↗</a></div>
+            </div>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="fivesection" id="exper">
+            <p class="section-kicker">WHERE I'VE CONTRIBUTED</p>
+            <h2 class="exper">Experience & Research</h2>
+            <div class="expcontainer">
+                <article class="expercard">
+                    <div class="experience-topline"><span class="experience-type">RESEARCH</span><span class="experience-date">2026 – Present</span></div>
+                    <h3>Research Project — Materials Science & Energy Systems</h3>
+                    <span class="expmeta">Jadavpur University</span>
+                    <ul>
+                        <li>Analyse experimental and material datasets using Python for data processing, visualisation, and computational interpretation.</li>
+                        <li>Apply analytical thinking and computational methods to support research questions in materials science and energy systems.</li>
+                    </ul>
+                </article>
+                <article class="expercard">
+                    <div class="experience-topline"><span class="experience-type">DEVELOPMENT</span><span class="experience-date">Dec 2025 – Present</span></div>
+                    <h3>Python Developer — Academic Automation</h3>
+                    <span class="expmeta">Self-initiated project</span>
+                    <ul>
+                        <li>Develop Python workflows for academic and marine-science data processing, numerical estimation, and scientific computation.</li>
+                        <li>Structure repeatable workflows to reduce manual effort and make analytical work easier to reproduce.</li>
+                    </ul>
+                </article>
+                <article class="expercard">
+                    <div class="experience-topline"><span class="experience-type">INTERNSHIP</span><span class="experience-date">Feb 2026 – Mar 2026</span></div>
+                    <h3>Web & Frontend Development Intern</h3>
+                    <span class="expmeta">Future Interns</span>
+                    <ul>
+                        <li>Built responsive web interfaces using HTML, CSS, and JavaScript.</li>
+                        <li>Practised creating clean, reusable UI components and improving front-end usability.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="sixsection" id="education">
+            <p class="section-kicker">ACADEMIC BACKGROUND</p>
+            <h2 class="edu">Education</h2>
+            <div class="educontainer">
+                <div class="timerow ongoing">
+                    <div class="timeline-dot"></div>
+                    <div class="timelineitem ongoing">
+                        <div class="timeline-content">
+                            <span class="education-status">IN PROGRESS</span>
+                            <h3>Master of Computer Applications (MCA)</h3>
+                            <span class="education-meta">Christ University, Delhi NCR | 2026 – Present</span>
+                            <p>Building a stronger foundation in computer science, software development, databases, and data-driven technologies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timerow completed">
+                    <div class="timeline-dot"></div>
+                    <div class="timelineitem completed">
+                        <div class="timeline-content">
+                            <span class="education-status">COMPLETED</span>
+                            <h3>Master of Science (M.Sc.) in Physics</h3>
+                            <span class="education-meta">University of Calcutta | 2024 – 2026</span>
+                            <p>Advanced study in theoretical and computational physics, numerical methods, and analytical problem-solving.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timerow school">
+                    <div class="timeline-dot"></div>
+                    <div class="timelineitem school">
+                        <div class="timeline-content">
+                            <span class="education-status">COMPLETED</span>
+                            <h3>B.Sc. (Hons.) in Physics</h3>
+                            <span class="education-meta">Raja Peary Mohan College, University of Calcutta | 2021 – 2024</span>
+                            <p>CGPA: <strong>7.695 / 10</strong> · College Rank: <strong>2nd</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
+
+        <section class="leadership-section" id="leadership">
+            <p class="section-kicker">BEYOND THE CLASSROOM</p>
+            <h2>Leadership & Recognition</h2>
+            <div class="leadership-grid">
+                <article class="recognition-card">
+                    <span class="recognition-icon">✦</span>
+                    <div><h3><button type="button" class="flpc-gallery-trigger" aria-haspopup="dialog" aria-controls="flpc-gallery">Future Leaders Programme for Christites (FLPC) <span aria-hidden="true">↗</span></button></h3><p>Department-nominated participant representing the department in a university-wide, one-day leadership development workshop at Christ University. Select to explore event photographs.</p></div>
+                </article>
+                <article class="recognition-card">
+                    <span class="recognition-icon">✦</span>
+                    <div><h3>Best Poster Award — Postgraduate Category</h3><p>Recognised for research on MOF-enhanced PVDF for triboelectric energy harvesting.</p></div>
+                </article>
+                <article class="recognition-card">
+                    <span class="recognition-icon">✦</span>
+                    <div><h3>Quiz Achievements</h3><p>2nd Prize in the BARC National-Level Quiz and 3rd Prize in the Ramakrishna Mission Inter-College Quiz.</p></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="credentials-section" id="credentials">
+            <p class="section-kicker">PROOF OF LEARNING</p>
+            <div class="section-heading-row credentials-heading"><div><h2>Credentials & milestones.</h2><p class="section-intro">A place for verifiable learning, recognition, and evidence of progress.</p></div><a class="text-link" href="https://www.linkedin.com/in/snehankur-mondal/details/certifications/" target="_blank" rel="noopener noreferrer">View all on LinkedIn ↗</a></div>
+            <div class="credential-grid">
+                <article class="credential-card credential-featured"><div class="credential-art" aria-hidden="true"><span class="credential-seal">✓</span><span class="credential-lines"><i></i><i></i><i></i></span><span class="credential-ribbon">VERIFIABLE LEARNING</span></div><div class="credential-copy"><span class="credential-category">CERTIFICATIONS</span><h3>Technical learning, documented.</h3><p>Browse my LinkedIn certifications for the current list of courses and credentials. The profile is the source of truth for titles, issuers, and dates.</p><a href="https://www.linkedin.com/in/snehankur-mondal/details/certifications/" target="_blank" rel="noopener noreferrer" class="project-link">View certifications <span>↗</span></a></div></article>
+                <article class="credential-card"><div class="milestone-visual award-visual" aria-hidden="true"><span>✦</span><small>RESEARCH</small></div><div class="credential-copy"><span class="credential-category">RECOGNITION</span><h3>Research & academic milestones</h3><p>Highlights include the reported postgraduate poster recognition and quiz achievements. Add photos or scanned certificates here when ready.</p><a href="#leadership" class="project-link">See recognition details <span>↗</span></a></div></article>
+                <article class="credential-card"><div class="milestone-visual leadership-visual" aria-hidden="true"><span>↗</span><small>LEADERSHIP</small></div><div class="credential-copy"><span class="credential-category">LEADERSHIP</span><h3>Future Leaders Programme</h3><p>Department-nominated participation in Christ University's one-day leadership development workshop.</p><a href="#leadership" class="project-link">Read more <span>↗</span></a></div></article>
+            </div>
+            <p class="credentials-note">Certificate artwork above is illustrative, not a scan of an issued certificate. Individual credential titles and dates are intentionally not reproduced here until verified.</p>
+        </section>
+
+        <section class="metrics-section" id="project-metrics">
+            <p class="section-kicker">THE WORK AT A GLANCE</p>
+            <div class="section-heading-row"><div><h2>A small dashboard of my work.</h2><p class="section-intro">A quick overview based on the projects and experience documented on this page—not inflated performance claims.</p></div></div>
+            <div class="portfolio-metrics">
+                <a class="portfolio-metric" href="#project"><strong data-count="3">03</strong><span>Featured projects</span><small>Web · Science · Data</small></a>
+                <a class="portfolio-metric" href="#skills"><strong data-count="4">04</strong><span>Skill domains</span><small>Programming to tooling</small></a>
+                <a class="portfolio-metric" href="#leadership"><strong data-count="1">01</strong><span>Featured leadership programme</span><small>FLPC at Christ University</small></a>
+                <a class="portfolio-metric" href="#github-activity"><strong id="metric-public-repos">Live</strong><span>Public repositories</span><small>Fetched from GitHub when available</small></a>
+            </div>
+        </section>
+
+        <section class="github-section" id="github-activity">
+            <p class="section-kicker">OPEN SOURCE / BUILD IN PUBLIC</p>
+            <div class="section-heading-row"><div><h2>GitHub, lately.</h2><p class="section-intro">A live snapshot of public repositories, loaded from GitHub when available.</p></div><a class="text-link" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
+            <div class="github-stats" id="github-stats" aria-live="polite"><div class="github-stat"><strong>—</strong><span>Public repos</span></div><div class="github-stat"><strong>—</strong><span>Followers</span></div><div class="github-stat"><strong>—</strong><span>Following</span></div></div>
+            <div class="github-repo-grid" id="github-repos"><p class="github-loading">Loading public repositories…</p></div>
+            <p class="github-note" id="github-note">If GitHub data cannot be loaded, you can still browse the profile directly.</p>
+        </section>
+
+        <section class="terminal-section" id="terminal">
+            <p class="section-kicker">A LITTLE INTERACTIVE CORNER</p><h2>Explore my portfolio from the terminal.</h2><p class="section-intro">Try <code>help</code>, <code>about</code>, <code>projects</code>, <code>skills</code>, or <code>contact</code>.</p>
+            <div class="terminal-window"><div class="terminal-topbar"><span class="terminal-lights"><i></i><i></i><i></i></span><span>ankur@portfolio:~</span><button type="button" id="terminal-clear">Clear</button></div><div class="terminal-output" id="terminal-output" role="log" aria-live="polite"><p class="terminal-welcome">Welcome. Type <strong>help</strong> to see available commands.</p></div><form class="terminal-form" id="terminal-form"><label for="terminal-input">ankur@portfolio:~$</label><input id="terminal-input" name="command" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command…"><button type="submit">Run ↵</button></form></div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <h1 class="contact-title">CONTACT</h1>
+
+            <div class="contact-wrapper">
+                <!-- Left: Contact Info -->
+                <div class="contact-left">
+                    <h2>Let’s Connect</h2>
+                    <p>
+                        Feel free to reach out for collaborations, projects, or opportunities.
+                        I’m always open to meaningful technical discussions.
+                    </p>
+
+                    <div class="contact-quick-actions">
+                        <a class="contact-action primary-btn" href="#contact-form">Use contact form <span aria-hidden="true">↗</span></a>
+                        <button type="button" class="contact-action copy-profile-btn" id="copy-profile-link">Copy GitHub profile link</button>
+                        <span id="copy-profile-status" class="copy-profile-status" aria-live="polite"></span>
+                    </div>
+                    <div class="contact-icons">
+                        <a href="https://www.linkedin.com/in/snehankur-mondal/" target="_blank" aria-label="LinkedIn">
+                            <img src="linkin.png" alt="LinkedIn" style="border-radius: 8px;">
+                        </a>
+
+                        <a href="https://github.com/mondalsnehankur" target="_blank" aria-label="GitHub">
+                            <img src="gith.png" alt="GitHub" style="border-radius: 8px;">
+                        </a>
+
+                        <a href="https://www.instagram.com/zyxwvut__rqpon__lkjihgfedcba?igsh=MWtxcXg2ZXBoNWpv"
+                            target="_blank" aria-label="Instagram">
+                            <img src="insta.avif" alt="Instagram" style="border-radius: 8px;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-right">
+                    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mreappwz" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <dialog class="command-palette" id="command-palette" aria-labelledby="command-palette-title">
+            <div class="command-palette-head"><div><p class="section-kicker">QUICK NAVIGATION</p><h2 id="command-palette-title">Where would you like to go?</h2></div><button type="button" id="command-palette-close" aria-label="Close quick navigation">×</button></div>
+            <label class="sr-only" for="command-palette-search">Search sections and actions</label>
+            <input id="command-palette-search" type="search" placeholder="Search projects, skills, contact…" autocomplete="off">
+            <div class="command-palette-items" id="command-palette-items">
+                <a href="#project" data-command="projects web development bakeverse simulator marine">Projects <kbd>P</kbd></a>
+                <a href="#skills" data-command="skills technologies programming">Skills map <kbd>S</kbd></a>
+                <a href="#project-metrics" data-command="metrics dashboard numbers overview">Project metrics <kbd>M</kbd></a>
+                <a href="#leadership" data-command="flpc leadership event gallery photos">FLPC gallery <kbd>F</kbd></a>
+                <a href="#github-activity" data-command="github repositories open source">GitHub activity <kbd>G</kbd></a>
+                <a href="#contact" data-command="contact message social links">Contact <kbd>C</kbd></a>
+                <button type="button" id="palette-theme-action" data-command="theme dark light appearance">Toggle theme <kbd>T</kbd></button>
+                <a href="resume.pdf" target="_blank" rel="noopener" data-command="resume cv download">Open résumé <kbd>R</kbd></a>
+            </div>
+            <p class="command-palette-foot">Tip: press <kbd>Ctrl</kbd> + <kbd>K</kbd> anywhere · <kbd>Esc</kbd> to close</p>
+        </dialog>
+    </main>
+
+    <script>
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Theme switcher: respect a saved choice, otherwise follow the visitor's system preference.
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeLabel = themeToggle.querySelector('.theme-toggle-label');
+        const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
+        const savedTheme = (() => { try { return localStorage.getItem('portfolio-theme'); } catch (_) { return null; } })();
+        const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        function applyTheme(theme) {
+            document.documentElement.dataset.theme = theme;
+            const light = theme === 'light';
+            themeLabel.textContent = light ? 'Dark mode' : 'Light mode';
+            themeIcon.textContent = light ? '☾' : '☼';
+            themeToggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+            themeToggle.setAttribute('aria-pressed', String(light));
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', light ? '#f4f6fb' : '#080b12');
+        }
+        applyTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (systemPrefersLight ? 'light' : 'dark'));
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+            applyTheme(nextTheme);
+            try { localStorage.setItem('portfolio-theme', nextTheme); } catch (_) { /* Storage can be disabled; the toggle still works. */ }
+        });
+
+        // FLPC photo gallery placeholders. Add your image files beside index.html, then
+        // change these filenames/URLs and captions as needed (pic1.jpg, pic2.png, etc.).
+        const flpcPhotos = [
+            { src: 'pic1.jfif', alt: 'FLPC training photograph 1', caption: 'FLPC training — Photo 1' },
+            { src: 'pic2.jfif', alt: 'FLPC training photograph 2', caption: 'FLPC training — Photo 2' },
+            { src: 'pic3.jfif', alt: 'FLPC training photograph 3', caption: 'FLPC training — Photo 3' },
+            { src: 'pic4.jfif', alt: 'FLPC training photograph 2', caption: 'FLPC training — Photo 2' },
+            { src: 'pic5.jfif', alt: 'FLPC training photograph 3', caption: 'FLPC training — Photo 3' }
+        ];
+        const flpcDialog = document.getElementById('flpc-gallery');
+        const flpcGalleryContent = document.getElementById('flpc-gallery-content');
+        const flpcPreview = document.getElementById('flpc-gallery-preview');
+        const flpcLargeImage = document.getElementById('flpc-gallery-large');
+        const flpcCaption = document.getElementById('flpc-gallery-caption');
+        let flpcPhotoIndex = 0;
+        function showFlpcPhoto(index) {
+            if (!flpcPhotos.length) return;
+            flpcPhotoIndex = (index + flpcPhotos.length) % flpcPhotos.length;
+            const photo = flpcPhotos[flpcPhotoIndex];
+            flpcLargeImage.src = photo.src;
+            flpcLargeImage.alt = photo.alt || 'FLPC event photograph';
+            flpcCaption.textContent = photo.caption || `Photo ${flpcPhotoIndex + 1} of ${flpcPhotos.length}`;
+            flpcPreview.hidden = false;
+            flpcGalleryContent.querySelectorAll('.gallery-thumb').forEach((button, i) => button.setAttribute('aria-pressed', String(i === flpcPhotoIndex)));
+        }
+        function renderFlpcGallery() {
+            if (!flpcPhotos.length) return;
+            flpcGalleryContent.replaceChildren();
+            const grid = document.createElement('div'); grid.className = 'flpc-gallery-grid';
+            flpcPhotos.forEach((photo, index) => {
+                const button = document.createElement('button'); button.type = 'button'; button.className = 'gallery-thumb';
+                button.setAttribute('aria-label', `View photo ${index + 1}: ${photo.caption || photo.alt || 'FLPC event'}`);
+                button.setAttribute('aria-pressed', 'false');
+                const img = document.createElement('img'); img.src = photo.src; img.alt = photo.alt || `FLPC event photograph ${index + 1}`; img.loading = 'lazy';
+                const caption = document.createElement('span'); caption.textContent = photo.caption || `Photo ${index + 1}`;
+                button.append(img, caption); button.addEventListener('click', () => showFlpcPhoto(index)); grid.appendChild(button);
+            });
+            flpcGalleryContent.appendChild(grid);
+            showFlpcPhoto(0);
+        }
+        renderFlpcGallery();
+        document.querySelectorAll('.flpc-gallery-trigger').forEach((trigger) => trigger.addEventListener('click', () => { if (!flpcDialog.open) flpcDialog.showModal(); }));
+        document.querySelector('.flpc-gallery-close').addEventListener('click', () => flpcDialog.close());
+        flpcDialog.addEventListener('click', (event) => { if (event.target === flpcDialog) flpcDialog.close(); });
+        document.getElementById('flpc-gallery-prev').addEventListener('click', () => showFlpcPhoto(flpcPhotoIndex - 1));
+        document.getElementById('flpc-gallery-next').addEventListener('click', () => showFlpcPhoto(flpcPhotoIndex + 1));
+
+        // Subtle pointer glow and scroll reveals; disabled for touch-only and reduced-motion visitors.
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (finePointer && !reduceMotion) {
+            document.addEventListener('pointermove', (event) => {
+                document.documentElement.style.setProperty('--pointer-x', `${event.clientX}px`);
+                document.documentElement.style.setProperty('--pointer-y', `${event.clientY}px`);
+            }, { passive: true });
+        }
+        if ('IntersectionObserver' in window && !reduceMotion) {
+            const revealItems = document.querySelectorAll('.project-card, .recognition-card, .credential-card, .github-repo-card, .case-study-card, .miles-quote');
+            revealItems.forEach((item) => item.classList.add('reveal-ready'));
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+            }, { threshold: 0.12 });
+            revealItems.forEach((item) => revealObserver.observe(item));
+        }
+
+        // BakeVerse chooser: native dialog is viewport-centred by the browser.
+        const bakeverseDialog = document.getElementById('bakeverse-options');
+        const bakeverseTriggers = document.querySelectorAll('.bakeverse-options-trigger');
+        const bakeverseCloseButton = bakeverseDialog.querySelector('.dialog-close');
+        bakeverseTriggers.forEach((trigger) => trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (!bakeverseDialog.open) bakeverseDialog.showModal();
+        }));
+        bakeverseCloseButton.addEventListener('click', () => bakeverseDialog.close());
+        bakeverseDialog.addEventListener('click', (event) => { if (event.target === bakeverseDialog) bakeverseDialog.close(); });
+
+        // Readable typing animation without tightly packed glyphs or a third-party dependency.
+        const typedTarget = document.getElementById('element');
+        const typedPhrases = ['Software Development', 'Scientific Computing', 'Data Analysis', 'Exploring AI / ML'];
+        let phraseIndex = 0, charIndex = 0, deleting = false;
+        function typeNext() {
+            if (reduceMotion) { typedTarget.textContent = typedPhrases[0]; return; }
+            const phrase = typedPhrases[phraseIndex];
+            charIndex += deleting ? -1 : 1;
+            typedTarget.textContent = phrase.slice(0, charIndex);
+            let delay = deleting ? 42 : 78;
+            if (!deleting && charIndex === phrase.length) { deleting = true; delay = 1350; }
+            else if (deleting && charIndex === 0) { deleting = false; phraseIndex = (phraseIndex + 1) % typedPhrases.length; delay = 350; }
+            window.setTimeout(typeNext, delay);
+        }
+        typeNext();
+
+        // Interactive terminal: local commands only; no shell execution.
+        const terminalForm = document.getElementById('terminal-form');
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalClear = document.getElementById('terminal-clear');
+        const commandHelp = 'Available commands: help, about, projects, skills, education, contact, github, clear';
+        const commandResponses = {
+            help: commandHelp,
+            about: 'I am an MCA student with a Physics background, interested in software development, scientific computing, data, and AI/ML.',
+            projects: 'Featured projects: BakeVerse (full-stack marketplace), Physics Simulator (C / scientific calculations), Marine Automation (Python / data workflows). Use the Projects section to explore them.',
+            skills: 'Programming: Python, C/C++, Java. Scientific/data: NumPy, Matplotlib, SciPy. Web: HTML, CSS, JavaScript, React. Tools: Git, LaTeX.',
+            education: 'MCA — Christ University, Delhi NCR (in progress). M.Sc. Physics — University of Calcutta. B.Sc. (Hons.) Physics — Raja Peary Mohan College.',
+            contact: 'Use the contact form at the bottom of this page, or connect through LinkedIn and GitHub.',
+            github: 'Opening public GitHub profile: github.com/mondalsnehankur'
+        };
+        function addTerminalLine(text, className) { const p = document.createElement('p'); p.className = className || ''; p.textContent = text; terminalOutput.appendChild(p); terminalOutput.scrollTop = terminalOutput.scrollHeight; }
+        terminalForm.addEventListener('submit', (event) => {
+            event.preventDefault(); const command = terminalInput.value.trim().toLowerCase(); if (!command) return;
+            addTerminalLine('ankur@portfolio:~$ ' + command, 'terminal-command'); terminalInput.value = '';
+            if (command === 'clear') { terminalOutput.replaceChildren(); return; }
+            if (commandResponses[command]) { addTerminalLine(commandResponses[command], 'terminal-result'); if (command === 'github') window.open('https://github.com/mondalsnehankur', '_blank', 'noopener,noreferrer'); }
+            else addTerminalLine('Command not found: ' + command + '. Type help to see available commands.', 'terminal-error');
+        });
+        terminalClear.addEventListener('click', () => { terminalOutput.replaceChildren(); terminalInput.focus(); });
+
+        // GitHub profile data is progressive enhancement; the portfolio remains usable offline.
+        async function loadGitHubSnapshot() {
+            const stats = document.getElementById('github-stats');
+            const repoContainer = document.getElementById('github-repos');
+            const note = document.getElementById('github-note');
+            try {
+                const response = await fetch('https://api.github.com/users/mondalsnehankur', { headers: { 'Accept': 'application/vnd.github+json' } });
+                if (!response.ok) throw new Error('GitHub profile unavailable');
+                const profile = await response.json();
+                stats.innerHTML = `<div class="github-stat"><strong>${Number(profile.public_repos) || 0}</strong><span>Public repos</span></div><div class="github-stat"><strong>${Number(profile.followers) || 0}</strong><span>Followers</span></div><div class="github-stat"><strong>${Number(profile.following) || 0}</strong><span>Following</span></div>`;
+                const repoResponse = await fetch('https://api.github.com/users/mondalsnehankur/repos?sort=updated&per_page=100', { headers: { 'Accept': 'application/vnd.github+json' } });
+                if (!repoResponse.ok) throw new Error('Repository list unavailable');
+                const repos = await repoResponse.json(); repoContainer.replaceChildren();
+                const featuredNames = ['bakeverse', 'physics-simulator', 'marine-automation'];
+                const featured = repos.filter(repo => featuredNames.includes(repo.name.toLowerCase()));
+                const displayRepos = [...featured, ...repos.filter(repo => !featuredNames.includes(repo.name.toLowerCase()))].slice(0, 6);
+                if (!displayRepos.length) throw new Error('No public repositories returned');
+                displayRepos.forEach(repo => {
+                    const card = document.createElement('a'); card.className = 'github-repo-card'; card.href = repo.html_url; card.target = '_blank'; card.rel = 'noopener noreferrer';
+                    const name = document.createElement('strong'); name.textContent = repo.name;
+                    const desc = document.createElement('p'); desc.textContent = repo.description || 'Public repository · Open to inspect the code.';
+                    const meta = document.createElement('span'); meta.className = 'github-repo-meta'; meta.textContent = `${repo.language || 'Code'} · ★ ${Number(repo.stargazers_count) || 0} · Updated ${new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', year: 'numeric' })}`;
+                    card.append(name, desc, meta); repoContainer.appendChild(card);
+                });
+                note.textContent = 'Live data from the public GitHub API. Repository availability and counts may change.';
+            } catch (error) {
+                stats.innerHTML = '<div class="github-stat"><strong>Public</strong><span>Profile</span></div><div class="github-stat"><strong>3</strong><span>Featured projects</span></div><div class="github-stat"><strong>Open</strong><span>Source links</span></div>';
+                repoContainer.innerHTML = '<a class="github-repo-card" href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer"><strong>BakeVerse</strong><p>Full-stack bakery marketplace.</p><span class="github-repo-meta">Open repository ↗</span></a><a class="github-repo-card" href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer"><strong>Physics-Simulator</strong><p>Physics-oriented calculations and simulation.</p><span class="github-repo-meta">Open repository ↗</span></a><a class="github-repo-card" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer"><strong>Marine-Automation</strong><p>Marine data analysis and automation.</p><span class="github-repo-meta">Open repository ↗</span></a>';
+                note.textContent = 'Live GitHub data is unavailable right now, so the featured repository links are shown instead.';
+            }
+        }
+        loadGitHubSnapshot();
+
+        // Project explorer: category filters keep cards in the DOM and work without a backend.
+        const projectFilters = document.querySelectorAll('.project-filter');
+        const projectCards = document.querySelectorAll('.project-grid .project-card');
+        const projectFilterStatus = document.getElementById('project-filter-status');
+        projectFilters.forEach((button) => button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            projectFilters.forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
+            let visible = 0;
+            projectCards.forEach((card) => { const show = filter === 'all' || card.dataset.category === filter; card.hidden = !show; if (show) visible += 1; });
+            projectFilterStatus.textContent = `Showing ${filter === 'all' ? 'all' : button.textContent.trim().toLowerCase()} — ${visible} project${visible === 1 ? '' : 's'}.`;
+        }));
+
+        // Skills map connects each selected skill to the relevant project/section.
+        const skillEvidence = {
+            'JavaScript': ['JavaScript', 'Used in the interactive portfolio experience and listed in the BakeVerse web application stack.', '#project', 'Explore related projects'],
+            'React': ['React', 'Listed in the BakeVerse stack for its component-driven web interface.', '#project', 'Explore BakeVerse'],
+            'Node.js': ['Node.js', 'Listed in the BakeVerse stack for server-side application work.', '#project', 'Explore BakeVerse'],
+            'MongoDB': ['MongoDB', 'Listed as the database technology for the BakeVerse marketplace project.', '#project', 'Explore BakeVerse'],
+            'C': ['C', 'Applied to the Physics Simulator / space mission calculation project.', '#project', 'Explore Physics Simulator'],
+            'Physics': ['Physics', 'Provides the scientific context for the simulator and computational problem-solving work.', '#project', 'Explore scientific software'],
+            'Python': ['Python', 'Used in the Marine Data Analysis project for data-processing workflows.', '#project', 'Explore Marine Data Analysis'],
+            'Pandas': ['Pandas', 'Listed in the Marine Data Analysis project stack for data handling.', '#project', 'Explore Marine Data Analysis'],
+            'Matplotlib': ['Matplotlib', 'Listed for visualising marine science datasets and analytical results.', '#project', 'Explore Marine Data Analysis'],
+            'Git': ['Git', 'A development tool listed in the skills section for source control and collaboration.', '#skills', 'View skills']
+        };
+        const skillEvidencePanel = document.getElementById('skill-evidence');
+        document.querySelectorAll('.skill-node').forEach((button) => button.addEventListener('click', () => {
+            document.querySelectorAll('.skill-node').forEach((node) => { const active = node === button; node.classList.toggle('is-selected', active); node.setAttribute('aria-pressed', String(active)); });
+            const info = skillEvidence[button.dataset.skill]; if (!info) return;
+            skillEvidencePanel.replaceChildren();
+            const title = document.createElement('strong'); title.textContent = info[0];
+            const desc = document.createElement('p'); desc.textContent = info[1];
+            const link = document.createElement('a'); link.href = info[2]; link.textContent = info[3] + ' ↗';
+            skillEvidencePanel.append(title, desc, link);
+        }));
+
+        // Ctrl/Cmd+K command palette with search and keyboard navigation.
+        const palette = document.getElementById('command-palette');
+        const paletteSearch = document.getElementById('command-palette-search');
+        const paletteItems = document.getElementById('command-palette-items');
+        function openPalette() { if (!palette.open) palette.showModal(); paletteSearch.value = ''; filterPaletteItems(); window.setTimeout(() => paletteSearch.focus(), 20); }
+        function closePalette() { if (palette.open) palette.close(); }
+        function filterPaletteItems() { const query = paletteSearch.value.trim().toLowerCase(); paletteItems.querySelectorAll('a, button').forEach((item) => { item.hidden = !(`${item.textContent} ${item.dataset.command || ''}`.toLowerCase().includes(query)); }); }
+        document.getElementById('command-palette-trigger').addEventListener('click', openPalette);
+        document.getElementById('command-palette-close').addEventListener('click', closePalette);
+        paletteSearch.addEventListener('input', filterPaletteItems);
+        palette.addEventListener('click', (event) => { if (event.target === palette) closePalette(); });
+        paletteItems.querySelectorAll('a').forEach((link) => link.addEventListener('click', closePalette));
+        document.getElementById('palette-theme-action').addEventListener('click', () => { themeToggle.click(); closePalette(); });
+        document.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openPalette(); }
+            if (!palette.open && !event.ctrlKey && !event.metaKey && !event.altKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) {
+                const shortcut = { p: '#project', s: '#skills', m: '#project-metrics', f: '#leadership', g: '#github-activity', c: '#contact' }[event.key.toLowerCase()];
+                if (shortcut) window.location.hash = shortcut;
+                if (event.key.toLowerCase() === 't') themeToggle.click();
+            }
+        });
+
+        // Contact helpers: copy a known public profile URL; no email address is guessed.
+        const copyProfileButton = document.getElementById('copy-profile-link');
+        const copyProfileStatus = document.getElementById('copy-profile-status');
+        copyProfileButton.addEventListener('click', async () => {
+            const profileUrl = 'https://github.com/mondalsnehankur';
+            try {
+                if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(profileUrl);
+                else { const helper = document.createElement('textarea'); helper.value = profileUrl; helper.style.position = 'fixed'; helper.style.opacity = '0'; document.body.appendChild(helper); helper.select(); const copied = document.execCommand('copy'); helper.remove(); if (!copied) throw new Error('Clipboard unavailable'); }
+                copyProfileStatus.textContent = 'GitHub profile link copied.';
+            } catch (_) { copyProfileStatus.textContent = profileUrl; }
+        });
+
+        // Keep the public repository metric in sync with the fetched GitHub snapshot.
+        const metricsObserver = new MutationObserver(() => {
+            const repoCount = document.querySelector('#github-stats .github-stat strong');
+            const metric = document.getElementById('metric-public-repos');
+            if (repoCount && metric && /^\d+$/.test(repoCount.textContent.trim())) metric.textContent = repoCount.textContent.trim();
+        });
+        metricsObserver.observe(document.getElementById('github-stats'), { childList: true, subtree: true, characterData: true });
+    </script>
+
+    <footer>
+        <p>
+            ©2026 • <strong>Snehankur Mondal</strong> • All rights reserved.
+        </p>
+    </footer>
+
+</body>
+
+</html>

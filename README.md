@@ -41,3 +41,12 @@ This is a static website and can be hosted with GitHub Pages, Netlify, or any st
 - Project and skills filters, command palette, and copy helper are client-side; no server or build step is required.
 - Live GitHub data requires an internet connection and may be subject to GitHub API rate limits.
 - Keyboard shortcuts are suppressed while typing in input fields; visitors can also use the visible buttons and links.
+
+## Career Lab (v9)
+New `#career-lab` section; files: `career-lab.js`, `career-lab.css`, `career-config.js`.
+- **Portfolio evaluator:** weighted rubric (8 areas, 100 pts) with per-check evidence, deductions (placeholder text, empty pages, unsupported claims, broken images; capped at 15) and ranked fixes.
+- **CV comparison:** upload a job/internship PDF (or another CV) or paste text. Read in-browser with pdf.js (cdnjs, loaded on demand). Compares to `resume.pdf` + site content; skill gaps, unproven skills, suggestions.
+- **Recommendations:** four career directions scored from your skills; project ideas and LinkedIn/Indeed internship searches (no fabricated vacancies).
+- **LinkedIn & Coursera:** official sync is OFF until you deploy a backend (OAuth secrets cannot live in a static site) and set `integrations.*.endpoint` in `career-config.js`. Manual fallback: LinkedIn data-export CSVs, Coursera credential links (format check only).
+- Update `cvSnapshot` in `career-config.js` when `resume.pdf` changes (used only when the PDF cannot be fetched, e.g. `file://`).
+- Test over http (`python -m http.server`); PDF fetch and page audits need it.

@@ -14,6 +14,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="career-lab.css">
 
 </head>
 
@@ -31,6 +32,7 @@
                     <li><a href="#education">Education</a></li>
                     <li><a href="#leadership">Leadership</a></li>
                     <li><a href="#credentials">Credentials</a></li>
+                    <li><a href="#career-lab">Career Lab</a></li>
                     <li><a href="#terminal">Terminal</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">
@@ -317,8 +319,8 @@
                     </ul>
                 </article>
                 <article class="expercard">
-                    <div class="experience-topline"><span class="experience-type">DEVELOPMENT</span><span class="experience-date">Dec 2025 – Mar 2026</span></div>
-                    <h3>Python Developer — Marine Automation</h3>
+                    <div class="experience-topline"><span class="experience-type">DEVELOPMENT</span><span class="experience-date">Dec 2025 – Present</span></div>
+                    <h3>Python Developer — Academic Automation</h3>
                     <span class="expmeta">Self-initiated project</span>
                     <ul>
                         <li>Develop Python workflows for academic and marine-science data processing, numerical estimation, and scientific computation.</li>
@@ -430,6 +432,81 @@
             <p class="github-note" id="github-note">If GitHub data cannot be loaded, you can still browse the profile directly.</p>
         </section>
 
+        <section class="career-lab" id="career-lab" aria-labelledby="career-lab-title">
+            <p class="section-kicker">CAREER LAB</p>
+            <div class="section-heading-row"><div><h2 id="career-lab-title">Score the portfolio. Compare it to a role.</h2><p class="section-intro">Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import.</p></div></div>
+            <p class="cl-privacy">Privacy: everything runs in your browser. PDFs you choose are read locally and never uploaded. Imported profile data is stored only in this browser (localStorage) and can be cleared at any time.</p>
+            <div class="cl-baseline" id="cl-baseline" aria-live="polite">Loading CV baseline…</div>
+
+            <div class="cl-tabs" role="tablist" aria-label="Career Lab tools">
+                <button type="button" class="cl-tab" role="tab" id="cl-tab-eval" data-tab="eval" aria-controls="cl-panel-eval" aria-selected="true">Portfolio evaluator</button>
+                <button type="button" class="cl-tab" role="tab" id="cl-tab-cv" data-tab="cv" aria-controls="cl-panel-cv" aria-selected="false" tabindex="-1">CV comparison</button>
+                <button type="button" class="cl-tab" role="tab" id="cl-tab-rec" data-tab="rec" aria-controls="cl-panel-rec" aria-selected="false" tabindex="-1">Recommendations</button>
+                <button type="button" class="cl-tab" role="tab" id="cl-tab-connect" data-tab="connect" aria-controls="cl-panel-connect" aria-selected="false" tabindex="-1">LinkedIn &amp; Coursera</button>
+            </div>
+
+            <div class="cl-panel" role="tabpanel" id="cl-panel-eval" aria-labelledby="cl-tab-eval">
+                <p class="cl-lead">A weighted rubric across eight areas (project evidence, skills credibility, experience impact, credentials, positioning, accessibility, contact, upkeep). Each check reads this page's real content and shows its evidence. Deductions are applied for placeholder text, empty pages, unsupported claims and broken media.</p>
+                <div class="cl-row"><button type="button" class="cl-btn" id="cl-eval-run">Re-run evaluation</button></div>
+                <div id="cl-eval-out" aria-live="polite"></div>
+            </div>
+
+            <div class="cl-panel" role="tabpanel" id="cl-panel-cv" aria-labelledby="cl-tab-cv" hidden>
+                <p class="cl-lead">Upload a job or internship description as a PDF (or another version of a CV). It is compared with my CV and website for a skill-gap analysis and concrete improvement suggestions.</p>
+                <div class="cl-row">
+                    <label class="cl-file-btn"><input type="file" id="cl-cv-file" accept="application/pdf,.pdf,.txt,text/plain"><span>Choose PDF…</span></label>
+                    <span class="cl-muted" id="cl-cv-filename">No file chosen</span>
+                </div>
+                <label for="cl-cv-paste">…or paste the text (use this for scanned PDFs)</label>
+                <textarea id="cl-cv-paste" placeholder="Paste the job description or CV text here"></textarea>
+                <label for="cl-cv-label">Role or company (optional)</label>
+                <input type="text" id="cl-cv-label" maxlength="80" placeholder="e.g. Data Analyst Intern, Acme">
+                <div class="cl-row">
+                    <label class="cl-radio"><input type="radio" name="cl-cv-mode" value="jd" checked> Job / internship description</label>
+                    <label class="cl-radio"><input type="radio" name="cl-cv-mode" value="cv"> Another CV</label>
+                </div>
+                <div class="cl-row"><button type="button" class="cl-btn" id="cl-cv-run">Compare with my CV</button><span class="cl-status" id="cl-cv-status" role="status"></span></div>
+                <div id="cl-cv-out" aria-live="polite"></div>
+            </div>
+
+            <div class="cl-panel" role="tabpanel" id="cl-panel-rec" aria-labelledby="cl-tab-rec" hidden>
+                <p class="cl-lead">Projects and internship searches matched to the skills evidenced in my CV, website and imported profiles. Pick a direction or let the tool choose the two best fits.</p>
+                <label for="cl-track">Career direction</label>
+                <select id="cl-track"><option value="auto">Best fit from my skills</option><option value="ai-ml">AI / Machine Learning</option><option value="data">Data analysis / science</option><option value="sci">Scientific computing / research software</option><option value="web">Full-stack / front-end</option></select>
+                <p class="cl-status" id="cl-rec-ctx"></p>
+                <div id="cl-rec-out" aria-live="polite"></div>
+            </div>
+
+            <div class="cl-panel" role="tabpanel" id="cl-panel-connect" aria-labelledby="cl-tab-connect" hidden>
+                <p class="cl-lead">Bring certifications and skills from LinkedIn and Coursera into the evaluator, CV comparison and recommendations. Official API sync needs a small backend that holds the provider credentials, so it is off until configured. The manual routes below use each provider's own export or verification links.</p>
+                <div class="cl-two">
+                    <div class="cl-source">
+                        <h3>LinkedIn <span id="cl-li-badge" class="cl-chip is-warn">Official sync: not configured</span></h3>
+                        <div class="cl-row"><button type="button" class="cl-btn cl-btn-ghost" id="cl-li-sync" disabled>Sync via configured backend</button></div>
+                        <p class="cl-status" id="cl-li-sync-status" role="status"></p>
+                        <h4 class="cl-sr">Manual import</h4>
+                        <ol>
+                            <li>On LinkedIn open Settings &amp; Privacy → Data privacy → Get a copy of your data.</li>
+                            <li>Pick the Skills, Certifications and Positions files, download, and unzip.</li>
+                            <li>Choose <code>Skills.csv</code>, <code>Certifications.csv</code> and/or <code>Positions.csv</code> below.</li>
+                        </ol>
+                        <label class="cl-file-btn"><input type="file" id="cl-li-files" accept=".csv,text/csv" multiple><span>Choose LinkedIn CSV files…</span></label>
+                        <p class="cl-status" id="cl-li-status" role="status"></p>
+                    </div>
+                    <div class="cl-source">
+                        <h3>Coursera <span id="cl-co-badge" class="cl-chip is-warn">Official sync: not configured</span></h3>
+                        <div class="cl-row"><button type="button" class="cl-btn cl-btn-ghost" id="cl-co-sync" disabled>Sync via configured backend</button></div>
+                        <p class="cl-status" id="cl-co-sync-status" role="status"></p>
+                        <label for="cl-co-text">Credentials, one per line</label>
+                        <textarea id="cl-co-text" placeholder="Machine Learning Specialization | https://www.coursera.org/account/accomplishments/verify/ABC123"></textarea>
+                        <div class="cl-row"><button type="button" class="cl-btn" id="cl-co-add">Add credentials</button></div>
+                        <p class="cl-status" id="cl-co-status" role="status"></p>
+                    </div>
+                </div>
+                <div class="cl-block" id="cl-import-summary" aria-live="polite"></div>
+            </div>
+        </section>
+
         <section class="terminal-section" id="terminal">
             <p class="section-kicker">A LITTLE INTERACTIVE CORNER</p><h2>Explore my portfolio from the terminal.</h2><p class="section-intro">Try <code>help</code>, <code>about</code>, <code>projects</code>, <code>skills</code>, or <code>contact</code>.</p>
             <div class="terminal-window"><div class="terminal-topbar"><span class="terminal-lights"><i></i><i></i><i></i></span><span>ankur@portfolio:~</span><button type="button" id="terminal-clear">Clear</button></div><div class="terminal-output" id="terminal-output" role="log" aria-live="polite"><p class="terminal-welcome">Welcome. Type <strong>help</strong> to see available commands.</p></div><form class="terminal-form" id="terminal-form"><label for="terminal-input">ankur@portfolio:~$</label><input id="terminal-input" name="command" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command…"><button type="submit">Run ↵</button></form></div>
@@ -491,6 +568,7 @@
                 <a href="#project-metrics" data-command="metrics dashboard numbers overview">Project metrics <kbd>M</kbd></a>
                 <a href="#leadership" data-command="flpc leadership event gallery photos">FLPC gallery <kbd>F</kbd></a>
                 <a href="#github-activity" data-command="github repositories open source">GitHub activity <kbd>G</kbd></a>
+                <a href="#career-lab" data-command="career lab evaluator cv comparison recommendations linkedin coursera internships">Career Lab</a>
                 <a href="#contact" data-command="contact message social links">Contact <kbd>C</kbd></a>
                 <button type="button" id="palette-theme-action" data-command="theme dark light appearance">Toggle theme <kbd>T</kbd></button>
                 <a href="resume.pdf" target="_blank" rel="noopener" data-command="resume cv download">Open résumé <kbd>R</kbd></a>
@@ -750,6 +828,8 @@
         });
         metricsObserver.observe(document.getElementById('github-stats'), { childList: true, subtree: true, characterData: true });
     </script>
+    <script src="career-config.js"></script>
+    <script src="career-lab.js"></script>
 
     <footer>
         <p>

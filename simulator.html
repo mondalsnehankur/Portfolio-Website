@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Mission Calculator, live | Snehankur Mondal</title>
+    <meta name="description" content="My C Space Mission Calculator compiled to WebAssembly and running in your browser: planetary physics, an interactive orbit lab and built-in self-tests.">
+    <meta name="theme-color" content="#080b12">
+    <meta property="og:title" content="Space Mission Calculator, live (C to WebAssembly)">
+    <meta property="og:description" content="My C physics code compiled to WebAssembly and running in your browser.">
+    <meta property="og:image" content="https://mondalsnehankur.github.io/Portfolio-mY_wEBSITE/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simulator.css">
+</head>
+<body>
+    <header class="sim-top">
+        <a class="sim-back" href="index.html#project">← Back to portfolio</a>
+        <div class="sim-top-actions">
+            <a class="sim-link" href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>
+            <button type="button" id="theme-toggle" class="sim-icon-btn" aria-label="Switch theme" title="Switch theme">☾</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="sim-hero">
+            <p class="sim-kicker">C → WEBASSEMBLY</p>
+            <h1>Space Mission Calculator, running live.</h1>
+            <p class="sim-lead">Every number on this page is computed by my original C code (<code>physics.c</code> and <code>planets.c</code>, unmodified), compiled to a 4&nbsp;KB WebAssembly module. There is no server and no JavaScript re-implementation of the physics. JavaScript only draws the interface.</p>
+            <p class="sim-status" id="sim-load" role="status">Loading WebAssembly module…</p>
+        </section>
+
+        <div id="sim-app" hidden>
+            <section class="sim-card" aria-labelledby="orbit-title">
+                <h2 id="orbit-title">Orbit lab</h2>
+                <p class="sim-muted">Launch a spacecraft sideways from a chosen height. At the circular-orbit speed it stays at the same height; slower and it falls into an ellipse (or crashes); at <strong>√2 ×</strong> that speed it escapes. Speeds, periods and energies come from the C functions; a leapfrog integrator written in C advances the orbit.</p>
+                <div class="sim-orbit">
+                    <div class="sim-canvas-wrap">
+                        <canvas id="orbit-canvas" width="720" height="560" role="img" aria-label="Orbit simulation"></canvas>
+                        <p class="sim-badge" id="orbit-state" aria-live="polite"></p>
+                    </div>
+                    <div class="sim-controls">
+                        <label for="orbit-body">Central body</label>
+                        <select id="orbit-body"></select>
+                        <label for="orbit-radius">Launch height <output id="orbit-radius-out"></output></label>
+                        <input type="range" id="orbit-radius" min="0" max="100" value="15">
+                        <label for="orbit-speed">Launch speed <output id="orbit-speed-out"></output></label>
+                        <input type="range" id="orbit-speed" min="0.30" max="1.70" step="0.01" value="1">
+                        <div class="sim-presets" role="group" aria-label="Speed presets">
+                            <button type="button" data-speed="1">Circular</button>
+                            <button type="button" data-speed="0.88">Elliptical</button>
+                            <button type="button" data-speed="1.3">Wide ellipse</button>
+                            <button type="button" data-speed="1.42">Escape</button>
+                            <button type="button" data-speed="0.55">Crash</button>
+                        </div>
+                        <label for="orbit-time">Simulation speed <output id="orbit-time-out"></output></label>
+                        <input type="range" id="orbit-time" min="0.25" max="4" step="0.25" value="1">
+                        <div class="sim-row">
+                            <button type="button" class="sim-btn" id="orbit-play">Pause</button>
+                            <button type="button" class="sim-btn sim-btn-ghost" id="orbit-reset">Relaunch</button>
+                        </div>
+                        <dl class="sim-stats" id="orbit-stats"></dl>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sim-card" aria-labelledby="explore-title">
+                <h2 id="explore-title">Planet explorer</h2>
+                <label for="explore-body">Choose a body</label>
+                <select id="explore-body"></select>
+                <div class="sim-grid" id="explore-stats"></div>
+                <p class="sim-muted" id="explore-notes"></p>
+                <div class="sim-two">
+                    <div>
+                        <h3>Your weight there</h3>
+                        <label for="weight-mass">Your mass (kg)</label>
+                        <input type="number" id="weight-mass" min="1" max="500" value="60" inputmode="decimal">
+                        <p class="sim-result" id="weight-out"></p>
+                    </div>
+                    <div>
+                        <h3>Travel time (constant speed)</h3>
+                        <label for="travel-to">Destination, from the selected body</label>
+                        <select id="travel-to"></select>
+                        <label for="travel-speed">Spacecraft speed (km/s)</label>
+                        <input type="number" id="travel-speed" min="0.1" max="300" value="20" step="0.5" inputmode="decimal">
+                        <p class="sim-result" id="travel-out"></p>
+                        <p class="sim-muted">Simplified radial estimate; real missions need orbital-transfer modelling.</p>
+                    </div>
+                </div>
+                <h3>Compare two bodies</h3>
+                <div class="sim-row">
+                    <select id="cmp-a" aria-label="First body"></select>
+                    <select id="cmp-b" aria-label="Second body"></select>
+                </div>
+                <div class="sim-table-wrap"><table class="sim-table" id="cmp-table"></table></div>
+            </section>
+
+            <section class="sim-card" aria-labelledby="tests-title">
+                <h2 id="tests-title">Does the C code give the right answers?</h2>
+                <p class="sim-muted">These checks run in your browser against reference values. Re-run them any time.</p>
+                <ul class="sim-tests" id="tests-list"></ul>
+                <button type="button" class="sim-btn sim-btn-ghost" id="tests-run">Run self-tests</button>
+            </section>
+
+            <section class="sim-card" aria-labelledby="how-title">
+                <h2 id="how-title">How it's built</h2>
+                <ol class="sim-how">
+                    <li><strong>C source:</strong> <code>physics.c</code>, <code>planets.c</code> and <code>space.h</code> are copied unchanged from the Physics-Simulator repository.</li>
+                    <li><strong>Small additions:</strong> <code>wasm_api.c</code> exposes those functions to JavaScript and adds the orbit integrator; a tiny maths shim stands in for the C library, which doesn't exist in the browser.</li>
+                    <li><strong>Compiler:</strong> <code>clang --target=wasm32</code> and <code>wasm-ld</code> produce <code>space.wasm</code> (about 4&nbsp;KB). Rebuild with <code>wasm/build.sh</code>.</li>
+                    <li><strong>Limitation:</strong> the shim's <code>pow()</code> only supports whole-number exponents, which is all the original code uses.</li>
+                </ol>
+            </section>
+        </div>
+        <noscript><p class="sim-status">This demo needs JavaScript and WebAssembly.</p></noscript>
+    </main>
+    <footer class="sim-foot">©2026 Snehankur Mondal · Planet data are approximate reference values from the original project.</footer>
+
+    <script src="wasm/space-wasm.js"></script>
+    <script src="simulator.js"></script>
+    <script src="site-config.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

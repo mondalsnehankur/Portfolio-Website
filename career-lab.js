@@ -266,8 +266,9 @@
       const evidenceCv = seg._ok ? [seg.Projects, seg.Experience, seg.Leadership, seg.Certifications].join('\n') : '';
       const cvAll = extractSkills(cvText), cvEv = extractSkills(evidenceCv);
       for (const name of cvAll.keys()) add(name, 'CV', cvEv.has(name));
-      const siteEv = extractSkills(siteText('#project, #exper'));
+      const siteEv = extractSkills(siteText('#project, #exper, #current-work'));
       for (const name of siteEv.keys()) add(name, 'site', true);
+      for (const name of extractSkills(siteText('#credentials .cred-item h4')).keys()) add(name, 'credentials', true);
       for (const name of extractSkills(siteText('#skills .skilltags')).keys()) add(name, 'site', siteEv.has(name));
       for (const name of imports.linkedin.skills) { const k = [...extractSkills(name).keys()]; k.forEach((n) => add(n, 'LinkedIn', false)); }
       for (const name of extractSkills(certSkillText()).keys()) add(name, 'credentials', true);
@@ -380,17 +381,17 @@
     });
 
     // D. Credentials & verification
-    const credSection = $P1('#credentials');
-    const credLinks = credSection ? [...credSection.querySelectorAll('a[href]')].map((a) => a.href) : [];
-    const verifyLinks = credLinks.filter((l) => /credly\.com|coursera\.org\/(account\/accomplishments|verify)|credential\.net|verify\.|badgr|accredible/i.test(l));
+    const credItems = $P('#credentials .cred-item');
+    const credLinks = $P('#credentials a[href]').map((a) => a.href);
+    const verifiable = credItems.filter((c) => c.querySelector('a.cred-verify'));
+    const issuerCount = credItems.filter((c) => (c.querySelector('.cred-issuer')?.textContent || '').trim()).length;
     const verifiedImports = imported.filter((c) => c.url);
-    const cvCertLines = base.seg.Certifications ? base.seg.Certifications.split('\n').slice(1).filter((l) => words(l) >= 2).length : 0;
-    const certTitles = $P('#credentials .credential-card h3').length;
+    const totalCreds = credItems.length + imported.length;
     crit.push({
       name: 'Credentials & verification', weight: 10, checks: [
-        check('Credentials are named with issuers', 3, clamp(imported.filter((c) => c.issuer).length / 3, 0, 1) * 3, `${imported.length} imported credential(s)${cvCertLines ? `; the CV lists ${cvCertLines}` : ''}. The page shows ${certTitles} generic card(s) and no individual titles.`, 'Import your LinkedIn certifications (Connect profiles tab) or list titles and issuers directly.'),
-        check('Credentials link to a verification page', 4, clamp((verifyLinks.length + verifiedImports.length) / 3, 0, 1) * 4, `${verifyLinks.length} verification link(s) on the page, ${verifiedImports.length} with URLs in imports.`, 'Link each credential to its verification URL (Coursera verify link, Credly badge, certificate URL).'),
-        check('Profile link to full list', 3, credLinks.some((l) => /linkedin\.com/i.test(l)) ? 3 : 0, credLinks.some((l) => /linkedin\.com/i.test(l)) ? 'LinkedIn certifications link present.' : 'No link.', 'Link to your LinkedIn certifications page.')
+        check('Credentials are named with issuer and date', 3, clamp((issuerCount + imported.filter((c) => c.issuer).length) / 8, 0, 1) * 3, `${credItems.length} credential entries on the page${imported.length ? ` plus ${imported.length} imported` : ''}.`, 'List each certification with its issuer and date, or import them from LinkedIn (Connect profiles tab).'),
+        check('Credentials link to an issuer verification page', 4, totalCreds ? 4 * (verifiable.length + verifiedImports.length) / totalCreds : 0, `${verifiable.length}/${credItems.length} entries link to a verification page${verifiedImports.length ? `; ${verifiedImports.length} imported with URLs` : ''}.`, 'Add the issuer verification link (Credly, Coursera verify, certificate URL) to each entry that has one.'),
+        check('Profile link to the full list', 3, credLinks.some((l) => /linkedin\.com/i.test(l)) ? 3 : 0, credLinks.some((l) => /linkedin\.com/i.test(l)) ? 'LinkedIn certifications link present.' : 'No link.', 'Link to your LinkedIn certifications page.')
       ]
     });
 
@@ -657,6 +658,33 @@
     btn.disabled = false;
   }
 
+
+  /* ---- tailored résumé: assembled only from text already on this site; nothing is invented ---- */
+  function printResume(r) {
+    const CFG = window.CAREER_LAB_CONFIG || {}, own = CFG.owner || {};
+    const t = (el) => (el && el.textContent || '').replace(/\s+/g, ' ').trim();
+    const target = new Set(r.rows.map((x) => x.name)), hit = (text) => { let n = 0; extractSkills(text).forEach((_, k) => { if (target.has(k)) n++; }); return n; };
+    const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+    const sec = (title) => { const s = el('section', 'rs-sec'); s.append(el('h2', null, title)); return s; };
+    const page = el('div'); page.id = 'cl-resume-print'; page.setAttribute('aria-hidden', 'true');
+    const head = el('header', 'rs-head'); head.append(el('h1', null, own.name || 'Snehankur Mondal'));
+    const contact = [own.linkedinUrl && own.linkedinUrl.replace(/^https?:\/\//, ''), own.githubUser && `github.com/${own.githubUser}`, location.href.split('#')[0].replace(/^https?:\/\//, '').replace(/index\.html$/, '')].filter(Boolean);
+    head.append(el('p', 'rs-contact', contact.join('  ·  '))); if (r.label) head.append(el('p', 'rs-tag', `Tailored for: ${r.label}`)); page.append(head);
+    const about = document.querySelector('#about .description p'); if (about) { const s = sec('Summary'); s.append(el('p', null, t(about))); page.append(s); }
+    const sk = sec('Skills'); document.querySelectorAll('.skillcard').forEach((c) => {
+      const names = [...c.querySelectorAll('.skilltags span')].map(t).sort((a, b) => hit(b) - hit(a));
+      const p = el('p'); p.append(el('b', null, t(c.querySelector('h3')) + ': ')); names.forEach((n, i) => { const w = hit(n) ? el('b', 'rs-hit', n) : document.createTextNode(n); p.append(w, i < names.length - 1 ? ', ' : ''); }); sk.append(p); }); page.append(sk);
+    const pr = sec('Projects'); { const cw = document.querySelector('#current-work'); if (cw) { const d = el('div', 'rs-item'); d.append(el('h3', null, 'Materials Discovery Using Machine Learning (ongoing)'), el('p', null, t(cw.querySelector('.cw-lead'))), el('p', 'rs-tech', 'Technologies: ' + [...cw.querySelectorAll('.cw-tech span')].map(t).join(', '))); pr.append(d); } }
+    [...document.querySelectorAll('.project-card')].map((c) => ({ c, s: hit(t(c)) })).sort((a, b) => b.s - a.s).forEach(({ c }) => {
+      const d = el('div', 'rs-item'); d.append(el('h3', null, t(c.querySelector('h3'))), el('p', null, t(c.querySelector('.project-body p'))), el('p', 'rs-tech', 'Technologies: ' + [...c.querySelectorAll('.tech-tags span')].map(t).join(', '))); pr.append(d); }); page.append(pr);
+    const ex = sec('Experience'); document.querySelectorAll('.expercard').forEach((c) => { const d = el('div', 'rs-item'); d.append(el('h3', null, `${t(c.querySelector('h3'))} ${t(c.querySelector('.experience-date')) ? '· ' + t(c.querySelector('.experience-date')) : ''}`), el('p', 'rs-tech', t(c.querySelector('.expmeta')))); const ul = el('ul'); c.querySelectorAll('li').forEach((li) => ul.append(el('li', null, t(li)))); d.append(ul); ex.append(d); }); page.append(ex);
+    const ed = sec('Education'); document.querySelectorAll('.timeline-content').forEach((c) => { const d = el('div', 'rs-item'); d.append(el('h3', null, t(c.querySelector('h3'))), el('p', 'rs-tech', t(c.querySelector('.education-meta')))); ed.append(d); }); page.append(ed);
+    const cr = sec('Certifications'); [...document.querySelectorAll('#credentials .cred-item')].map((c) => ({ c, s: hit(t(c)) })).sort((a, b) => b.s - a.s).slice(0, 8).forEach(({ c }) => cr.append(el('p', null, `${t(c.querySelector('h4'))} — ${t(c.querySelector('.cred-issuer'))}`))); page.append(cr);
+    document.getElementById('cl-resume-print')?.remove(); document.body.append(page); document.body.classList.add('cl-printing');
+    const done = () => { document.body.classList.remove('cl-printing'); page.remove(); window.removeEventListener('afterprint', done); };
+    window.addEventListener('afterprint', done); setTimeout(() => window.print(), 50);
+  }
+
   function renderCompare(r) {
     const out = $('#cl-cv-out'), cv = r.mode === 'cv';
     const listRow = (rows, cls, extra) => h('div', { class: 'cl-chips' }, rows.length ? rows.map((x) => chip(x.name + (extra ? extra(x) : ''), cls)) : h('span', { class: 'cl-muted', text: 'None' }));
@@ -672,7 +700,9 @@
     const notes = r.notes.map((n) => h('p', { class: 'cl-note', text: n }));
     const sug = h('div', { class: 'cl-block' }, h('h3', { text: 'Improvement suggestions' }), h('ul', { class: 'cl-suggest' }, r.suggestions.map((s) => h('li', null, chip(s.kind, 'is-kind'), ' ', s.text))), h('p', { class: 'cl-muted', text: 'Only add skills you can discuss and demonstrate.' }));
     const go = h('button', { type: 'button', class: 'cl-btn', onclick: () => { activateTab('rec'); } }, 'Get project and internship recommendations for these gaps →');
-    out.replaceChildren(head, ...notes, ...sections, sug, go);
+    const pdf = h('button', { type: 'button', class: 'cl-btn', onclick: () => printResume(r) }, 'Download tailored résumé (PDF)');
+    const pnote = h('p', { class: 'cl-muted', text: 'Built only from what is already on this site: skills and projects matching the target come first and are bolded. Nothing is invented. In the print dialog choose "Save as PDF".' });
+    out.replaceChildren(head, ...notes, ...sections, sug, h('div', { class: 'cl-btnrow' }, pdf, go), pnote);
   }
 
   async function runCompare() {
@@ -825,5 +855,5 @@
   } else activateTab('eval');
 
   // Test hook (also useful from the console).
-  window.CareerLab = { extractSkills, evaluatePortfolio, compareToTarget, recommend, parseCsv, classifyCsv, parseCourseraLines, pdfToText, getBaseline };
+  window.CareerLab = { taxonomy: T.map((r) => ({ name: r.name, category: r.cat, weight: r.weight })), printResume, extractSkills, evaluatePortfolio, compareToTarget, recommend, parseCsv, classifyCsv, parseCourseraLines, pdfToText, getBaseline };
 })();

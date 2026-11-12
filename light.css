@@ -1,0 +1,81 @@
+/* LIGHT THEME — clean, corporate palette: cool white surfaces, navy ink, one cobalt accent, teal for "live" states.
+   Loaded last so it wins over earlier light-mode rules. Dark mode is untouched. */
+html[data-theme="light"] {
+  --page: #f5f7fb; --panel: #ffffff; --panel-soft: #eef2f8; --ink: #0f1b33; --muted: #4f5d76; --line: #dbe2ee;
+  --accent: #2447c9; --accent-2: #0b6f8a;
+  --c-violet: #4a43c4; --c-teal: #0b7a75; --c-amber: #a8510a; --c-rose: #b4123f; --c-sky: #2447c9;
+  --grid: transparent;
+  --spectrum: linear-gradient(90deg, #2447c9, #0b7a75);
+  --surface-gradient: #fff;
+  --shadow-card: 0 1px 2px rgba(15,27,51,.06), 0 10px 28px -18px rgba(15,27,51,.22);
+}
+html[data-theme="light"] body { background: var(--page); color: var(--ink); }
+
+/* sections: quiet alternating bands, no coloured washes or grid paper */
+html[data-theme="light"] :is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact) {
+  background-image: none !important; border-image: none !important; border-top: 1px solid var(--line); background-color: var(--page);
+}
+html[data-theme="light"] :is(#current-work, #project, #skills, #education, #credentials, #github-activity, #career-lab) { background-color: #fff; }
+html[data-theme="light"] .contact-section { background-image: none !important; background-color: var(--page); }
+html[data-theme="light"] .toolbelt { background: #fff; border-block: 1px solid var(--line); }
+html[data-theme="light"] .toolbelt-list li { background: #fff; box-shadow: var(--shadow-card); border-color: var(--line); }
+
+/* cards */
+html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .timeline-content, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .portfolio-metric) {
+  background-image: none !important; background-color: #fff; border-color: var(--line); box-shadow: var(--shadow-card);
+}
+html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .timeline-content) { border-left-color: var(--hue, var(--accent)) !important; }
+html[data-theme="light"] .project-card { border-top-color: var(--hue); }
+html[data-theme="light"] :is(.expercard, .cred-item, .project-card, .recognition-card, .github-repo-card):hover { box-shadow: 0 2px 4px rgba(15,27,51,.06), 0 18px 36px -20px rgba(15,27,51,.3); }
+html[data-theme="light"] .portfolio-metric { box-shadow: none; background: transparent !important; }
+html[data-theme="light"] .portfolio-metric strong { color: var(--ink) !important; }
+html[data-theme="light"] .cw-card { background: #fff; }
+html[data-theme="light"] .cw-step { background: #f5f8fd; } html[data-theme="light"] .cw-step.is-done { background: #eef7f6; } html[data-theme="light"] .cw-step.is-wip { background: #fdf5ec; } html[data-theme="light"] .cw-step.is-next { background: #fff; }
+html[data-theme="light"] .skilltags span, html[data-theme="light"] .tech-tags span { background: #f1f4fa; border-color: var(--line); color: #26344f; }
+html[data-theme="light"] .year-timeline > li::before { border-color: #fff; }
+
+/* hero */
+html[data-theme="light"] .firstsection { background-color: #eef2f9; background-image: linear-gradient(180deg, #f3f6fc, #e9eef8); }
+html[data-theme="light"] .firstsection::before { opacity: .35; }
+html[data-theme="light"] .name-edit { background: linear-gradient(95deg, #2447c9, #0b7a75); -webkit-background-clip: text; background-clip: text; }
+html[data-theme="light"] .profile-frame { box-shadow: 0 0 0 1px rgba(36,71,201,.25), 0 30px 60px -30px rgba(15,27,51,.45) !important; }
+html[data-theme="light"] .rightsection::after { border-color: rgba(36,71,201,.3); background: radial-gradient(circle at 50% 0, var(--c-teal) 0 6px, transparent 7px); box-shadow: none; }
+html[data-theme="light"] .primary-btn { background: var(--accent); color: #fff; }
+html[data-theme="light"] .hero-status { background: #e9f5f4; border-color: rgba(11,122,117,.35); color: #0a4f4c; }
+
+/* Career Lab and chips */
+html[data-theme="light"] #career-lab { background-image: none !important; }
+html[data-theme="light"] #career-lab .cl-tab[aria-selected="true"], html[data-theme="light"] #career-lab .cl-btn:not(.cl-btn-ghost) { background: var(--accent); color: #fff; border: 0; }
+html[data-theme="light"] .status-chip.is-live { background: #e5f4f2; } html[data-theme="light"] .status-chip.is-wip { background: #fbf0e3; }
+
+/* terminal: a navy console on a light page */
+html[data-theme="light"] .terminal-section { background-color: var(--page); }
+html[data-theme="light"] .terminal-window { background: #0f1b33 !important; border-color: #1e2d52; box-shadow: 0 20px 44px -24px rgba(15,27,51,.6); }
+html[data-theme="light"] .terminal-topbar { background: #16264a !important; color: #c9d6f2 !important; }
+html[data-theme="light"] .terminal-topbar button { color: #c9d6f2 !important; border-color: rgba(201,214,242,.3); }
+html[data-theme="light"] .terminal-output, html[data-theme="light"] .terminal-output * { color: #d8e4ff !important; }
+html[data-theme="light"] .terminal-form, html[data-theme="light"] .terminal-form input { background: transparent !important; color: #fff !important; }
+html[data-theme="light"] .terminal-form * { color: #9fdcc6; }
+
+/* footer: deep navy anchors the page */
+html[data-theme="light"] .site-footer { background: #0f1b33; color: #e6ecf8; border-top: 0; border-image: none; }
+html[data-theme="light"] .site-footer p, html[data-theme="light"] .site-footer .foot-name { color: #b9c5de; } html[data-theme="light"] .site-footer .foot-name { color: #fff; }
+html[data-theme="light"] .site-footer h2 { color: #8fb4ff; } html[data-theme="light"] .site-footer a { color: #d8e2f6; } html[data-theme="light"] .site-footer a:hover { color: #fff; }
+html[data-theme="light"] .site-footer .foot-legal { border-top-color: rgba(255,255,255,.14); }
+
+/* leftovers */
+html[data-theme="light"] .timeline-content { background: transparent !important; box-shadow: none !important; }
+html[data-theme="light"] .resume-btn { color: var(--accent); border-color: var(--accent); background: #fff; }
+html[data-theme="light"] .resume-btn:hover { background: var(--accent); color: #fff; }
+html[data-theme="light"] .project-filter.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+html[data-theme="light"] .contact-section { background: var(--page) !important; }
+html[data-theme="light"] .contact-section::before, html[data-theme="light"] .contact-section::after { display: none !important; }
+html[data-theme="light"] .contact-wrapper { gap: 24px; }
+html[data-theme="light"] .contact-left, html[data-theme="light"] .contact-form, html[data-theme="light"] form.contact-form { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-card); }
+html[data-theme="light"] #contact button[type="submit"], html[data-theme="light"] .contact-form button[type="submit"] { background: var(--accent); color: #fff; }
+html[data-theme="light"] .section-kicker { color: var(--hue, var(--accent-2)); }
+html[data-theme="light"] .cl-ring-fill, html[data-theme="light"] .cl-ring circle:last-child { stroke: var(--accent-2); }
+html[data-theme="light"] .contact-wrapper { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; align-items: stretch; }
+html[data-theme="light"] .contact-left { padding: 34px !important; }
+html[data-theme="light"] .contact-right, html[data-theme="light"] .contact-form { box-shadow: var(--shadow-card) !important; }
+html[data-theme="light"] .timeline-content { border-left: 0 !important; }

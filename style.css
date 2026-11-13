@@ -374,7 +374,7 @@
  }
 
  .skilltags span.cplus:hover {
-     background: url("c++.png") center/cover no-repeat;
+     background: url("cpp-card.png") center/cover no-repeat;
      color: black;
      font-weight: bold;
      transition: background 0.3s ease, color 0.3s ease;

@@ -102,3 +102,25 @@ Credential cards are intentionally compact (small corner thumbnails, four per ro
 
 ## Light theme
 `light.css` (loaded last) holds the corporate light palette: cool white surfaces, navy text, cobalt accent, teal for live states, a navy terminal and footer. Edit the colour variables at the top of the file. Every section also shares one content width (set at the end of `visual.css`) so left edges line up in both themes.
+
+## Publishing on GitHub Pages
+Upload the whole folder structure, including `img/` (with `projects`, `certs` and `tools` inside). With git: `git add -A && git commit -m "Update portfolio" && git push`. On the GitHub website, drag the `img` folder itself into "Upload files"; picking files with the file dialog skips folders. File names are case-sensitive on GitHub. After pushing, wait a minute and hard-refresh (Ctrl+Shift+R).
+
+## Latest round of changes
+
+- **Tools strip** is a looping marquee (right to left). It pauses on hover/focus and becomes a static wrap if the visitor prefers reduced motion. Add a tool by adding another `<li>` to `.marquee-track`.
+- **About picture** (`figure.about-figure`) is optional; delete that figure and the layout falls back to one column.
+- **Marine Data Analysis Tool** is labelled *Private* / *Research in progress*, with a note that it is a novelty project feeding a research paper. It also shows as a private card in the GitHub section.
+- **Ebooks and Notes** scroll horizontally (`data-hscroll`). Add more cards inside the row; arrows appear automatically when they overflow.
+- **Hover previews** on Leadership cards: FLPC uses `img/recognition/flpc-1..5.webp`. For Best Poster, add `img/recognition/best-poster-1.jpg` (up to 4; webp/png/jpg/jpeg all work). Until the photos exist, the card shows no preview. Upload the whole `img/` folder including `img/recognition/`.
+- **Credentials**: every card is the same fixed size, with long text clamped.
+- **GitHub section** is drawn like a GitHub profile (profile on the left, repository cards on the right).
+
+## Entry gate (owner vs visitor)
+
+`gate.js` shows a faded copy of the site with a prompt on load.
+- Type your name (`snehankur` or `snehankur mondal`) for the **owner** view: everything, including the Portfolio evaluator score and Recommendations.
+- Type `open`, `code`, `hello` and similar words for the **visitor** view: the whole site, CV comparison and LinkedIn/Coursera import included, but without the evaluator score and recommendations.
+- The choice lasts for the browser tab. The footer "Lock" button asks again.
+- Change the owner word: in the browser console run the `hash` function from `gate.js` on the new lower-case word and replace the entries in `OWNER`. Edit `VISITOR` to change the visitor words.
+- This is not real security. The site is static, so anyone reading the page source can find the hidden panels. It tidies what visitors see; it does not protect secrets.

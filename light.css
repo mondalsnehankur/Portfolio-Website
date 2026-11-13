@@ -79,3 +79,8 @@ html[data-theme="light"] .contact-wrapper { background: transparent !important; 
 html[data-theme="light"] .contact-left { padding: 34px !important; }
 html[data-theme="light"] .contact-right, html[data-theme="light"] .contact-form { box-shadow: var(--shadow-card) !important; }
 html[data-theme="light"] .timeline-content { border-left: 0 !important; }
+html[data-theme="light"] .marquee .toolbelt-list li { background: #fff; }
+html[data-theme="light"] .status-chip.is-private { background: #eeecfb; }
+html[data-theme="light"] .hover-preview { background: #fff; box-shadow: 0 24px 50px -22px rgba(15,27,51,.35); }
+html[data-theme="light"] .hs-btn { background: #fff; }
+html[data-theme="light"] .about-figure { background: #fff; box-shadow: var(--shadow-card); }

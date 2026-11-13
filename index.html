@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="visual.css">
     <link rel="stylesheet" href="light.css">
 
+    <script src="gate.js"></script>
 </head>
 
 <body>
@@ -93,7 +94,7 @@
             </div>
         </section>
 
-        <section class="toolbelt" aria-label="Tools and technologies I use"><p class="toolbelt-title">Tools I build with</p><ul class="toolbelt-list"><li><img src="img/tools/python.png" alt="" width="44" height="44" loading="lazy"><span>Python</span></li><li><img src="img/tools/java.png" alt="" width="44" height="44" loading="lazy"><span>Java</span></li><li><img src="img/tools/cpp.png" alt="" width="44" height="44" loading="lazy"><span>C and C++</span></li><li><img src="img/tools/js.png" alt="" width="44" height="44" loading="lazy"><span>JavaScript</span></li><li><img src="img/tools/html.png" alt="" width="44" height="44" loading="lazy"><span>HTML5</span></li><li><img src="img/tools/css.png" alt="" width="44" height="44" loading="lazy"><span>CSS3</span></li><li><img src="img/tools/react.png" alt="" width="44" height="44" loading="lazy"><span>React</span></li><li><img src="img/tools/git.png" alt="" width="44" height="44" loading="lazy"><span>Git</span></li><li><img src="img/tools/scipy.png" alt="" width="44" height="44" loading="lazy"><span>SciPy</span></li><li><img src="img/tools/matplotlib.png" alt="" width="44" height="44" loading="lazy"><span>Matplotlib</span></li></ul></section>
+        <section class="toolbelt" aria-label="Tools and technologies I use"><p class="toolbelt-title">Tools I build with</p><div class="marquee" role="group" aria-label="Tools and technologies, scrolling"><ul class="toolbelt-list marquee-track"><li><img src="img/tools/python.png" alt="" width="44" height="44" loading="lazy"><span>Python</span></li><li><img src="img/tools/java.png" alt="" width="44" height="44" loading="lazy"><span>Java</span></li><li><img src="img/tools/cpp.png" alt="" width="44" height="44" loading="lazy"><span>C and C++</span></li><li><img src="img/tools/js.png" alt="" width="44" height="44" loading="lazy"><span>JavaScript</span></li><li><img src="img/tools/html.png" alt="" width="44" height="44" loading="lazy"><span>HTML5</span></li><li><img src="img/tools/css.png" alt="" width="44" height="44" loading="lazy"><span>CSS3</span></li><li><img src="img/tools/react.png" alt="" width="44" height="44" loading="lazy"><span>React</span></li><li><img src="img/tools/git.png" alt="" width="44" height="44" loading="lazy"><span>Git</span></li><li><img src="img/tools/scipy.png" alt="" width="44" height="44" loading="lazy"><span>SciPy</span></li><li><img src="img/tools/matplotlib.png" alt="" width="44" height="44" loading="lazy"><span>Matplotlib</span></li></ul></div></section>
 
         <section class="current-work" id="current-work" aria-labelledby="cw-title">
             <p class="section-kicker">CURRENTLY WORKING ON</p>
@@ -114,10 +115,12 @@
         <section class="secondsection" id="about">
             <p class="section-kicker">A LITTLE ABOUT ME</p>
             <h2>From understanding systems to building them.</h2>
-            <div class="description">
+            <div class="description-wrap">
+                <div class="description">
                 <p>I am an MCA student at Christ University, Delhi NCR, with a completed M.Sc. in Physics and a foundation in scientific and computational problem-solving. Moving from physics into computer science lets me bring analytical thinking to software engineering, data analysis, and AI/ML applications.</p>
                 <p>My work ranges from Python-based scientific tools and numerical simulations to interactive web applications. I enjoy breaking complex problems into manageable parts, learning by building, and making technical work clear and useful.</p>
                 <p>I am currently looking for internship opportunities in software development, data science, and AI/ML where I can contribute to real projects while continuing to grow as an engineer.</p>
+            </div>
             </div>
         </section>
 
@@ -220,18 +223,19 @@
                 </article>
 
                 <article class="project-card project-marine" data-category="data" data-project-name="Marine Data Analysis">
-                    <a class="project-visual" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer" aria-label="Open Marine Automation GitHub repository">
+                    <div class="project-visual is-private" role="img" aria-label="Illustration of a marine data chart. This is a private project.">
                         <span class="visual-label">DATA ANALYSIS</span>
                         <div class="chart-scene" aria-hidden="true"><div class="chart-grid"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chart-caption">MARINE DATA / PYTHON WORKFLOW</div></div>
-                        <span class="visual-open">View repository ↗</span>
-                    </a>
+                        <span class="visual-open">Private project</span>
+                    </div>
                     <div class="project-body">
-                        <span class="status-chip is-wip">Research in progress</span>
+                        <span class="status-chip is-private">Private</span> <span class="status-chip is-wip">Research in progress</span>
                         <div class="project-number">03 / PYTHON & DATA</div>
                         <h3>Marine Data Analysis Tool</h3>
                         <p>Python-based workflows for processing, analysing, and visualising marine science datasets to support clearer interpretation of environmental data.</p>
+                        <p class="private-note"><strong>Private project.</strong> This is a novelty piece of work toward a research paper that is still being prepared, so the code and data are not public.</p>
                         <div class="tech-tags"><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Data analysis</span></div>
-                        <a class="project-link" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer">Explore on GitHub <span>↗</span></a>
+                        <span class="project-link is-disabled">Repository is private</span>
                     </div>
                 </article>
             </div>
@@ -247,7 +251,7 @@
                 </details>
                 <details class="case-study-card">
                     <summary><span class="case-study-number">CASE STUDY 03</span><strong>Marine Automation</strong><span class="case-study-summary">Python · Scientific data · Visual analysis</span><span class="case-study-toggle">＋</span></summary>
-                    <div class="case-study-content"><p><strong>Goal</strong><br>Make marine and environmental data easier to process and interpret using repeatable Python workflows.</p><p><strong>Approach</strong><br>Use data processing and visualisation to turn tabular observations into outputs that are easier to inspect and discuss.</p><p><strong>Next improvements</strong><br>Show a small sample dataset, explain cleaning decisions, label chart units, and document reproducible setup steps.</p><div class="case-study-links"><a href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></div>
+                    <div class="case-study-content"><p><strong>Goal</strong><br>Make marine and environmental data easier to process and interpret using repeatable Python workflows.</p><p><strong>Approach</strong><br>Use data processing and visualisation to turn tabular observations into outputs that are easier to inspect and discuss.</p><p><strong>Status</strong><br>Private project. It is a novelty piece of work toward a research paper that is still being prepared, so the code and data are not published.</p></div>
                 </details>
             </div>
 
@@ -259,7 +263,7 @@
         <section class="ebooks-section" id="ebooks" aria-labelledby="ebooks-title">
             <p class="section-kicker">WEB PROJECTS · AI</p>
             <div class="section-heading-row"><div><h2 id="ebooks-title">AI-powered ebooks.</h2><p class="section-intro">Course assignments where each ebook was published as a web page with AI built in: instead of searching a PDF, you can ask a question about the book and get an answer.</p></div></div>
-            <div class="cred-grid">
+            <div class="cred-grid" data-hscroll aria-label="AI-powered ebooks">
                 <article class="cred-item ebook-item">
                     <img class="ebook-shot" data-shot="img/projects/ebook-software-process" width="640" height="400" loading="lazy" alt="Software Process Models ebook: a hero titled Choosing the Right Software Process Model with a spiral and waterfall diagram">
                     <span class="cred-tag">AI-powered ebook</span>
@@ -288,11 +292,6 @@
                      change the title, one-line topic and the link, and paste it before this comment.
                      Optional: add a second link inside the card, e.g.
                      <a class="cred-verify" href="REPO_URL" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a> -->
-                <article class="cred-item ebook-item ebook-soon" aria-label="More ebooks coming">
-                    <span class="cred-tag">Next</span>
-                    <h4>More ebooks coming</h4>
-                    <p class="cred-issuer">New course ebooks will be added here as they are published.</p>
-                </article>
             </div>
         </section>
 
@@ -475,11 +474,11 @@
             <p class="section-kicker">BEYOND THE CLASSROOM</p>
             <h2>Leadership & Recognition</h2>
             <div class="leadership-grid">
-                <article class="recognition-card">
+                <article class="recognition-card has-preview" data-preview="img/recognition/flpc" data-preview-count="5" data-preview-ext="webp" data-preview-hint="Click to open the full gallery">
                     <span class="recognition-icon">✦</span>
                     <div><h3><button type="button" class="flpc-gallery-trigger" aria-haspopup="dialog" aria-controls="flpc-gallery">Future Leaders Programme for Christites (FLPC) <span aria-hidden="true">↗</span></button></h3><p>Department-nominated participant representing the department in a university-wide, one-day leadership development workshop at Christ University. Select to explore event photographs.</p></div>
                 </article>
-                <article class="recognition-card">
+                <article class="recognition-card has-preview" data-preview="img/recognition/best-poster" data-preview-count="4" tabindex="0" aria-label="Best Poster Award, Postgraduate Category">
                     <span class="recognition-icon">✦</span>
                     <div><h3>Best Poster Award — Postgraduate Category</h3><p>Recognised for research on MOF-enhanced PVDF for triboelectric energy harvesting.</p></div>
                 </article>
@@ -531,16 +530,32 @@
 
         <section class="github-section" id="github-activity">
             <p class="section-kicker">OPEN SOURCE / BUILD IN PUBLIC</p>
-            <div class="section-heading-row"><div><h2>GitHub, lately.</h2><p class="section-intro">A live snapshot of public repositories, loaded from GitHub when available.</p></div><a class="text-link" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
-            <div class="github-stats" id="github-stats" aria-live="polite"><div class="github-stat"><strong>—</strong><span>Public repos</span></div><div class="github-stat"><strong>—</strong><span>Followers</span></div><div class="github-stat"><strong>—</strong><span>Following</span></div></div>
-            <div class="github-repo-grid" id="github-repos"><p class="github-loading">Loading public repositories…</p></div>
-            <p class="github-note" id="github-note">If GitHub data cannot be loaded, you can still browse the profile directly.</p>
+            <div class="section-heading-row"><div><h2>GitHub, lately.</h2><p class="section-intro">My profile and repositories, laid out the way they appear on GitHub. Counts load live when GitHub is reachable.</p></div><a class="text-link" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
+            <div class="gh-shell">
+                <aside class="gh-profile" aria-label="GitHub profile">
+                    <img class="gh-avatar" src="https://github.com/mondalsnehankur.png?size=300" onerror="this.onerror=null;this.src='pfpic.jpeg'" width="150" height="150" alt="Snehankur Mondal's GitHub profile picture">
+                    <h3 class="gh-name">Snehankur Mondal</h3>
+                    <p class="gh-login">mondalsnehankur</p>
+                    <p class="gh-bio">MCA student and M.Sc. Physics graduate building software, scientific tools and data projects.</p>
+                    <a class="gh-btn" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">View profile</a>
+                    <p class="gh-follow" id="github-stats" aria-live="polite"><span>Followers and repositories load from GitHub.</span></p>
+                    <ul class="gh-meta">
+                        <li><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 0a5.5 5.5 0 0 0-5.5 5.5c0 3.7 4.2 8.4 5 9.3a.7.7 0 0 0 1 0c.8-.9 5-5.6 5-9.3A5.5 5.5 0 0 0 8 0Zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>Delhi NCR, India</li>
+                        <li><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 1 0 5l8 4 6-3v4h1.5V5L8 1ZM3 8.8V11c0 1.1 2.2 2 5 2s5-.9 5-2V8.8L8 11 3 8.8Z"/></svg>Christ University</li>
+                        <li><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M7.8 2.5a3.3 3.3 0 0 1 4.7 4.7l-1.4 1.4-1-1 1.4-1.4a1.9 1.9 0 0 0-2.7-2.7L7.4 4.9l-1-1 1.4-1.4Zm.4 11a3.3 3.3 0 0 1-4.7-4.7l1.4-1.4 1 1-1.4 1.4a1.9 1.9 0 0 0 2.7 2.7l1.4-1.4 1 1-1.4 1.4ZM5.2 10.8l5.6-5.6.9.9-5.6 5.6-.9-.9Z"/></svg><a href="https://www.linkedin.com/in/snehankur-mondal/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                </aside>
+                <div class="gh-main">
+                    <div class="gh-main-head"><h3>Repositories</h3><span id="github-note" class="github-note">Loading from GitHub…</span></div>
+                    <div class="gh-repos github-repo-grid" id="github-repos"><p class="github-loading">Loading public repositories…</p></div>
+                </div>
+            </div>
         </section>
 
         <section class="notes-section" id="notes" aria-labelledby="notes-title">
             <p class="section-kicker">NOTES · WRITING</p>
             <div class="section-heading-row"><div><h2 id="notes-title">Notes and write-ups.</h2><p class="section-intro">Short posts on what I build and learn. These are placeholders for now; real posts will replace them over time.</p></div></div>
-            <div class="cred-grid">
+            <div class="cred-grid" data-hscroll aria-label="Notes and write-ups">
                 <article class="cred-item note-item">
                     <span class="cred-tag">Planned</span>
                     <h4>Running my C physics code in the browser</h4>
@@ -567,7 +582,7 @@
 
         <section class="career-lab" id="career-lab" aria-labelledby="career-lab-title">
             <p class="section-kicker">CAREER LAB</p>
-            <div class="section-heading-row"><div><h2 id="career-lab-title">Score the portfolio. Compare it to a role.</h2><p class="section-intro">Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import.</p></div></div>
+            <div class="section-heading-row"><div><h2 id="career-lab-title">Score the portfolio. Compare it to a role.</h2><p class="section-intro" id="cl-intro" data-owner="Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import." data-visitor="Compare your CV or a job posting against my CV, and import LinkedIn / Coursera credentials.">Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import.</p></div></div>
             <p class="cl-privacy">Privacy: everything runs in your browser. PDFs you choose are read locally and never uploaded. Imported profile data is stored only in this browser (localStorage) and can be cleared at any time.</p>
             <div class="cl-baseline" id="cl-baseline" aria-live="polite">Loading CV baseline…</div>
 
@@ -871,30 +886,44 @@
             const stats = document.getElementById('github-stats');
             const repoContainer = document.getElementById('github-repos');
             const note = document.getElementById('github-note');
+            const LANG = { Python: '#3572A5', JavaScript: '#f1e05a', C: '#555555', 'C++': '#f34b7d', HTML: '#e34c26', CSS: '#563d7c', Java: '#b07219', TypeScript: '#3178c6', 'Jupyter Notebook': '#DA5B0B', Shell: '#89e051' };
+            const ICON = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.7 1.7.75.75 0 1 1-1.1 1A2.5 2.5 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.7c.3-.1.6-.2 1-.2h8ZM5 12.25h3.5v3.25L6.75 14.2 5 15.5Z"/></svg>';
+            const card = ({ name, url, desc, lang, stars, forks, updated, isPrivate }) => {
+                const el = document.createElement(url ? 'a' : 'div'); el.className = 'gh-repo' + (isPrivate ? ' is-private' : '');
+                if (url) { el.href = url; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+                const head = document.createElement('div'); head.className = 'gh-repo-head'; head.insertAdjacentHTML('beforeend', ICON);
+                const n = document.createElement('span'); n.className = 'gh-repo-name'; n.textContent = name; const badge = document.createElement('span'); badge.className = 'gh-badge'; badge.textContent = isPrivate ? 'Private' : 'Public'; head.append(n, badge);
+                const p = document.createElement('p'); p.className = 'gh-repo-desc'; p.textContent = desc;
+                const foot = document.createElement('div'); foot.className = 'gh-repo-foot';
+                if (lang) { const l = document.createElement('span'); const dot = document.createElement('i'); dot.style.background = LANG[lang] || '#8b949e'; l.append(dot, lang); foot.append(l); }
+                if (stars != null) foot.append(Object.assign(document.createElement('span'), { textContent: '★ ' + stars }));
+                if (forks) foot.append(Object.assign(document.createElement('span'), { textContent: '⑂ ' + forks }));
+                if (updated) foot.append(Object.assign(document.createElement('span'), { textContent: 'Updated ' + new Date(updated).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }));
+                el.append(head, p, foot); return el;
+            };
+            const privateMarine = card({ name: 'Marine-Automation', desc: 'Marine data analysis workflow for a research paper in preparation. The repository is private.', lang: 'Python', isPrivate: true });
             try {
                 const response = await fetch('https://api.github.com/users/mondalsnehankur', { headers: { 'Accept': 'application/vnd.github+json' } });
                 if (!response.ok) throw new Error('GitHub profile unavailable');
                 const profile = await response.json();
-                stats.innerHTML = `<div class="github-stat"><strong>${Number(profile.public_repos) || 0}</strong><span>Public repos</span></div><div class="github-stat"><strong>${Number(profile.followers) || 0}</strong><span>Followers</span></div><div class="github-stat"><strong>${Number(profile.following) || 0}</strong><span>Following</span></div>`;
+                stats.innerHTML = `<b>${Number(profile.followers) || 0}</b> followers · <b>${Number(profile.following) || 0}</b> following · <b>${Number(profile.public_repos) || 0}</b> repositories`;
+                if (profile.bio) { const bio = document.querySelector('.gh-bio'); if (bio) bio.textContent = profile.bio; }
                 const repoResponse = await fetch('https://api.github.com/users/mondalsnehankur/repos?sort=updated&per_page=100', { headers: { 'Accept': 'application/vnd.github+json' } });
                 if (!repoResponse.ok) throw new Error('Repository list unavailable');
-                const repos = await repoResponse.json(); repoContainer.replaceChildren();
-                const featuredNames = ['bakeverse', 'physics-simulator', 'marine-automation'];
+                const repos = (await repoResponse.json()).filter(repo => repo.name.toLowerCase() !== 'marine-automation');
+                const featuredNames = ['bakeverse', 'physics-simulator'];
                 const featured = repos.filter(repo => featuredNames.includes(repo.name.toLowerCase()));
-                const displayRepos = [...featured, ...repos.filter(repo => !featuredNames.includes(repo.name.toLowerCase()))].slice(0, 6);
+                const displayRepos = [...featured, ...repos.filter(repo => !featuredNames.includes(repo.name.toLowerCase()))].slice(0, 5);
                 if (!displayRepos.length) throw new Error('No public repositories returned');
-                displayRepos.forEach(repo => {
-                    const card = document.createElement('a'); card.className = 'github-repo-card'; card.href = repo.html_url; card.target = '_blank'; card.rel = 'noopener noreferrer';
-                    const name = document.createElement('strong'); name.textContent = repo.name;
-                    const desc = document.createElement('p'); desc.textContent = repo.description || 'Public repository · Open to inspect the code.';
-                    const meta = document.createElement('span'); meta.className = 'github-repo-meta'; meta.textContent = `${repo.language || 'Code'} · ★ ${Number(repo.stargazers_count) || 0} · Updated ${new Date(repo.updated_at).toLocaleDateString(undefined, { month: 'short', year: 'numeric' })}`;
-                    card.append(name, desc, meta); repoContainer.appendChild(card);
-                });
-                note.textContent = 'Live data from the public GitHub API. Repository availability and counts may change.';
+                repoContainer.replaceChildren(...displayRepos.map(repo => card({ name: repo.name, url: repo.html_url, desc: repo.description || 'Public repository.', lang: repo.language, stars: Number(repo.stargazers_count) || 0, forks: Number(repo.forks_count) || 0, updated: repo.updated_at })), privateMarine);
+                note.textContent = 'Live from GitHub';
             } catch (error) {
-                stats.innerHTML = '<div class="github-stat"><strong>Public</strong><span>Profile</span></div><div class="github-stat"><strong>3</strong><span>Featured projects</span></div><div class="github-stat"><strong>Open</strong><span>Source links</span></div>';
-                repoContainer.innerHTML = '<a class="github-repo-card" href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer"><strong>BakeVerse</strong><p>Full-stack bakery marketplace.</p><span class="github-repo-meta">Open repository ↗</span></a><a class="github-repo-card" href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer"><strong>Physics-Simulator</strong><p>Physics-oriented calculations and simulation.</p><span class="github-repo-meta">Open repository ↗</span></a><a class="github-repo-card" href="https://github.com/mondalsnehankur/Marine-Automation" target="_blank" rel="noopener noreferrer"><strong>Marine-Automation</strong><p>Marine data analysis and automation.</p><span class="github-repo-meta">Open repository ↗</span></a>';
-                note.textContent = 'Live GitHub data is unavailable right now, so the featured repository links are shown instead.';
+                stats.innerHTML = '<span>Open the profile on GitHub for live counts.</span>';
+                repoContainer.replaceChildren(
+                    card({ name: 'Bakeverse', url: 'https://github.com/mondalsnehankur/Bakeverse', desc: 'Full-stack bakery marketplace.', lang: 'JavaScript' }),
+                    card({ name: 'Physics-Simulator', url: 'https://github.com/mondalsnehankur/Physics-Simulator', desc: 'Physics-oriented calculations and simulation in C, with a live WebAssembly demo.', lang: 'C' }),
+                    privateMarine);
+                note.textContent = 'Live GitHub data is unavailable right now, so featured repositories are shown.';
             }
         }
         loadGitHubSnapshot();
@@ -971,7 +1000,7 @@
 
         // Keep the public repository metric in sync with the fetched GitHub snapshot.
         const metricsObserver = new MutationObserver(() => {
-            const repoCount = document.querySelector('#github-stats .github-stat strong');
+            const repoCount = document.querySelector('#github-stats b:last-of-type');
             const metric = document.getElementById('metric-public-repos');
             if (repoCount && metric && /^\d+$/.test(repoCount.textContent.trim())) metric.textContent = repoCount.textContent.trim();
         });
@@ -992,7 +1021,7 @@
             <div><h2>Explore</h2><a href="#project">Projects</a><a href="#credentials">Credentials</a><a href="#career-lab">Career Lab</a><a href="simulator.html">Live physics demo</a></div>
             <div><h2>Connect</h2><a href="https://www.linkedin.com/in/snehankur-mondal/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">GitHub</a><a href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a><a href="#contact">Contact form</a></div>
         </div>
-        <p class="foot-legal">©2026 • <strong>Snehankur Mondal</strong> • All rights reserved.</p>
+        <p class="foot-legal">©2026 • <strong>Snehankur Mondal</strong> • All rights reserved. • <button type="button" id="lock-site">Lock</button></p>
     </footer>
 
 </body>

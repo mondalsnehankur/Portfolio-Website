@@ -348,3 +348,14 @@ html.gated body > *:not(.gate):not(script) { filter: blur(7px) saturate(.75); op
 html[data-access="visitor"] #cl-tab-eval, html[data-access="visitor"] #cl-panel-eval,
 html[data-access="visitor"] #cl-tab-rec, html[data-access="visitor"] #cl-panel-rec { display: none !important; }
 #lock-site { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; opacity: .8; }
+
+/* concept illustrations for projects without screenshots */
+.project-adapti { --hue: var(--c-sky); } .project-datatool { --hue: var(--c-rose); } .project-sahai { --hue: var(--c-amber); } .project-trip { --hue: var(--c-teal); }
+.project-visual.is-concept { cursor: default; background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--hue) 22%, transparent), transparent 45%), #0b1220; }
+.project-visual.is-concept .concept-art { width: 78%; max-width: 330px; height: auto; }
+html[data-theme="light"] .project-visual.is-concept { background: linear-gradient(145deg, #172338, #0f1a2c); }
+@media (min-width: 1001px) {
+  .project-card.project-trip { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .project-card.project-trip .project-visual { height: 100%; min-height: 260px; }
+}
+html .project-visual.is-concept .visual-label { color: #cfd8ec !important; }

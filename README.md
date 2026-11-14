@@ -124,3 +124,6 @@ Upload the whole folder structure, including `img/` (with `projects`, `certs` an
 - The choice lasts for the browser tab. The footer "Lock" button asks again.
 - Change the owner word: in the browser console run the `hash` function from `gate.js` on the new lower-case word and replace the entries in `OWNER`. Edit `VISITOR` to change the visitor words.
 - This is not real security. The site is static, so anyone reading the page source can find the hidden panels. It tidies what visitors see; it does not protect secrets.
+
+## Added projects
+Adaptigrade (Smart India Hackathon / DRDO, results awaited), Automated Data Analysis Software, SahaayOS (in progress) and the Local-First Travel Planner are in the Projects section. They use drawn illustrations; to use a real screenshot instead, copy the BakeVerse card's `<img class="shot" data-shot="img/projects/NAME">` pattern. Add live/source links by copying the `project-link` anchors from the Physics Simulator card.

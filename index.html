@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="career-lab.css">
     <link rel="stylesheet" href="visual.css">
     <link rel="stylesheet" href="light.css">
+    <link rel="stylesheet" href="skeuo.css">
 
     <script src="gate.js"></script>
 </head>
@@ -123,6 +124,21 @@
             </div>
             </div>
         </section>
+
+        <dialog class="project-dialog gallery-dialog" id="poster-gallery" aria-labelledby="poster-gallery-title">
+            <div class="project-dialog-content">
+                <button class="dialog-close" id="poster-gallery-close" type="button" aria-label="Close Best Poster photo gallery">&times;</button>
+                <p class="section-kicker">RECOGNITION / EVENT GALLERY</p>
+                <h2 id="poster-gallery-title">Best Poster Award, ICAME2 2026</h2>
+                <p class="dialog-description">Presenting the poster on Ni-Mg MOF / PVDF piezoelectric nanogenerators, and receiving the award, at ICAME2, Midnapore College (Autonomous).</p>
+                <div class="flpc-gallery-content" id="poster-gallery-content" aria-live="polite"></div>
+                <div class="gallery-preview" id="poster-gallery-preview" hidden>
+                    <button type="button" class="gallery-nav" id="poster-gallery-prev" aria-label="Previous photo">←</button>
+                    <figure><img id="poster-gallery-large" alt=""><figcaption id="poster-gallery-caption"></figcaption></figure>
+                    <button type="button" class="gallery-nav" id="poster-gallery-next" aria-label="Next photo">→</button>
+                </div>
+            </div>
+        </dialog>
 
         <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
 
@@ -536,9 +552,9 @@
                     <span class="recognition-icon">✦</span>
                     <div><h3><button type="button" class="flpc-gallery-trigger" aria-haspopup="dialog" aria-controls="flpc-gallery">Future Leaders Programme for Christites (FLPC) <span aria-hidden="true">↗</span></button></h3><p>Department-nominated participant representing the department in a university-wide, one-day leadership development workshop at Christ University. Select to explore event photographs.</p></div>
                 </article>
-                <article class="recognition-card has-preview" data-preview="img/recognition/best-poster" data-preview-count="4" tabindex="0" aria-label="Best Poster Award, Postgraduate Category">
+                <article class="recognition-card has-preview" data-preview="img/recognition/best-poster" data-preview-count="4" data-preview-ext="webp" data-preview-hint="Click to open the full gallery">
                     <span class="recognition-icon">✦</span>
-                    <div><h3>Best Poster Award — Postgraduate Category</h3><p>Recognised for research on MOF-enhanced PVDF for triboelectric energy harvesting.</p></div>
+                    <div><h3><button type="button" class="flpc-gallery-trigger poster-gallery-trigger" aria-haspopup="dialog" aria-controls="poster-gallery">Best Poster Award — Postgraduate Category <span aria-hidden="true">↗</span></button></h3><p>Recognised for research on MOF-enhanced PVDF for triboelectric energy harvesting. Select to explore photographs.</p></div>
                 </article>
                 <article class="recognition-card">
                     <span class="recognition-icon">✦</span>
@@ -864,11 +880,32 @@
             showFlpcPhoto(0);
         }
         renderFlpcGallery();
-        document.querySelectorAll('.flpc-gallery-trigger').forEach((trigger) => trigger.addEventListener('click', () => { if (!flpcDialog.open) flpcDialog.showModal(); }));
+        document.querySelectorAll('.flpc-gallery-trigger:not(.poster-gallery-trigger)').forEach((trigger) => trigger.addEventListener('click', () => { if (!flpcDialog.open) flpcDialog.showModal(); }));
         document.querySelector('.flpc-gallery-close').addEventListener('click', () => flpcDialog.close());
         flpcDialog.addEventListener('click', (event) => { if (event.target === flpcDialog) flpcDialog.close(); });
         document.getElementById('flpc-gallery-prev').addEventListener('click', () => showFlpcPhoto(flpcPhotoIndex - 1));
         document.getElementById('flpc-gallery-next').addEventListener('click', () => showFlpcPhoto(flpcPhotoIndex + 1));
+        // Best Poster gallery (ICAME2 2026): photos live in img/recognition/best-poster-N.webp
+        (() => {
+            const photos = [
+                { src: 'img/recognition/best-poster-1.webp', alt: 'Receiving the Best Poster award and certificate at ICAME2 2026', caption: 'Receiving the Best Poster award' },
+                { src: 'img/recognition/best-poster-2.webp', alt: 'Explaining the nanogenerator poster to visitors', caption: 'Presenting the poster' },
+                { src: 'img/recognition/best-poster-3.webp', alt: 'Discussing the poster with a visitor at the poster session', caption: 'At the poster session' },
+                { src: 'img/recognition/best-poster-4.webp', alt: 'With fellow participants in front of the ICAME2 banner', caption: 'At ICAME2, Midnapore College' }
+            ];
+            const dlg = document.getElementById('poster-gallery'), box = document.getElementById('poster-gallery-content'), view = document.getElementById('poster-gallery-preview'), big = document.getElementById('poster-gallery-large'), cap = document.getElementById('poster-gallery-caption');
+            if (!dlg) return; let cur = 0;
+            const show = (i) => { cur = (i + photos.length) % photos.length; big.src = photos[cur].src; big.alt = photos[cur].alt; cap.textContent = photos[cur].caption; view.hidden = false; box.querySelectorAll('.gallery-thumb').forEach((b, k) => b.setAttribute('aria-pressed', String(k === cur))); };
+            const grid = document.createElement('div'); grid.className = 'flpc-gallery-grid';
+            photos.forEach((p, i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'gallery-thumb'; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', `View photo ${i + 1}: ${p.caption}`);
+                const im = document.createElement('img'); im.src = p.src; im.alt = p.alt; im.loading = 'lazy'; const sp = document.createElement('span'); sp.textContent = p.caption; b.append(im, sp); b.addEventListener('click', () => show(i)); grid.append(b); });
+            box.append(grid); show(0);
+            document.querySelectorAll('.poster-gallery-trigger').forEach((t) => t.addEventListener('click', () => { if (!dlg.open) dlg.showModal(); }));
+            document.getElementById('poster-gallery-close').addEventListener('click', () => dlg.close());
+            dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+            document.getElementById('poster-gallery-prev').addEventListener('click', () => show(cur - 1)); document.getElementById('poster-gallery-next').addEventListener('click', () => show(cur + 1));
+        })();
+
 
         // Subtle pointer glow and scroll reveals; disabled for touch-only and reduced-motion visitors.
         const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;

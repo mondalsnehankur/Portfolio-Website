@@ -1,0 +1,140 @@
+/* SKEUOMORPHIC LAYER — loaded last. Surfaces behave like physical objects: raised cards with a lit top edge and
+   soft shadow, keys that press in, recessed fields, a bezelled terminal screen.
+   Dark theme = soft-touch dark plastic and anodised metal. Light theme = frosted glass over a pastel colour field.
+   Pure override file: delete the <link> to skeuo.css in index.html to revert everything in this file. */
+
+:root {
+  --sk-hi: rgba(255,255,255,.085);          /* lit top edge */
+  --sk-lo: rgba(0,0,0,.5);                  /* shaded bottom edge */
+  --sk-surface: linear-gradient(180deg, #1c2539 0%, #141b2b 100%);
+  --sk-surface-2: linear-gradient(180deg, #18202f 0%, #111826 100%);
+  --sk-raise: 0 1px 1px rgba(0,0,0,.5), 0 6px 14px -4px rgba(0,0,0,.55), 0 22px 38px -22px rgba(0,0,0,.7);
+  --sk-raise-hover: 0 1px 1px rgba(0,0,0,.5), 0 10px 22px -4px rgba(0,0,0,.6), 0 30px 48px -24px rgba(0,0,0,.75);
+  --sk-key: 0 1px 0 rgba(255,255,255,.06) inset, 0 -2px 0 rgba(0,0,0,.35) inset, 0 3px 0 rgba(0,0,0,.45), 0 8px 14px -6px rgba(0,0,0,.6);
+  --sk-pressed: 0 3px 8px rgba(0,0,0,.55) inset, 0 -1px 0 rgba(255,255,255,.05) inset;
+  --sk-well: 0 3px 7px rgba(0,0,0,.55) inset, 0 1px 0 rgba(255,255,255,.06);
+  --sk-edge: rgba(255,255,255,.07);
+  --sk-grain: .05;
+}
+html[data-theme="light"] {
+  --sk-hi: rgba(255,255,255,.95);
+  --sk-lo: rgba(110,128,170,.28);
+  --sk-glass: linear-gradient(150deg, rgba(255,255,255,.66) 0%, rgba(255,255,255,.32) 55%, rgba(255,255,255,.46) 100%);
+  --sk-glass-soft: linear-gradient(150deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
+  --sk-raise: 0 1px 0 rgba(255,255,255,.9) inset, 0 -1px 0 rgba(110,128,170,.22) inset, 0 2px 4px rgba(40,60,110,.07), 0 14px 32px -14px rgba(40,60,110,.32);
+  --sk-raise-hover: 0 1px 0 rgba(255,255,255,.95) inset, 0 -1px 0 rgba(110,128,170,.25) inset, 0 4px 8px rgba(40,60,110,.09), 0 22px 44px -14px rgba(40,60,110,.38);
+  --sk-key: 0 1px 0 rgba(255,255,255,.95) inset, 0 -2px 0 rgba(110,128,170,.28) inset, 0 3px 0 rgba(110,128,170,.32), 0 10px 16px -8px rgba(40,60,110,.4);
+  --sk-pressed: 0 3px 8px rgba(60,80,130,.32) inset, 0 -1px 0 rgba(255,255,255,.8) inset;
+  --sk-well: 0 2px 6px rgba(60,80,130,.22) inset, 0 1px 0 rgba(255,255,255,.9);
+  --sk-edge: rgba(255,255,255,.75);
+  --sk-grain: .035;
+}
+
+/* ---------- backdrop ---------- */
+body::before { content: ""; position: fixed; inset: 0; z-index: 9990; pointer-events: none; opacity: var(--sk-grain); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* light: a soft colour field behind the glass, so there is something to see through */
+html[data-theme="light"] { background: #e8eefa; }
+html[data-theme="light"] body { background: transparent !important; }
+html[data-theme="light"] body::after { background:
+    radial-gradient(60vw 50vw at 4% 4%, rgba(96,140,255,.62), transparent 70%),
+    radial-gradient(50vw 44vw at 96% 22%, rgba(160,118,255,.50), transparent 70%),
+    radial-gradient(56vw 50vw at 78% 70%, rgba(60,205,184,.48), transparent 70%),
+    radial-gradient(52vw 46vw at 4% 86%, rgba(255,170,120,.50), transparent 70%),
+    linear-gradient(180deg, #eef3fc, #e6edf9) !important;
+  position: fixed !important; inset: 0 !important; z-index: -1 !important; opacity: 1 !important; pointer-events: none; }
+html[data-theme="light"] :is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .contact-section, .toolbelt, .ebooks-section, .notes-section) {
+  background: transparent !important; background-image: none !important;
+  border-top: 1px solid rgba(110,128,170,.22) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.85); }
+
+/* ---------- raised surfaces ---------- */
+html:not([data-theme="light"]) :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .timeline-content, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure, .edu, .educontainer .school) {
+  background: var(--sk-surface) !important; border: 1px solid var(--sk-edge); box-shadow: inset 0 1px 0 var(--sk-hi), inset 0 -1px 0 var(--sk-lo), var(--sk-raise); }
+html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .timeline-content, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure) {
+  background: var(--sk-glass) !important; background-color: transparent !important; border: 1px solid rgba(255,255,255,.75) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(165%); backdrop-filter: blur(18px) saturate(165%); box-shadow: var(--sk-raise); }
+html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .timeline-content, .project-card) { border-left-color: rgba(255,255,255,.75) !important; }
+html[data-theme="light"] .project-card { border-top: 3px solid var(--hue, var(--accent)) !important; }
+html:not([data-theme="light"]) .project-card { border-top: 3px solid var(--hue, var(--accent)); }
+:is(.expercard, .cred-item, .project-card, .recognition-card, .github-repo-card, .case-study-card, .skillcard):hover { box-shadow: inset 0 1px 0 var(--sk-hi), inset 0 -1px 0 var(--sk-lo), var(--sk-raise-hover); }
+html[data-theme="light"] :is(.expercard, .cred-item, .project-card, .recognition-card, .github-repo-card, .case-study-card, .skillcard):hover { box-shadow: var(--sk-raise-hover); }
+html[data-theme="light"] .hover-preview, html[data-theme="light"] .command-palette, html[data-theme="light"] .project-dialog-content { background: linear-gradient(150deg, rgba(255,255,255,.92), rgba(255,255,255,.78)) !important; }
+html[data-theme="light"] :is(.project-visual, .cred-thumb, .ebook-shot) { box-shadow: 0 2px 6px rgba(40,60,110,.18) inset; }
+
+/* metrics strip: engraved plate with recessed counters */
+.portfolio-metrics { border-radius: 16px; }
+html:not([data-theme="light"]) .portfolio-metrics { background: var(--sk-surface-2); border: 1px solid var(--sk-edge); box-shadow: inset 0 1px 0 var(--sk-hi), var(--sk-raise); padding: 6px; }
+html[data-theme="light"] .portfolio-metrics { background: var(--sk-glass-soft); border: 1px solid rgba(255,255,255,.8); backdrop-filter: blur(16px); box-shadow: var(--sk-raise); padding: 6px; }
+.portfolio-metric { border-radius: 12px !important; box-shadow: var(--sk-well) !important; background: rgba(0,0,0,.18) !important; margin: 4px; }
+html[data-theme="light"] .portfolio-metric { background: rgba(255,255,255,.5) !important; }
+
+/* ---------- keys and buttons ---------- */
+:is(.primary-btn, .secondary-btn, .resume-btn, .cl-btn, .cl-btn-ghost, .project-filter, .cl-tab, .cl-file-btn, .theme-toggle, .command-palette-trigger, .hs-btn, .moreshow, .dialog-action, .contact-action, .copy-profile-btn, .ask-chips button, .cl-chip, .nav-burger, .dialog-close, .gh-btn, .gate-row button, .skill-node, .case-study-card summary .case-study-toggle, .nav-more) {
+  box-shadow: var(--sk-key); transition: transform .08s ease, box-shadow .08s ease, filter .15s ease; }
+:is(.primary-btn, .secondary-btn, .resume-btn, .cl-btn, .cl-btn-ghost, .project-filter, .cl-tab, .cl-file-btn, .theme-toggle, .command-palette-trigger, .hs-btn, .moreshow, .dialog-action, .contact-action, .copy-profile-btn, .ask-chips button, .cl-chip, .nav-burger, .gh-btn, .gate-row button, .skill-node):hover { filter: brightness(1.06); }
+:is(.primary-btn, .secondary-btn, .resume-btn, .cl-btn, .cl-btn-ghost, .project-filter, .cl-tab, .cl-file-btn, .theme-toggle, .command-palette-trigger, .hs-btn, .moreshow, .dialog-action, .contact-action, .copy-profile-btn, .ask-chips button, .cl-chip, .nav-burger, .gh-btn, .gate-row button, .skill-node):active {
+  transform: translateY(2px); box-shadow: var(--sk-pressed); }
+/* gloss on solid-colour keys */
+:is(.primary-btn, .project-filter.is-active, .gate-row button) { background-image: linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.04) 48%, rgba(0,0,0,.14)) !important; text-shadow: 0 1px 0 rgba(0,0,0,.25); }
+html[data-theme="light"] :is(.primary-btn, .project-filter.is-active, .cl-btn) { background-image: linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.02) 50%, rgba(0,0,0,.14)); }
+/* dark: gradient keys keep their colour, gain a gloss line */
+html:not([data-theme="light"]) :is(.cl-btn, .cl-tab) { box-shadow: var(--sk-key), 0 1px 0 rgba(255,255,255,.3) inset; }
+/* neutral keys */
+html:not([data-theme="light"]) :is(.secondary-btn, .resume-btn, .moreshow, .command-palette-trigger, .cl-btn-ghost, .cl-file-btn, .copy-profile-btn, .ask-chips button, .cl-chip, .theme-toggle, .hs-btn, .gh-btn, .nav-burger, .dialog-action, .contact-action) {
+  background-image: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02)) !important; background-color: #19213a !important; border-color: rgba(255,255,255,.09); }
+html[data-theme="light"] :is(.secondary-btn, .resume-btn, .moreshow, .command-palette-trigger, .cl-btn-ghost, .cl-file-btn, .copy-profile-btn, .ask-chips button, .cl-chip, .theme-toggle, .hs-btn, .nav-burger, .dialog-action, .contact-action) {
+  background: var(--sk-glass) !important; border: 1px solid rgba(255,255,255,.85) !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+/* filters / tabs that are not selected look like unlit keys */
+html[data-theme="light"] :is(.project-filter:not(.is-active), .cl-tab:not([aria-selected="true"]):not(.is-active)) { background: var(--sk-glass) !important; background-image: var(--sk-glass) !important; color: var(--ink) !important; border: 1px solid rgba(255,255,255,.85) !important; }
+html:not([data-theme="light"]) :is(.project-filter:not(.is-active), .cl-tab:not([aria-selected="true"]):not(.is-active)) { background: #19213a !important; background-image: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02)) !important; border: 1px solid rgba(255,255,255,.09) !important; }
+.project-filter.is-active, .cl-tab[aria-selected="true"], .cl-tab.is-active, .skill-node.is-selected, .skill-node[aria-pressed="true"] { box-shadow: var(--sk-pressed), 0 0 18px -4px var(--accent) !important; }
+
+/* round toggles and chips: small embossed beads */
+:is(.tech-tags span, .status-chip, .cred-tag, .skilltags span, .cl-source) { box-shadow: 0 1px 0 var(--sk-hi) inset, 0 -1px 0 var(--sk-lo) inset, 0 1px 2px rgba(0,0,0,.25); }
+html[data-theme="light"] :is(.tech-tags span, .skilltags span) { background: linear-gradient(180deg, #fff, #eef2fa) !important; border-color: rgba(255,255,255,.9) !important; box-shadow: 0 1px 0 #fff inset, 0 -1px 0 rgba(110,128,170,.22) inset, 0 1px 3px rgba(40,60,110,.15); }
+html:not([data-theme="light"]) :is(.tech-tags span, .skilltags span) { background: linear-gradient(180deg, #232d44, #181f33) !important; }
+
+/* tool belt: keycaps */
+.toolbelt-list li { border-radius: 14px !important; background: linear-gradient(180deg, #ffffff, #e9eef8) !important; border: 1px solid rgba(255,255,255,.9) !important;
+  box-shadow: 0 1px 0 #fff inset, 0 -3px 0 rgba(110,128,170,.28) inset, 0 4px 0 rgba(90,106,150,.45), 0 12px 18px -8px rgba(0,0,0,.45) !important; }
+html:not([data-theme="light"]) .toolbelt-list li { background: linear-gradient(180deg, #f6f8fd, #cfd8ea) !important; }
+html[data-theme="light"] .toolbelt { background: transparent !important; border-block: 0; }
+
+/* ---------- recessed fields ---------- */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), textarea, select, .ask-form input, .terminal-form input, .gate-row {
+  box-shadow: var(--sk-well) !important; border-radius: 10px; }
+html[data-theme="light"] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), textarea, select) { background: rgba(255,255,255,.55) !important; border: 1px solid rgba(255,255,255,.9) !important; backdrop-filter: blur(6px); }
+html:not([data-theme="light"]) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), textarea, select) { background: #0b101b !important; border: 1px solid rgba(255,255,255,.05) !important; }
+input:focus, textarea:focus, select:focus { outline: 0; box-shadow: var(--sk-well), 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent) !important; }
+
+/* ---------- nav: a bevelled rail ---------- */
+nav { box-shadow: 0 1px 0 var(--sk-hi) inset, 0 -1px 0 var(--sk-lo) inset, 0 10px 24px -14px rgba(0,0,0,.55) !important; }
+html[data-theme="light"] nav { background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.55)) !important; backdrop-filter: blur(20px) saturate(170%); border-bottom: 1px solid rgba(255,255,255,.8) !important; box-shadow: 0 1px 0 #fff inset, 0 10px 26px -16px rgba(40,60,110,.4) !important; }
+html:not([data-theme="light"]) nav { background: linear-gradient(180deg, rgba(24,32,50,.94), rgba(10,14,24,.9)) !important; }
+
+/* ---------- terminal: a hardware display with bezel and glare ---------- */
+html body .terminal-window { border-radius: 18px; border: 1px solid #05080f !important;
+  box-shadow: 0 0 0 8px #232c40, 0 0 0 9px #0a0f1a, 0 0 0 10px rgba(255,255,255,.08), inset 0 2px 14px rgba(0,0,0,.7), 0 36px 60px -24px rgba(0,0,0,.75) !important;
+  background-image: linear-gradient(118deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 26%), repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px) !important; }
+html body .terminal-section { padding-bottom: 80px; }
+.terminal-lights span, .terminal-lights i { box-shadow: 0 1px 0 rgba(255,255,255,.4) inset, 0 -1px 0 rgba(0,0,0,.35) inset, 0 1px 3px rgba(0,0,0,.6); }
+
+/* ---------- details ---------- */
+.theme-toggle { width: 42px; height: 42px; }
+.status-chip, .cred-tag { text-shadow: 0 1px 0 rgba(255,255,255,.12); }
+.scroll-progress { box-shadow: 0 0 10px var(--accent); }
+html[data-theme="light"] .gh-shell { box-shadow: var(--sk-raise); }
+html:not([data-theme="light"]) .gh-shell { box-shadow: inset 0 1px 0 var(--sk-hi), var(--sk-raise); }
+html[data-theme="light"] .site-footer, .site-footer { box-shadow: inset 0 2px 0 rgba(255,255,255,.1), inset 0 8px 18px -8px rgba(0,0,0,.5); }
+.gate-card { box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 0 0 6px #1b2438, 0 0 0 7px #05080f, 0 40px 90px -30px rgba(0,0,0,.85); }
+html:not([data-theme="light"]) hr, html:not([data-theme="light"]) .cred-group-title { border-color: rgba(255,255,255,.06); }
+@media (prefers-reduced-motion: reduce) { :is(.primary-btn, .secondary-btn, .cl-btn, .project-filter, .cl-tab) { transition: none; } }
+@media (max-width: 700px) { html[data-theme="light"] :is(.project-card, .cred-item, .expercard) { backdrop-filter: blur(10px) saturate(150%); } }
+html[data-theme="light"] :is(main, body > header, .firstsection, .miles-quote-section, .metrics-section) { background-color: transparent !important; }
+html[data-theme="light"] body::after { z-index: -1 !important; }
+
+/* inputs that sit on dark screens stay dark */
+html body :is(.terminal-form input, .gate-row input) { background: #070c17 !important; border: 1px solid rgba(255,255,255,.08) !important; color: #dbe6f8 !important; backdrop-filter: none; }
+html body .terminal-form input::placeholder { color: #7f8fab; }
+.cl-tab[aria-selected="true"], .cl-tab.is-active { text-shadow: 0 1px 0 rgba(0,0,0,.25); }

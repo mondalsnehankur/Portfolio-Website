@@ -127,3 +127,9 @@ Upload the whole folder structure, including `img/` (with `projects`, `certs` an
 
 ## Added projects
 Adaptigrade (Smart India Hackathon / DRDO, results awaited), Automated Data Analysis Software, SahaayOS (in progress) and the Local-First Travel Planner are in the Projects section. They use drawn illustrations; to use a real screenshot instead, copy the BakeVerse card's `<img class="shot" data-shot="img/projects/NAME">` pattern. Add live/source links by copying the `project-link` anchors from the Physics Simulator card.
+
+## Skeuomorphic design (skeuo.css)
+`skeuo.css` is the last stylesheet and adds the physical look: raised cards with a lit top edge, keys that press in, recessed input fields, keycap tool chips and a bezelled terminal screen. Dark theme uses dark soft-touch plastic; light theme uses frosted glass (blurred translucent cards over a soft colour field). Tune the look with the variables at the top of the file (`--sk-raise`, `--sk-key`, `--sk-glass`). To go back to the flat design, remove the `skeuo.css` link in `index.html`.
+
+## Best Poster gallery
+The Best Poster card now behaves like FLPC: hover previews the photos, click opens a gallery. Photos are `img/recognition/best-poster-1..4.webp`; captions and order are in the `photos` list in the "Best Poster gallery" block in `index.html`. Upload `img/recognition/` with the rest of the site.

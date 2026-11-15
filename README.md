@@ -133,3 +133,11 @@ Adaptigrade (Smart India Hackathon / DRDO, results awaited), Automated Data Anal
 
 ## Best Poster gallery
 The Best Poster card now behaves like FLPC: hover previews the photos, click opens a gallery. Photos are `img/recognition/best-poster-1..4.webp`; captions and order are in the `photos` list in the "Best Poster gallery" block in `index.html`. Upload `img/recognition/` with the rest of the site.
+
+## LeetCode card
+Open `site-config.js`, fill in `leetcode.username` and your solved counts (easy / medium / hard), optional contest rating and "updated" month. Until a username is set, nothing is shown. If all counts are 0, the card shows only your profile link. A LeetCode link is also added to the footer. Update the numbers by hand every few weeks; there is no official LeetCode API, so nothing is fetched automatically.
+
+## Scenery, education map, compact dashboard
+- `scenery.css` draws faint line art (contours, circuit traces, molecule lattice, orbits, code glyphs and so on) behind each section, tinted with that section's colour. It replaces the old graph-paper grid. Remove its `<link>` in `index.html` to turn it off; change `opacity` in the file to make it stronger or fainter.
+- Education is a left-to-right route map (B.Sc. to M.Sc. to MCA). On phones it stays a vertical list. Years come from the `data-year` attribute on each `.timerow`.
+- The "small dashboard of work" tiles are about a third smaller.

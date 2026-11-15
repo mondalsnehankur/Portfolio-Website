@@ -44,14 +44,14 @@ html[data-theme="light"] body::after { background:
     radial-gradient(52vw 46vw at 4% 86%, rgba(255,170,120,.50), transparent 70%),
     linear-gradient(180deg, #eef3fc, #e6edf9) !important;
   position: fixed !important; inset: 0 !important; z-index: -1 !important; opacity: 1 !important; pointer-events: none; }
-html[data-theme="light"] :is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .contact-section, .toolbelt, .ebooks-section, .notes-section) {
+html[data-theme="light"] :is(#current-work, #about, #project, #problem-solving, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .contact-section, .toolbelt, .ebooks-section, .notes-section) {
   background: transparent !important; background-image: none !important;
   border-top: 1px solid rgba(110,128,170,.22) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.85); }
 
 /* ---------- raised surfaces ---------- */
-html:not([data-theme="light"]) :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure, .timelineitem) {
+html:not([data-theme="light"]) :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure, .timelineitem, .ps-card) {
   background: var(--sk-surface) !important; border: 1px solid var(--sk-edge); box-shadow: inset 0 1px 0 var(--sk-hi), inset 0 -1px 0 var(--sk-lo), var(--sk-raise); }
-html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure, .timelineitem) {
+html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .project-card, .cw-card, .skill-radar, .cl-panel, .case-study-card, .skills-explorer, .project-explorer, .contact-form, .cl-block, .cl-baseline, .note-item, .command-palette, .project-dialog-content, .gallery-dialog, .hover-preview, .about-figure, .timelineitem, .ps-card) {
   background: var(--sk-glass) !important; background-color: transparent !important; border: 1px solid rgba(255,255,255,.75) !important;
   -webkit-backdrop-filter: blur(18px) saturate(165%); backdrop-filter: blur(18px) saturate(165%); box-shadow: var(--sk-raise); }
 html[data-theme="light"] :is(.expercard, .skillcard, .cred-item, .recognition-card, .github-repo-card, .project-card, .timelineitem) { border-left-color: rgba(255,255,255,.75) !important; }
@@ -147,3 +147,9 @@ html body .portfolio-metrics .portfolio-metric { margin: 0 !important; height: 1
 @media (max-width: 900px) { html body .portfolio-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 420px) { html body .portfolio-metrics { grid-template-columns: 1fr; } }
 html body .portfolio-metrics .portfolio-metric { display: flex; flex-direction: column; justify-content: flex-start; } html body .portfolio-metric strong { margin-top: 4px; }
+
+/* credentials: one row per group, scrolls sideways */
+#credentials [data-hscroll] { padding: 6px 4px 14px; gap: 12px; }
+#credentials [data-hscroll] > * { flex: 0 0 262px; }
+@media (max-width: 560px) { #credentials [data-hscroll] > * { flex-basis: 78%; } }
+#credentials .cred-item, #credentials .recognition-card, #credentials [data-hscroll] > .cred-item { height: 168px !important; }

@@ -223,7 +223,7 @@ footer { border-image: var(--spectrum) 1; border-top-width: 2px; }
 @media (min-width: 1001px) { #credentials .cred-group-title + .cred-grid { margin-bottom: 0; } }
 
 /* ---- one shared content width, so every section lines up ---- */
-#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .site-footer {
+#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .site-footer, .ps-section {
   padding-inline: max(20px, calc((100% - 1100px) / 2)) !important;
 }
 
@@ -359,3 +359,17 @@ html[data-theme="light"] .project-visual.is-concept { background: linear-gradien
   .project-card.project-trip .project-visual { height: 100%; min-height: 260px; }
 }
 html .project-visual.is-concept .visual-label { color: #cfd8ec !important; }
+
+/* Problem solving (LeetCode) */
+.ps-section { --hue: var(--c-sky); padding-block: 56px; }
+.ps-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 34px; align-items: center; padding: 26px 30px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); border-top: 3px solid var(--hue); }
+.ps-total strong { display: block; font: 700 3rem/1 'Playfair Display', Georgia, serif; color: var(--hue); } .ps-total span { display: block; margin-top: 6px; color: var(--muted); font-size: .86rem; } .ps-total small { display: block; margin-top: 6px; color: var(--ink); font-size: .8rem; }
+.ps-total.ps-empty strong { font-size: 1.6rem; }
+.ps-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ps-row { display: grid; grid-template-columns: 70px minmax(0, 1fr) 40px; gap: 12px; align-items: center; font-size: .86rem; }
+.ps-row > span:first-child { color: var(--muted); } .ps-row b { text-align: right; color: var(--ink); }
+.ps-track { height: 10px; border-radius: 99px; background: rgba(120,135,165,.22); box-shadow: inset 0 1px 3px rgba(0,0,0,.35); overflow: hidden; } .ps-track i { display: block; height: 100%; border-radius: 99px; background: var(--bar, var(--hue)); }
+.is-easy { --bar: var(--c-teal); } .is-medium { --bar: var(--c-amber); } .is-hard { --bar: var(--c-rose); }
+.ps-side { display: grid; gap: 8px; justify-items: end; text-align: right; } .ps-side small { color: var(--muted); font-size: .74rem; }
+@media (max-width: 800px) { .ps-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; } .ps-side { justify-items: start; text-align: left; } }
+.ps-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.01em; font-weight: 700; }

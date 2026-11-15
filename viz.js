@@ -60,17 +60,42 @@
   addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(build, 250); });
 })();
 
-/* Horizontal scroll rows (ebooks, notes): arrows appear only when there is more to see */
+/* Horizontal scroll rows (ebooks, credentials, notes). When a row has more cards than fit, it loops forever in both
+   directions: copies of the cards sit before and after the real ones, and the row quietly jumps back by one full set
+   whenever scrolling stops near an edge. A row whose cards all fit stays a plain static row. */
 (() => {
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-hscroll]').forEach((track) => {
     const wrap = document.createElement('div'); wrap.className = 'hscroll'; track.before(wrap); wrap.append(track);
     track.tabIndex = 0; track.setAttribute('role', 'region');
-    const mk = (dir, label, glyph) => { const b = document.createElement('button'); b.type = 'button'; b.className = `hs-btn ${dir}`; b.setAttribute('aria-label', label); b.textContent = glyph; wrap.append(b); return b; };
+    const mk = (dir, label, glyph) => { const b = document.createElement('button'); b.type = 'button'; b.className = `hs-btn ${dir}`; b.setAttribute('aria-label', label); b.textContent = glyph; b.hidden = true; wrap.append(b); return b; };
     const prev = mk('prev', 'Scroll left', '←'), next = mk('next', 'Scroll right', '→');
-    const step = () => Math.max(260, track.clientWidth * 0.8), smooth = () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+    const originals = [...track.children]; let looping = false, setW = 0, idle;
+    const step = () => Math.max(240, Math.min(track.clientWidth * 0.8, setW / 2 || 9999)), smooth = () => (reduced() ? 'auto' : 'smooth');
+    const clear = () => { track.querySelectorAll('[data-loop-clone]').forEach((n) => n.remove()); looping = false; };
+    const build = () => {
+      clear(); track.style.scrollSnapType = ''; if (originals.length < 2) return;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      setW = originals.reduce((w, el) => w + el.getBoundingClientRect().width + gap, 0);
+      if (setW <= track.clientWidth + 4) { prev.hidden = next.hidden = true; return; }       // everything fits: static row
+      const copy = (el) => { const c = el.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.setAttribute('inert', ''); c.dataset.loopClone = '1'; c.removeAttribute('id'); c.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id')); return c; };
+      originals.slice().reverse().forEach((el) => track.prepend(copy(el)));                     // set before
+      originals.forEach((el) => track.append(copy(el)));                                        // set after
+      looping = true; prev.hidden = next.hidden = false;
+      track.style.scrollSnapType = 'none'; track.scrollLeft = setW; track.style.scrollSnapType = '';
+    };
+    const wrapAround = () => {
+      if (!looping) return; const x = track.scrollLeft;
+      if (x < setW * 0.35 || x > setW * 1.65) { const st = track.style.scrollSnapType; track.style.scrollSnapType = 'none'; track.scrollLeft = x < setW ? x + setW : x - setW; track.style.scrollSnapType = st; }
+    };
+    const onScroll = () => { if (!looping) { const max = track.scrollWidth - track.clientWidth; prev.hidden = track.scrollLeft < 8 || max < 8; next.hidden = max < 8 || track.scrollLeft > max - 8; return; } clearTimeout(idle); idle = setTimeout(wrapAround, 140); };
     prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: smooth() })); next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: smooth() }));
-    const update = () => { const max = track.scrollWidth - track.clientWidth; prev.hidden = track.scrollLeft < 8; next.hidden = max < 8 || track.scrollLeft > max - 8; };
-    track.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update); new ResizeObserver(update).observe(track); update();
+    track.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); } if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); } });
+    track.addEventListener('scroll', onScroll, { passive: true }); track.addEventListener('scrollend', wrapAround);
+    // build once images have settled (card widths are fixed, so this is cheap), and again if the width changes
+    let lastW = 0; const rebuild = () => { const w = track.clientWidth; if (w && w !== lastW) { lastW = w; build(); } };
+    addEventListener('load', () => setTimeout(rebuild, 1500)); new ResizeObserver(() => { clearTimeout(track._rb); track._rb = setTimeout(rebuild, 200); }).observe(track);
+    onScroll();
   });
 })();
 

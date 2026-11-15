@@ -373,3 +373,26 @@ html .project-visual.is-concept .visual-label { color: #cfd8ec !important; }
 .ps-side { display: grid; gap: 8px; justify-items: end; text-align: right; } .ps-side small { color: var(--muted); font-size: .74rem; }
 @media (max-width: 800px) { .ps-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; } .ps-side { justify-items: start; text-align: left; } }
 .ps-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.01em; font-weight: 700; }
+
+/* About: ER diagram figure */
+.about-layout { grid-template-columns: minmax(0, 1fr) minmax(380px, 520px); gap: 34px; align-items: center; }
+.about-er { margin: 0; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); overflow: hidden; box-shadow: 0 24px 50px -32px rgba(0,0,0,.6); }
+.er-bar { display: flex; align-items: center; gap: 6px; padding: 9px 14px; border-bottom: 1px solid var(--line); font: 600 .72rem 'JetBrains Mono', 'Courier New', monospace; color: var(--muted); }
+.er-bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--c-rose); } .er-bar span:nth-child(2) { background: var(--c-amber); } .er-bar span:nth-child(3) { background: var(--c-teal); }
+.er-bar b { margin-left: 8px; color: var(--ink); font-weight: 600; } .er-bar em { margin-left: auto; font-style: normal; }
+.er-svg { display: block; width: 100%; height: auto; padding: 10px 10px 4px; box-sizing: border-box; }
+.er-box { fill: var(--panel); stroke: color-mix(in srgb, var(--h) 55%, var(--line)); stroke-width: 1.2; }
+.er-head { fill: color-mix(in srgb, var(--h) 82%, transparent); }
+.er-title { font: 700 10.5px 'Poppins', sans-serif; letter-spacing: .06em; fill: #fff; }
+.er-key { font: 700 8.5px 'JetBrains Mono', monospace; fill: var(--h); } .er-attr { font: 500 10px 'JetBrains Mono', 'Courier New', monospace; fill: var(--ink); }
+.er-line { fill: none; stroke: var(--muted); stroke-width: 1.3; stroke-linecap: round; } .er-rel { font: italic 500 9.5px 'Poppins', sans-serif; fill: var(--muted); }
+.about-er figcaption { padding: 10px 16px 14px; font-size: .78rem; line-height: 1.55; color: var(--muted); }
+html[data-theme="light"] .er-title { fill: #fff; } html[data-theme="light"] .er-box { fill: rgba(255,255,255,.85); }
+@media (max-width: 960px) { .about-layout { grid-template-columns: 1fr; } .about-er { max-width: 560px; } }
+.project-datatool .project-visual .shot { object-position: left top; }
+.project-visual.is-diagram .shot { object-fit: contain; object-position: center; background: #070d1c; } .project-visual.is-diagram { cursor: zoom-in; background: #070d1c; } .project-visual.is-diagram .visual-label { display: none; }
+.project-trip .project-visual.is-diagram { background: #eef2fb; }
+.cw-figure { margin: 0 0 26px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #070d1c; }
+.cw-figure a { display: block; cursor: zoom-in; } .cw-figure img { display: block; width: 100%; height: auto; }
+.cw-figure figcaption { padding: 10px 14px; font-size: .78rem; color: var(--muted); background: var(--panel); }
+.project-trip .project-visual.is-diagram .shot { background: #eef2fb; }

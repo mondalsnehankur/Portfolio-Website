@@ -141,3 +141,7 @@ Open `site-config.js`, fill in `leetcode.username` and your solved counts (easy 
 - `scenery.css` draws faint line art (contours, circuit traces, molecule lattice, orbits, code glyphs and so on) behind each section, tinted with that section's colour. It replaces the old graph-paper grid. Remove its `<link>` in `index.html` to turn it off; change `opacity` in the file to make it stronger or fainter.
 - Education is a left-to-right route map (B.Sc. to M.Sc. to MCA). On phones it stays a vertical list. Years come from the `data-year` attribute on each `.timerow`.
 - The "small dashboard of work" tiles are about a third smaller.
+
+## Infinite horizontal rows and the About ER diagram
+- Horizontal rows (certifications, ebooks, notes, programs) now loop forever in both directions when they hold more cards than fit on screen. Rows whose cards all fit stay a plain static row, so you never see duplicate cards side by side; they start looping automatically once you add more cards. Arrow keys work when a row is focused.
+- The About section has an inline SVG entity-relationship diagram (`figure.about-er`). Edit entity names or attributes directly in that SVG, or delete the figure to return to text only.

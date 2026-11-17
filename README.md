@@ -156,3 +156,9 @@ Three small touches, none of which gate content:
 3. **Hidden commands**: type anywhere outside a text box: `sudo` (opens the terminal), `matrix` or the Konami code (brief matrix rain), `orbit`, `hello`, `theme`.
 
 To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` section and the `.fx-hint` span in `index.html`.
+
+### Updates to the playful extras
+- `matrix` / Konami code switch the page to the dark theme while the rain runs, then restore your previous theme (the saved choice is never changed).
+- The one-letter shortcuts (p, s, m, f, g, c, t) now wait about 0.6 s and cancel if you keep typing, so typing a hidden word no longer jumps around or flips the theme.
+- Each moon in the orbit game has its own look: ringed Projects, banded Skills, Earth-like Research with a small moon, ringed ice-world Contact.
+- **Flow connectors**: a thin line leaves each section where the previous one arrived. Three motifs repeat: a wave with a travelling packet, a circuit trace, and a stream of 0/1 bits. Built in `play.js` (section 4) and styled at the end of `play.css`. They pause when off-screen and stay still under reduced motion.

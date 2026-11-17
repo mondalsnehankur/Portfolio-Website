@@ -1091,9 +1091,16 @@
         document.addEventListener('keydown', (event) => {
             if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openPalette(); }
             if (!palette.open && !event.ctrlKey && !event.metaKey && !event.altKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) {
-                const shortcut = { p: '#project', s: '#skills', m: '#project-metrics', f: '#leadership', g: '#github-activity', c: '#contact' }[event.key.toLowerCase()];
-                if (shortcut) window.location.hash = shortcut;
-                if (event.key.toLowerCase() === 't') themeToggle.click();
+                /* One-letter shortcuts wait a moment: if another key follows quickly, the visitor is typing a word
+                   (a hidden command, see play.js), so the shortcut is dropped instead of jumping around. */
+                const now = Date.now(), typingWord = now - (window.__lastKeyAt || 0) < 700; window.__lastKeyAt = now;
+                clearTimeout(window.__shortcutTimer);
+                if (!typingWord) {
+                    const key = event.key.toLowerCase();
+                    const shortcut = { p: '#project', s: '#skills', m: '#project-metrics', f: '#leadership', g: '#github-activity', c: '#contact' }[key];
+                    if (shortcut) window.__shortcutTimer = setTimeout(() => { window.location.hash = shortcut; }, 650);
+                    else if (key === 't') window.__shortcutTimer = setTimeout(() => themeToggle.click(), 650);
+                }
             }
         });
 

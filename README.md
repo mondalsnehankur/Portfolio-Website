@@ -145,3 +145,14 @@ Open `site-config.js`, fill in `leetcode.username` and your solved counts (easy 
 ## Infinite horizontal rows and the About ER diagram
 - Horizontal rows (certifications, ebooks, notes, programs) now loop forever in both directions when they hold more cards than fit on screen. Rows whose cards all fit stay a plain static row, so you never see duplicate cards side by side; they start looping automatically once you add more cards. Arrow keys work when a row is focused.
 - The About section has an inline SVG entity-relationship diagram (`figure.about-er`). Edit entity names or attributes directly in that SVG, or delete the figure to return to text only.
+
+
+## Playful extras (optional)
+
+Three small touches, none of which gate content:
+
+1. **Orbit slingshot** (`#orbit-play`): drag the probe back and release. Gravity from the sun bends its path; landing on a moon (Projects, Skills, Research, Contact) scrolls to that section. Keyboard: focus the probe, arrow keys aim, Enter launches. "Skip the game" and plain links sit beside it.
+2. **Reactive background**: the line art behind sections drifts slightly with the cursor (fine pointers only, off when reduced motion is requested).
+3. **Hidden commands**: type anywhere outside a text box: `sudo` (opens the terminal), `matrix` or the Konami code (brief matrix rain), `orbit`, `hello`, `theme`.
+
+To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` section and the `.fx-hint` span in `index.html`.

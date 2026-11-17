@@ -1,0 +1,27 @@
+/* Playful extras: orbit slingshot band, reactive background, toast and matrix overlay. Remove the <link> to turn the styling off. */
+.orbit-play { padding-block: 44px 36px; }
+.op-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 28px; margin-bottom: 18px; }
+.op-head h2 { margin: 0 0 6px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; letter-spacing: -.01em; }
+.op-sub { margin: 0; max-width: 62ch; color: var(--muted); font-size: .95rem; line-height: 1.6; }
+.op-actions { display: flex; align-items: center; gap: 14px; } .op-actions .secondary-btn { padding: 8px 16px; font-size: .85rem; }
+.op-skip { color: var(--muted); font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; } .op-skip:hover { color: var(--accent-2); }
+.op-stage { position: relative; height: 300px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(160,185,255,.28);
+  background: radial-gradient(circle at 52% 50%, #14214a 0%, #0a1230 55%, #060b1e 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 20px rgba(0,0,0,.5), 0 18px 40px -22px rgba(0,0,0,.6); }
+.op-stage canvas { position: absolute; inset: 0; display: block; }
+.op-pad { position: absolute; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; cursor: grab; touch-action: none; outline: none; z-index: 2; }
+.op-pad.grabbing { cursor: grabbing; } .op-pad:focus-visible { box-shadow: 0 0 0 2px #7fd6ff; }
+.op-readout { position: absolute; left: 16px; bottom: 10px; right: 16px; font: 500 .78rem 'JetBrains Mono', ui-monospace, monospace; color: rgba(215,226,252,.85); pointer-events: none; min-height: 1.2em; text-align: right; }
+.op-links { margin: 12px 2px 0; font-size: .85rem; color: var(--muted); } .op-links a { color: var(--accent-2); text-decoration: none; margin-inline: 4px; } .op-links a:hover { text-decoration: underline; }
+@media (max-width: 700px) { .op-stage { height: 250px; } .op-head { align-items: flex-start; } }
+
+/* reactive background: the section line art drifts a little against the cursor (parallax) */
+:is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal) { overflow-x: clip; }
+:is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal)::before { transform: translate3d(calc(var(--mx, 0) * -16px), calc(var(--my, 0) * -10px), 0); transition: transform .4s ease-out; }
+:is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal)::after { transform: translate3d(calc(var(--mx, 0) * 24px), calc(var(--my, 0) * 14px), 0); transition: transform .4s ease-out; }
+@media (prefers-reduced-motion: reduce) { :is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal)::before, :is(#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal)::after { transform: none; transition: none; } }
+
+/* hidden-command toast and matrix overlay */
+.fx-toast { position: fixed; left: 22px; bottom: 24px; z-index: 9995; max-width: min(380px, calc(100vw - 44px)); padding: 11px 16px; border-radius: 10px; background: #0b1322; color: #7dffc8; border: 1px solid #1f3a33; font: 500 .84rem 'JetBrains Mono', ui-monospace, monospace; box-shadow: 0 16px 36px -14px rgba(0,0,0,.7); opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+.fx-toast.show { opacity: 1; transform: none; }
+.fx-rain { position: fixed; inset: 0; z-index: 9985; width: 100%; height: 100%; pointer-events: none; opacity: .55; transition: opacity .7s ease; mix-blend-mode: screen; } .fx-rain.out { opacity: 0; }
+.fx-hint { opacity: .75; }

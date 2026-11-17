@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="light.css">
     <link rel="stylesheet" href="skeuo.css">
     <link rel="stylesheet" href="scenery.css">
+    <link rel="stylesheet" href="play.css">
 
     <script src="gate.js"></script>
 </head>
@@ -97,6 +98,23 @@
         </section>
 
         <section class="toolbelt" aria-label="Tools and technologies I use"><p class="toolbelt-title">Tools I build with</p><div class="marquee" role="group" aria-label="Tools and technologies, scrolling"><ul class="toolbelt-list marquee-track"><li><img src="img/tools/python.png" alt="" width="44" height="44" loading="lazy"><span>Python</span></li><li><img src="img/tools/java.png" alt="" width="44" height="44" loading="lazy"><span>Java</span></li><li><img src="img/tools/cpp.png" alt="" width="44" height="44" loading="lazy"><span>C and C++</span></li><li><img src="img/tools/js.png" alt="" width="44" height="44" loading="lazy"><span>JavaScript</span></li><li><img src="img/tools/html.png" alt="" width="44" height="44" loading="lazy"><span>HTML5</span></li><li><img src="img/tools/css.png" alt="" width="44" height="44" loading="lazy"><span>CSS3</span></li><li><img src="img/tools/react.png" alt="" width="44" height="44" loading="lazy"><span>React</span></li><li><img src="img/tools/git.png" alt="" width="44" height="44" loading="lazy"><span>Git</span></li><li><img src="img/tools/scipy.png" alt="" width="44" height="44" loading="lazy"><span>SciPy</span></li><li><img src="img/tools/matplotlib.png" alt="" width="44" height="44" loading="lazy"><span>Matplotlib</span></li></ul></div></section>
+
+        <section class="orbit-play" id="orbit-play" aria-labelledby="op-title">
+            <div class="op-head">
+                <div>
+                    <p class="section-kicker">A SMALL DETOUR</p>
+                    <h2 id="op-title">Launch a probe.</h2>
+                    <p class="op-sub">Drag back from the probe, let go, and let gravity do the rest. Land on a moon to jump to that part of the portfolio. Keyboard: focus the probe, use the arrow keys to aim and Enter to launch.</p>
+                </div>
+                <div class="op-actions"><button type="button" class="secondary-btn" id="op-reset">Reset</button><a class="op-skip" href="#current-work">Skip the game &darr;</a></div>
+            </div>
+            <div class="op-stage" id="op-stage">
+                <canvas id="op-canvas" aria-hidden="true"></canvas>
+                <div class="op-pad" id="op-pad" role="button" tabindex="0" aria-label="Probe launcher. Drag back and release to launch, or use the arrow keys to aim and Enter to launch."></div>
+                <div class="op-readout" id="op-readout" role="status" aria-live="polite"></div>
+            </div>
+            <p class="op-links">Or go straight to: <a href="#project">Projects</a> &middot; <a href="#skills">Skills</a> &middot; <a href="#current-work">Research</a> &middot; <a href="#contact">Contact</a></p>
+        </section>
 
         <section class="current-work" id="current-work" aria-labelledby="cw-title">
             <p class="section-kicker">CURRENTLY WORKING ON</p>
@@ -1107,6 +1125,7 @@
     <script src="viz.js"></script>
     <script src="site-config.js"></script>
     <script src="leetcode.js"></script>
+    <script src="play.js"></script>
     <script src="analytics.js"></script>
 
     <footer class="site-footer">
@@ -1115,7 +1134,7 @@
             <div><h2>Explore</h2><a href="#project">Projects</a><a href="#credentials">Credentials</a><a href="#career-lab">Career Lab</a><a href="simulator.html">Live physics demo</a></div>
             <div><h2>Connect</h2><a href="https://www.linkedin.com/in/snehankur-mondal/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">GitHub</a><a href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a><a href="#contact">Contact form</a></div>
         </div>
-        <p class="foot-legal">©2026 • <strong>Snehankur Mondal</strong> • All rights reserved. • <button type="button" id="lock-site">Lock</button></p>
+        <p class="foot-legal">©2026 • <strong>Snehankur Mondal</strong> • All rights reserved. • <button type="button" id="lock-site">Lock</button> &bull; <span class="fx-hint" title="Try typing a secret word anywhere on the page">Hidden commands: try typing one</span></p>
     </footer>
 
 </body>

@@ -223,7 +223,7 @@ footer { border-image: var(--spectrum) 1; border-top-width: 2px; }
 @media (min-width: 1001px) { #credentials .cred-group-title + .cred-grid { margin-bottom: 0; } }
 
 /* ---- one shared content width, so every section lines up ---- */
-#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, .site-footer, .ps-section {
+#current-work, #about, #project, #ebooks, #skills, #exper, #education, #leadership, #credentials, #project-metrics, #github-activity, #notes, #career-lab, #terminal, #contact, #orbit-play, .site-footer, .ps-section {
   padding-inline: max(20px, calc((100% - 1100px) / 2)) !important;
 }
 

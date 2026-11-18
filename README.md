@@ -161,7 +161,4 @@ To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` s
 - `matrix` / Konami code switch the page to the dark theme while the rain runs, then restore your previous theme (the saved choice is never changed).
 - The one-letter shortcuts (p, s, m, f, g, c, t) now wait about 0.6 s and cancel if you keep typing, so typing a hidden word no longer jumps around or flips the theme.
 - Each moon in the orbit game has its own look: ringed Projects, banded Skills, Earth-like Research with a small moon, ringed ice-world Contact.
-- **Morph (replaces the earlier dotted connectors)**: like PowerPoint's Morph transition, shapes transform from one section to the next, tied to scroll position (scroll back and it reverses).
-  - A small point-cloud widget at the bottom right reshapes between nine physics/CS motifs: atom, wave function, graph, binary grid, chip, globe, bar chart, galaxy, Saturn. Each section is mapped to a shape in the `SEQ` list at the top of section 4 of `play.js`; edit it to change the order.
-  - The line art behind each section scales, tilts and fades with its distance from the screen centre, so one section's art dissolves into the next (`--sp`/`--sa` set by `play.js`, rules at the end of `play.css`).
-  - The widget fades when the pointer gets near, is hidden while the gate is up, and type `morph` to turn it off/on. Under reduced motion it snaps between shapes without animation and the art stays still.
+- The scroll-linked morph widget and section-art dissolve were tried and removed.

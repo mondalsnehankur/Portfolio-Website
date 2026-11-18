@@ -182,6 +182,7 @@
     sudo: () => { toast('sudo: permission granted. Opening the terminal.'); go('#terminal'); setTimeout(() => $('terminal-input')?.focus({ preventScroll: true }), 900); },
     matrix: rain,
     orbit: () => { toast('Orbit mode: aim carefully.'); go('#orbit-play'); },
+    morph: () => window.__morphToggle && window.__morphToggle(),
     hello: () => toast('Hello, and thanks for looking around.'),
     theme: () => { document.querySelector('[data-theme-toggle], .theme-toggle')?.click(); toast('Theme switched.'); },
   };
@@ -195,40 +196,80 @@
     if (k.length === 1 && /[a-z]/.test(k)) { word = (word + k).slice(-10); for (const name of Object.keys(COMMANDS)) if (word.endsWith(name)) { word = ''; COMMANDS[name](); break; } }
   });
 
-  /* ---------- 4. flowing connectors between sections ----------
-     A thin line leaves each section where the previous one arrived, so the page reads as one continuous signal.
-     Three motifs repeat: a smooth wave (with a travelling packet), a circuit trace, and a stream of bits. */
+  /* ---------- 4. morph: shapes that transform from one section to the next (like PowerPoint's Morph) ----------
+     a) A small point-cloud widget, bottom right, reshapes as you scroll: atom, wave, graph, grid, chip, globe, bars, galaxy, Saturn.
+        Its position in each morph is tied to scroll, so scrolling back reverses it.
+     b) The line art behind each section scales, tilts and fades with its distance from the screen centre, so one section's art
+        dissolves into the next one's (see play.css). Both are off or static under reduced motion. Type "morph" to hide/show the widget. */
   (() => {
-    const IDS = ['orbit-play', 'current-work', 'about', 'project', 'ebooks', 'skills', 'exper', 'education', 'leadership', 'credentials', 'project-metrics', 'github-activity', 'problem-solving', 'notes', 'career-lab', 'terminal', 'contact'];
-    const FR = [.14, .86, .3, .72, .18, .82, .4, .68, .22, .78, .34, .9, .16, .7, .28, .84, .5];
-    const NS = 'http://www.w3.org/2000/svg', H = 96;
-    const secs = IDS.map((id) => $(id)).filter(Boolean); const bridges = [];
-    secs.forEach((sec, i) => {
-      if (i === 0) return;
-      const b = document.createElement('div'); b.className = 'flow-bridge'; b.setAttribute('aria-hidden', 'true'); sec.parentNode.insertBefore(b, sec);
-      bridges.push({ el: b, i, from: FR[i - 1], to: FR[i] });
-    });
-    const build = (br) => {
-      const W = br.el.clientWidth || innerWidth, left = Math.max(20, (W - 1100) / 2), cw = W - left * 2, x0 = left + br.from * cw, x1 = left + br.to * cw, v = br.i % 3, id = 'fp' + br.i;
-      let d;
-      if (v === 1) { const r = 14, dir = x1 > x0 ? 1 : -1, ym = H / 2; d = `M${x0} 0 V${ym - r} Q${x0} ${ym} ${x0 + dir * r} ${ym} H${x1 - dir * r} Q${x1} ${ym} ${x1} ${ym + r} V${H}`; }
-      else d = `M${x0} 0 C${x0} ${H * .62}, ${x1} ${H * .38}, ${x1} ${H}`;
-      const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-      const mk = (n, at) => { const e = document.createElementNS(NS, n); Object.entries(at).forEach(([k, val]) => e.setAttribute(k, val)); svg.append(e); return e; };
-      const path = mk('path', { d, id, class: 'flow-line' + (v === 2 ? ' faint' : '') });
-      mk('circle', { cx: x0, cy: 0, r: 4, class: 'flow-node' }); mk('circle', { cx: x1, cy: H, r: 4, class: 'flow-node' });
-      if (v === 1) { mk('rect', { x: (x0 + x1) / 2 - 4, y: H / 2 - 4, width: 8, height: 8, rx: 2, class: 'flow-node' }); }
-      if (v === 2) {
-        const t = mk('text', { class: 'flow-bits' }), tp = document.createElementNS(NS, 'textPath'); tp.setAttribute('href', '#' + id); tp.textContent = '0 1 1 0 1 0 0 1 1 1 0 1 0 1 0 0 1 0 1 1 0 0 1 0 1 1 1 0 1 0 0 1 '.repeat(3); t.append(tp);
-        if (!reduced) { const an = document.createElementNS(NS, 'animate'); an.setAttribute('attributeName', 'startOffset'); an.setAttribute('from', '-8%'); an.setAttribute('to', '0%'); an.setAttribute('dur', '3s'); an.setAttribute('repeatCount', 'indefinite'); tp.append(an); }
-      } else if (!reduced) {
-        const c = mk('circle', { r: 4.5, class: 'flow-packet' }), m = document.createElementNS(NS, 'animateMotion'); m.setAttribute('dur', (3.2 + (br.i % 4) * .5) + 's'); m.setAttribute('repeatCount', 'indefinite'); m.setAttribute('path', d); c.append(m);
+    const N = 140, SEQ = [['home', 0], ['orbit-play', 8], ['current-work', 1], ['about', 2], ['project', 4], ['ebooks', 7], ['skills', 3], ['exper', 6], ['education', 5], ['leadership', 2], ['credentials', 3], ['project-metrics', 6], ['github-activity', 1], ['problem-solving', 3], ['notes', 7], ['career-lab', 4], ['terminal', 3], ['contact', 8]];
+    const NAMES = ['atom', 'ψ(x, t)', 'G = (V, E)', '0 1 0 1', 'chip', 'globe', 'metrics', 'galaxy', 'orbit'];
+    let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const TAU = Math.PI * 2, P = (x, y, z = 0) => ({ x, y, z });
+    const fit = (pts) => { const a = pts.map((p) => ({ ...p, a: Math.atan2(p.y, p.x) })).sort((u, v) => u.a - v.a); return Array.from({ length: N }, (_, i) => { const p = a[Math.floor(i * a.length / N)]; return P(p.x, p.y, p.z); }); };
+    const sphere = (n, r) => Array.from({ length: n }, (_, i) => { const y = 1 - 2 * (i + .5) / n, rr = Math.sqrt(1 - y * y), th = i * 2.399963; return P(Math.cos(th) * rr * r, y * r, Math.sin(th) * rr * r); });
+    const shapes = [
+      /* 0 atom */ (() => { const o = []; for (let i = 0; i < 10; i++) o.push(P((rnd() - .5) * .22, (rnd() - .5) * .22, (rnd() - .5) * .22)); [0, 1, 2].forEach((k) => { const th = k * Math.PI / 3; for (let i = 0; i < 43; i++) { const u = i / 43 * TAU, x = .88 * Math.cos(u), y = .34 * Math.sin(u); o.push(P(x * Math.cos(th) - y * Math.sin(th), x * Math.sin(th) + y * Math.cos(th), .3 * Math.sin(u + k * 2))); } }); return fit(o); })(),
+      /* 1 wave */ (() => { const o = []; for (let i = 0; i < 70; i++) { const x = -1 + 2 * i / 69; o.push(P(x * .95, .42 * Math.sin(3 * Math.PI * x) * Math.exp(-x * x * .6))); o.push(P(x * .95, .22 * Math.sin(6 * Math.PI * x + 1) * Math.exp(-x * x * .6) - .02)); } return fit(o); })(),
+      /* 2 graph */ (() => { const rings = [[0, 1], [.3, 7], [.6, 14], [.92, 22]], nodes = []; rings.forEach(([r, n], k) => { for (let i = 0; i < n; i++) { const u = i / n * TAU + k * .5; nodes.push({ k, x: r * Math.cos(u), y: r * Math.sin(u) }); } }); const o = nodes.map((n) => P(n.x, n.y)); nodes.forEach((n) => { if (!n.k) return; const inner = nodes.filter((m) => m.k === n.k - 1).sort((u, v) => Math.hypot(u.x - n.x, u.y - n.y) - Math.hypot(v.x - n.x, v.y - n.y))[0]; for (const t of [.33, .66]) o.push(P(n.x + (inner.x - n.x) * t, n.y + (inner.y - n.y) * t)); }); return fit(o); })(),
+      /* 3 grid */ (() => { const o = []; for (let r = 0; r < 12; r++) for (let c = 0; c < 12; c++) o.push(P(-.9 + 1.8 * c / 11, -.9 + 1.8 * r / 11)); return fit(o); })(),
+      /* 4 chip */ (() => { const o = []; const sq = (h, n) => { for (let i = 0; i < n; i++) { const t = i / n * 4, s = Math.floor(t), f = t - s; const pts = [[-h + 2 * h * f, -h], [h, -h + 2 * h * f], [h - 2 * h * f, h], [-h, h - 2 * h * f]]; o.push(P(pts[s][0], pts[s][1])); } }; sq(.62, 56); sq(.36, 32); for (let k = 0; k < 4; k++) for (let i = 0; i < 6; i++) { const t = -.5 + i * .2, a = k * Math.PI / 2, c = Math.cos(a), s2 = Math.sin(a); [[.7, t], [.88, t]].forEach(([d, e]) => o.push(P(d * c - e * s2, d * s2 + e * c))); } return fit(o); })(),
+      /* 5 globe */ (() => { const o = []; for (let k = 1; k <= 5; k++) { const lat = -Math.PI / 2 + k * Math.PI / 6, r = Math.cos(lat) * .85; for (let i = 0; i < 16; i++) { const u = i / 16 * TAU; o.push(P(r * Math.cos(u), Math.sin(lat) * .85, r * Math.sin(u))); } } for (let m = 0; m < 4; m++) for (let i = 0; i < 15; i++) { const v = -Math.PI / 2 + (i + .5) / 15 * Math.PI, u = m * Math.PI / 4 * 2 / 1; o.push(P(Math.cos(v) * Math.cos(u) * .85, Math.sin(v) * .85, Math.cos(v) * Math.sin(u) * .85)); } return fit(o); })(),
+      /* 6 bars */ (() => { const o = []; [.3, .5, .4, .75, .6, .9, .7, 1].forEach((h, i) => { const x = -.85 + i * .243, n = Math.floor(h * 10) + 1; for (let k = 0; k < n; k++) o.push(P(x, .85 - k * .17)); }); return fit(o); })(),
+      /* 7 galaxy */ (() => { const o = []; for (let a = 0; a < 2; a++) for (let i = 0; i < 70; i++) { const f = i / 70, r = .08 + .9 * f, th = f * 4.2 + a * Math.PI; o.push(P(r * Math.cos(th), r * Math.sin(th) * .8, (rnd() - .5) * .2)); } return fit(o); })(),
+      /* 8 saturn */ (() => { const o = sphere(50, .42); for (let i = 0; i < 90; i++) { const u = i / 90 * TAU, R = i % 2 ? .95 : .68, x = R * Math.cos(u), z = R * Math.sin(u); o.push(P(x, z * .45 * -1 * .0 + (-.3 * x), z)); } return fit(o); })(),
+    ];
+    window.MorphShapes = { count: shapes.length, sizes: shapes.map((a) => a.length) };
+
+    const hud = document.createElement('div'); hud.className = 'morph-hud'; hud.setAttribute('aria-hidden', 'true');
+    const cv = document.createElement('canvas'); hud.append(cv); document.body.append(hud);
+    const ctx = cv.getContext('2d'); let size = 0, dpr = 1, on = true;
+    const sizeIt = () => { size = hud.clientWidth; dpr = Math.min(2, devicePixelRatio || 1); cv.width = cv.height = Math.round(size * dpr); cv.style.width = cv.style.height = size + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    sizeIt(); addEventListener('resize', sizeIt);
+
+    const probe = document.createElement('canvas').getContext('2d'); const colCache = new Map(); let themeKey = '';
+    const rgbOf = (v) => { probe.fillStyle = '#7fd6ff'; probe.fillStyle = v || '#7fd6ff'; const f = probe.fillStyle; if (f[0] === '#') { const n = parseInt(f.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; } const m = f.match(/[\d.]+/g); return m ? m.slice(0, 3).map(Number) : [127, 214, 255]; };
+    const colorOf = (sec) => { const k = document.documentElement.getAttribute('data-theme') || 'dark'; if (k !== themeKey) { colCache.clear(); themeKey = k; } if (!colCache.has(sec)) colCache.set(sec, rgbOf(getComputedStyle(sec).getPropertyValue('--hue').trim() || getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim())); return colCache.get(sec); };
+
+    let list = []; const collect = () => { list = SEQ.map(([id, sh]) => ({ el: $(id), sh })).filter((x) => x.el && x.el.getClientRects().length); };
+    collect();
+    const ART = ['current-work', 'about', 'project', 'ebooks', 'skills', 'exper', 'education', 'leadership', 'credentials', 'project-metrics', 'github-activity', 'notes', 'career-lab', 'terminal'].map($).filter(Boolean);
+
+    let st = { a: 0, b: 0, t: 0 }, dirty = true, tick = 0;
+    const ease = (t) => t * t * (3 - 2 * t);
+    const compute = () => {
+      const centre = innerHeight * .5, W = 460, r = list.map((x) => x.el.getBoundingClientRect());
+      if (r.length < 2) { st = { a: 0, b: 0, t: 0 }; return; }
+      for (let k = 0; k < r.length - 1; k++) {
+        const bd = (r[k].bottom + r[k + 1].top) / 2;
+        if (centre < bd - W / 2) { st = { a: k, b: k, t: 0 }; return; }
+        if (centre <= bd + W / 2) { st = { a: k, b: k + 1, t: ease((centre - (bd - W / 2)) / W) }; return; }
       }
-      br.el.replaceChildren(svg); br.svg = svg; br.w = W;
-      if (!br.vis && !reduced) { try { svg.pauseAnimations(); } catch (_) {} }
+      st = { a: r.length - 1, b: r.length - 1, t: 0 };
     };
-    const io = new IntersectionObserver((es) => es.forEach((e) => { const br = bridges.find((b) => b.el === e.target); if (!br) return; br.vis = e.isIntersecting; br.el.classList.toggle('on', e.isIntersecting); try { br.svg && (e.isIntersecting ? br.svg.unpauseAnimations() : br.svg.pauseAnimations()); } catch (_) {} }), { rootMargin: '120px' });
-    bridges.forEach((b) => { build(b); io.observe(b.el); });
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => bridges.forEach((b) => { if (Math.abs((b.el.clientWidth || 0) - b.w) > 2) build(b); }), 200); });
+    const updateArt = () => { const vh = innerHeight; ART.forEach((el) => { const r = el.getBoundingClientRect(); const sp = Math.max(-1, Math.min(1, ((r.top + r.height / 2) - vh / 2) / (vh * .5 + r.height * .5))); el.style.setProperty('--sp', sp.toFixed(3)); el.style.setProperty('--sa', Math.abs(sp).toFixed(3)); }); };
+
+    const draw = (time) => {
+      const { a, b } = st; let t = st.t; if (reduced) t = t > .5 ? 1 : 0;
+      const A = shapes[list[a].sh], B = shapes[list[b].sh], ca = colorOf(list[a].el), cb = colorOf(list[b].el);
+      const col = ca.map((v, i) => Math.round((v + (cb[i] - v) * t) * .55 + 255 * .45)), c = size / 2, sc = size * .36;
+      const ang = reduced ? .35 : Math.sin(time * .0006) * .45 + .1, cs = Math.cos(ang), sn = Math.sin(ang), wob = reduced ? 0 : Math.sin(time * .0004) * .15;
+      ctx.clearRect(0, 0, size, size);
+      const pts = A.map((p, i) => { const q = B[i], x = p.x + (q.x - p.x) * t, y = p.y + (q.y - p.y) * t, z = p.z + (q.z - p.z) * t; const jig = Math.sin(t * Math.PI) * .12 * Math.sin(i * 12.9898); /* a little scatter mid-morph */ const X = x * cs + z * sn + jig, Z = -x * sn + z * cs; return { x: c + X * sc, y: c + (y * Math.cos(wob) - Z * Math.sin(wob) + jig) * sc, d: Z }; });
+      const th = size * .17; ctx.lineWidth = 1;
+      for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) { const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d2 = dx * dx + dy * dy; if (d2 < th * th) { ctx.strokeStyle = `rgba(${col},${(.5 * (1 - Math.sqrt(d2) / th)).toFixed(3)})`; ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke(); } }
+      ctx.fillStyle = `rgb(${col})`; pts.forEach((p) => { ctx.globalAlpha = .65 + .35 * Math.max(-1, Math.min(1, p.d)) * .5 + .15; ctx.beginPath(); ctx.arc(p.x, p.y, size > 130 ? 1.9 : 1.5, 0, TAU); ctx.fill(); }); ctx.globalAlpha = 1;
+      ctx.font = `500 ${size > 130 ? 10 : 8}px 'JetBrains Mono', ui-monospace, monospace`; ctx.textAlign = 'center'; const la = t < .5 ? list[a] : list[b]; ctx.fillStyle = `rgba(215,226,252,${Math.abs(1 - 2 * t)})`; ctx.fillText(NAMES[la.sh], c, size - 9);
+    };
+
+    const loop = (time) => { tick = 0; if (!document.hidden && on) { if (dirty) { compute(); updateArt(); dirty = false; } draw(time); } if (!reduced && on) tick = requestAnimationFrame(loop); };
+    const need = () => { dirty = true; if (reduced && !tick && on) tick = requestAnimationFrame(loop); };
+    addEventListener('scroll', need, { passive: true }); addEventListener('resize', () => { collect(); need(); });
+    new ResizeObserver(() => { collect(); need(); }).observe(document.body);
+    if (!reduced) tick = requestAnimationFrame(loop); else need();
+    /* stay out of the way: fade when the pointer comes close */
+    if (matchMedia('(pointer: fine)').matches) addEventListener('pointermove', (e) => { const r = hud.getBoundingClientRect(), d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)); hud.style.opacity = d < r.width * .85 ? .15 : ''; }, { passive: true });
+    window.__morphToggle = () => { on = !on; hud.style.display = on ? '' : 'none'; if (on) { dirty = true; if (!tick) tick = requestAnimationFrame(loop); } toast(on ? 'Morph widget on.' : 'Morph widget off.'); };
+    window.MorphDebug = { state: () => st, list: () => list.map((x) => x.el.id || x.el.tagName) };
   })();
 })();

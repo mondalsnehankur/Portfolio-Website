@@ -27,7 +27,7 @@
       const m = OWNER.includes(hash(v)) ? 'owner' : VISITOR.includes(v) ? 'visitor' : null;
       if (!m) { msg.textContent = v ? 'Not quite. Try "open" or "code".' : 'Type a word first, for example "open".'; form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake'); input.select(); return; }
       try { sessionStorage.setItem(KEY, m); } catch (er) {}
-      gate.classList.add('leaving'); setTimeout(() => gate.remove(), 350); apply(m);
+      gate.classList.add('leaving'); setTimeout(() => gate.remove(), 350); apply(m); document.dispatchEvent(new CustomEvent('portfolio:enter', { detail: { mode: m } }));
     });
   });
 })();

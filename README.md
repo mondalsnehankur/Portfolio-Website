@@ -162,3 +162,20 @@ To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` s
 - The one-letter shortcuts (p, s, m, f, g, c, t) now wait about 0.6 s and cancel if you keep typing, so typing a hidden word no longer jumps around or flips the theme.
 - Each moon in the orbit game has its own look: ringed Projects, banded Skills, Earth-like Research with a small moon, ringed ice-world Contact.
 - The scroll-linked morph widget and section-art dissolve were tried and removed.
+
+
+## Photo morph, project folders, city footer (`extras.js`, styles at the end of `play.css`)
+- **Photo morph**: as you scroll, the hero photo shrinks and glides down to the small avatar beside the About heading, then on to the "Built by" card in Projects (like a PowerPoint Morph). The landing spots are `.morph-slot` elements in `index.html`. With reduced motion the slots just show the photo and nothing travels.
+- **Project folders**: built from the `data-folders="web ml"` attribute on each project card. A project can list several folders. Edit the `FOLDERS` list in `extras.js` to rename or add folders. Hover, tap or press Enter to open; choosing a project scrolls to its card and highlights it.
+- **City footer**: a night skyline drawn in SVG (generated in `extras.js`), with people walking, a train, and a waving silhouette of you saying "See you soon!". Change the text in the `bubble` line of `extras.js`. It pauses when off-screen and is still under reduced motion.
+- To remove any of them, delete the matching block in `extras.js` (and its CSS); `extras.js` needs uploading with `index.html` and `play.css`.
+
+### Folder and footer refresh
+- Project folders are taller and each has its own artwork that animates when opened: a browser with a moving cursor (Web), rising bars and a trend line (Data), a pulsing neural net (ML), a terminal that types (Systems), an atom with orbiting electrons (Science). Each also has a "No. 0X" tape label and a one-line note ("physicist at heart", etc.); edit `FOLDERS` and `ART` in `extras.js`.
+- The footer street scene was redrawn with proportioned, walking figures (swinging arms, bending knees), cars and a bus with headlights, trees, street lamps, a metro train and a passing plane. It rebuilds to the screen width.
+
+## Welcome intro (`intro.js`)
+Plays once right after someone passes the entry gate (not on reloads in the same visit): the letters of the name slide in from both sides and glow, the name lifts, the photo and three lines appear, then the reveal runs: a water-drop ripple spreads from the photo, the name breaks into particles that follow a flow-field path and settle into the real hero headline, while a Conway's Game of Life grid dissolves the overlay (cells die off from the centre outward). Click or any key skips; reduced motion gets a short static fade, and any runtime error falls back to a plain fade (`finishCleanly`). Particle count is 420 on desktop and 170 on mobile; tune `N` in `runReveal`. Edit `NAME` and `LINES` at the top of `intro.js`. `gate.js` fires a `portfolio:enter` event that starts it; delete the `intro.js` script tag to turn it off.
+
+## About: class diagram
+The diagram beside the About text is now a UML-style class diagram: a central `SnehankurMondal : Person` class (course, base, status, goals, focus, build/learn/solve) linked to `Education`, `Projects` and `Skills` classes. It is inline SVG in `index.html` (`.about-er`); edit the attribute lines there, styles at the end of `play.css`.

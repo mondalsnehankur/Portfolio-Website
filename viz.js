@@ -25,7 +25,7 @@
     cats.forEach((c, i) => { const [x, y] = pt(i, (ev[c] || 0) / max); svg.append(mk('circle', { cx: x, cy: y, r: 3.5, class: 'rd-dot' })); });
     const box = document.createElement('div'); box.className = 'skill-radar';
     const side = document.createElement('div'); side.className = 'rd-side';
-    side.innerHTML = '<h3>Where my skills are strongest</h3><p>Built from this site and my CV. It compares my own areas with each other; it is not a rating against anyone else.</p><ul class="rd-legend"><li><i class="k-ev"></i>Shown in a project, role or credential</li><li><i class="k-all"></i>Listed in skills or CV</li></ul>';
+    side.innerHTML = '<h3>Where my skills are strongest</h3><p>Built from this site and my CV, comparing my own areas with each other.</p><ul class="rd-legend"><li><i class="k-ev"></i>Shown in a project, role or credential</li><li><i class="k-all"></i>Listed in skills or CV</li></ul>';
     const list = document.createElement('ul'); list.className = 'rd-counts'; cats.sort((a, b) => tot(b) - tot(a)).forEach((c) => { const l = document.createElement('li'); l.textContent = `${c}: ${ev[c] || 0} shown, ${tot(c)} listed`; list.append(l); }); side.append(list);
     box.append(svg, side); host.before(box);
   }).catch(() => {});

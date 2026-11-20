@@ -138,7 +138,7 @@ The Best Poster card now behaves like FLPC: hover previews the photos, click ope
 Open `site-config.js`, fill in `leetcode.username` and your solved counts (easy / medium / hard), optional contest rating and "updated" month. Until a username is set, nothing is shown. If all counts are 0, the card shows only your profile link. A LeetCode link is also added to the footer. Update the numbers by hand every few weeks; there is no official LeetCode API, so nothing is fetched automatically.
 
 ## Scenery, education map, compact dashboard
-- `scenery.css` draws faint line art (contours, circuit traces, molecule lattice, orbits, code glyphs and so on) behind each section, tinted with that section's colour. It replaces the old graph-paper grid. Remove its `<link>` in `index.html` to turn it off; change `opacity` in the file to make it stronger or fainter.
+- `scenery.css` has been deleted: the landscape background (`landscape.js`) replaced it. The education map and compact dashboard notes above still apply.
 - Education is a left-to-right route map (B.Sc. to M.Sc. to MCA). On phones it stays a vertical list. Years come from the `data-year` attribute on each `.timerow`.
 - The "small dashboard of work" tiles are about a third smaller.
 
@@ -164,8 +164,7 @@ To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` s
 - The scroll-linked morph widget and section-art dissolve were tried and removed.
 
 
-## Photo morph, project folders, city footer (`extras.js`, styles at the end of `play.css`)
-- **Photo morph**: as you scroll, the hero photo shrinks and glides down to the small avatar beside the About heading, then on to the "Built by" card in Projects (like a PowerPoint Morph). The landing spots are `.morph-slot` elements in `index.html`. With reduced motion the slots just show the photo and nothing travels.
+## Project folders, city footer (`extras.js`, styles at the end of `play.css`)
 - **Project folders**: built from the `data-folders="web ml"` attribute on each project card. A project can list several folders. Edit the `FOLDERS` list in `extras.js` to rename or add folders. Hover, tap or press Enter to open; choosing a project scrolls to its card and highlights it.
 - **City footer**: a night skyline drawn in SVG (generated in `extras.js`), with people walking, a train, and a waving silhouette of you saying "See you soon!". Change the text in the `bubble` line of `extras.js`. It pauses when off-screen and is still under reduced motion.
 - To remove any of them, delete the matching block in `extras.js` (and its CSS); `extras.js` needs uploading with `index.html` and `play.css`.
@@ -175,7 +174,34 @@ To remove: delete the `play.css` link, the `play.js` script, the `#orbit-play` s
 - The footer street scene was redrawn with proportioned, walking figures (swinging arms, bending knees), cars and a bus with headlights, trees, street lamps, a metro train and a passing plane. It rebuilds to the screen width.
 
 ## Welcome intro (`intro.js`)
-Plays once right after someone passes the entry gate (not on reloads in the same visit): the letters of the name slide in from both sides and glow, the name lifts, the photo and three lines appear, then the reveal runs: a water-drop ripple spreads from the photo, the name breaks into particles that follow a flow-field path and settle into the real hero headline, while a Conway's Game of Life grid dissolves the overlay (cells die off from the centre outward). Click or any key skips; reduced motion gets a short static fade, and any runtime error falls back to a plain fade (`finishCleanly`). Particle count is 420 on desktop and 170 on mobile; tune `N` in `runReveal`. Edit `NAME` and `LINES` at the top of `intro.js`. `gate.js` fires a `portfolio:enter` event that starts it; delete the `intro.js` script tag to turn it off.
+Plays once right after someone passes the entry gate (not on reloads in the same visit): the letters of the name slide in from both sides and glow, the name lifts, the photo and three lines appear, then the name breaks into particles that follow a flow-field path and settle into the real hero headline while the dark overlay fades away (a ripple and a Game of Life dissolve were tried and dropped as too much). Click or any key skips; reduced motion gets a short static fade, and any runtime error falls back to a plain fade (`finishCleanly`). Particle count is 420 on desktop and 170 on mobile; tune `N` in `runReveal`. Edit `NAME` and `LINES` at the top of `intro.js`. `gate.js` fires a `portfolio:enter` event that starts it; delete the `intro.js` script tag to turn it off.
 
 ## About: class diagram
 The diagram beside the About text is now a UML-style class diagram: a central `SnehankurMondal : Person` class (course, base, status, goals, focus, build/learn/solve) linked to `Education`, `Projects` and `Skills` classes. It is inline SVG in `index.html` (`.about-er`); edit the attribute lines there, styles at the end of `play.css`.
+
+## ID card hero and About (`idcard.js`, `idcard.css`)
+The hero shows an ID card on a lanyard instead of a profile photo. The card dangles (a damped double pendulum with a slow idle sway), can be dragged and released, and swings when the cursor brushes past. Its links (GitHub, LinkedIn, resume, contact) are real links. The lanyard carries enamel pins: music club headphones, a music-note brooch, a compass and a paper plane.
+- **Edit the card:** the markup is the `.id-rig` block in `index.html` (name, role, ID `150102` (also set in `idcard.css` under `.idg-b::after`), base, links). Photo is `pfpic.jpeg`.
+- **Edit the pins:** the `PINS` array at the top of `idcard.js` (SVG snippet, which strap, position `t`, tooltip title). Swap the headphones for your club's colours or add a pin.
+- **About section** now follows the hero (before Projects). When it scrolls into view the card lifts off the lanyard, flips in mid-air, and lands in the About section as the back of the card, where a scan line reveals the class diagram and the About points are read out as numbered records. Scrolling back to the top returns the card to the lanyard (the empty lanyard keeps swinging). Edit the points in `.ap-list` in `index.html`.
+- Reduced motion: static card, no flight, everything visible. Phones: the card sits above the hero text; the About points show as soon as the section is in view.
+
+## Projects: folders as the filter, compact cards, case-file dialog (`projects.js`, `projects.css`)
+The folder shelf is now the only filter (the old "Explore by focus" chips are hidden). Click a folder to show just its projects (click again, or "Show all", to clear); hovering still previews the folder's contents. Project cards are compact rows: thumbnail, number, title, one-line summary, three tags and "View details". Clicking a card (or a project in a folder panel) opens a case-file dialog with the full description, links, the folders it is filed under, and the matching case study, with previous/next browsing (arrow keys work). The separate "Case study" list under the grid is hidden because the dialog includes it. All text still lives in the original `.project-card` markup in `index.html` (the dialog reads from it); remove the `projects.js` script tag to get the old full-size cards back.
+
+## Landscape background (`landscape.js`, `landscape.css`)
+A fixed layer behind the whole page: sky, far snow peaks, mid hills with pines, near hills with framing trees, and a few drifting leaves. The silhouettes are generated from seeded noise (change the seeds 11 / 23 / 37 in `build()` for different mountains) and drawn once into bitmaps.
+- **Camera:** scrolling moves a slow camera through the scene (zoom and sideways drift, by different amounts per layer so the zoom has depth). Edit the `SHOTS` list at the top of `landscape.js`: `z` zoom, `x` drift, `y` tilt toward the city, `t` time of day, per section id.
+- **Light:** `t` runs from dawn (0) to night (1) along the page, ending where the night-city footer begins. Palettes are `PAL_DARK` and `PAL_LIGHT` (they follow the theme toggle).
+- **Wind:** the leaves react to scroll speed; a fast scroll adds a short streak.
+- **Readability:** sections sit on a veil of the page colour (`--a` per section in `landscape.css`); the hero is clear, About is mostly clear, dense sections are heavily veiled. Lower the values to show more landscape.
+- Reduced motion: one still frame. Phones: fewer leaves and trees. To remove it, delete the `landscape.js` and `landscape.css` tags from `index.html`.
+
+
+## Refinement pass (`refine.css`, `motion.js`)
+- **Featured vs "also":** five featured projects stay as cards. Cards with `data-tier="also"` in `index.html` (Marine, LocaLens) become slim rows under "Also on the bench". Remove the attribute to promote one.
+- **Pin tooltips:** each pin on the lanyard has a `hint` in the `PINS` array in `idcard.js`. Hover, keyboard focus or a tap shows it.
+- **Pause motion:** the button in the nav (next to the theme toggle) adds `html.motion-off`, stopping leaves, card swing and CSS animations. The choice is saved in `localStorage` (`portfolio-motion`) and defaults to on if the visitor's system asks for reduced motion.
+- **Low-power mode:** `motion.js` adds `html.lite` automatically on weak hardware (2 cores or less, 2 GB or less, Save-Data) or when the first seconds run under about 33 fps. It drops the leaves and backdrop blur.
+- **Readability:** the section veil strengths are the `--a` values in `landscape.css`.
+- **ID number:** the card shows `150102`. Change it in `index.html` (`.id-rig` and the `#id-dock` head) and in `idcard.css`.

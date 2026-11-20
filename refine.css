@@ -1,0 +1,49 @@
+/* Refinements: one art direction (B1), varied layouts (B6), less uniform effects (B7).
+   Delete this file's <link> to get the previous look back. */
+
+/* ---------- B1: the landscape is the only background art ---------- */
+html.land-on .firstsection::before, html.land-on .firstsection::after, html.land-on .rightsection::after,
+html.land-on .journey-art { display: none !important; }
+
+/* ---------- B6: Experience as a ledger, Leadership as one lead card plus two ---------- */
+:is(html, html[data-theme]) .expcontainer { display: block !important; max-width: 980px; background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+:is(html, html[data-theme]) .expercard { display: grid !important; grid-template-columns: 190px minmax(0, 1fr); column-gap: 40px; row-gap: 4px; padding: 28px 0 !important; border: 0 !important; border-top: 1px solid var(--line) !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+:is(html, html[data-theme]) .expercard:last-child { border-bottom: 1px solid var(--line) !important; }
+.expercard .experience-topline { grid-row: 1 / span 3; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 6px; }
+.expercard .experience-date { font-size: .8rem; color: var(--ink); }
+.expercard h3, .expercard .expmeta, .expercard ul { grid-column: 2; }
+.expercard h3 { margin: 0; font-size: 1.12rem; }
+.expercard ul { margin-top: 10px; }
+.leadership-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.leadership-grid > .recognition-card:first-child { grid-column: 1 / -1; }
+.leadership-grid > .recognition-card:first-child h3 { font-size: 1.25rem; }
+@media (max-width: 860px) { .expercard { grid-template-columns: minmax(0, 1fr); } .expercard h3, .expercard .expmeta, .expercard ul { grid-column: 1; } .expercard .experience-topline { grid-row: auto; flex-direction: row; gap: 12px; margin-bottom: 6px; } .leadership-grid { grid-template-columns: minmax(0, 1fr); } .leadership-grid > .recognition-card:first-child { grid-column: auto; } }
+
+/* ---------- B7: effects are not all the same ---------- */
+.pulse { animation: none !important; }
+.hero-status .pulse { animation: ping 2.4s infinite !important; }
+html .expercard:hover, html .cred-item:hover, html .recognition-card:hover, html .github-repo-card:hover, html .credential-card:hover, html .portfolio-metric:hover { transform: none !important; }
+.recognition-card.reveal-ready { transform: translateX(-26px); transition-duration: .7s; }
+.recognition-card:nth-child(even).reveal-ready { transform: translateX(26px); }
+.recognition-card.reveal-ready.is-visible { transform: none; }
+.miles-quote.reveal-ready { transform: none; transition-duration: 1.3s; }
+.project-card.reveal-ready { transition-delay: calc(var(--ri, 0) * 70ms); }
+@media (prefers-reduced-motion: reduce) { .recognition-card.reveal-ready, .miles-quote.reveal-ready { transform: none; } }
+
+/* ---------- motion switch + low-power mode (motion.js) ---------- */
+.motion-toggle { gap: 7px; }
+.motion-toggle .mt-ico { font-size: .62rem; letter-spacing: -1px; }
+#motion-toggle .mt-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#motion-toggle { min-width: 38px; justify-content: center; padding-inline: 11px; }
+html.motion-off *, html.motion-off *::before, html.motion-off *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+html.motion-off .ld-fx { display: none; }
+html.lite .ld-fx { display: none; }
+html.lite *, html.lite *::before, html.lite *::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+html.lite .id-card { filter: none !important; }
+
+/* ---------- pin tooltips ---------- */
+.pin-tip { position: fixed; z-index: 60; max-width: 210px; padding: 8px 11px; border-radius: 10px; background: #fbf8f1; color: #1a2034; box-shadow: 0 0 0 1px rgba(20,30,60,.18), 0 10px 24px -8px rgba(0,0,0,.5); font: 500 .76rem/1.45 'Poppins', sans-serif; pointer-events: none; opacity: 0; transform: translateY(4px); transition: opacity .16s, transform .16s; }
+.pin-tip.on { opacity: 1; transform: none; }
+.pin-tip b { display: block; font: 700 .62rem 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #5a4bb8; margin-bottom: 2px; }
+.id-strap .pin:focus-visible { outline: none; }
+.id-strap .pin:focus-visible .pin-in { filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 5px #6aa8ff); }

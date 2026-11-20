@@ -1,0 +1,98 @@
+/* Projects: compact index + case-file dialog (projects.js). Applies only when JS adds .is-compact; without JS the full cards stay. */
+.project-grid .project-card[hidden] { display: none !important; }
+
+/* ---------- compact cards ---------- */
+.project-grid.is-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.project-grid.is-compact .project-card { display: grid; grid-template-columns: 200px minmax(0, 1fr); align-items: stretch; cursor: pointer; border-radius: 16px; }
+.project-grid.is-compact .project-card:last-child { grid-column: auto; }
+.project-grid.is-compact .project-card:nth-child(odd):last-child { grid-column: 1 / -1; }
+.project-grid.is-compact .project-visual { height: auto !important; min-height: 168px !important; border-radius: 0 !important; }
+.project-grid.is-compact .project-visual .visual-label, .project-grid.is-compact .project-visual .visual-open { display: none !important; }
+.project-grid.is-compact .project-visual img.shot { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.project-grid.is-compact .project-body { display: flex; flex-direction: column; align-items: flex-start; padding: 16px 18px 14px; min-width: 0; }
+.project-grid.is-compact .project-number { order: -1; margin-bottom: 4px; font-size: .62rem; letter-spacing: .14em; }
+.project-grid.is-compact .project-body h3 { font-size: .98rem; line-height: 1.35; margin: 0 0 7px; }
+.project-grid.is-compact .project-body p { min-height: 0 !important; margin: 0 0 10px; font-size: .8rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.project-grid.is-compact .project-body p ~ p, .project-grid.is-compact .private-note, .project-grid.is-compact .project-link { display: none !important; }
+.project-grid.is-compact .status-chip { margin: 0 6px 6px 0; }
+.project-grid.is-compact .tech-tags { margin: 0 0 10px; gap: 5px; }
+.project-grid.is-compact .tech-tags span:nth-child(n+4) { display: none; }
+.project-grid.is-compact .tech-tags span { font-size: .64rem; padding: 3px 7px; }
+.pc-more { margin-top: auto; padding: 0; border: 0; background: none; color: var(--accent); font: 600 .74rem 'JetBrains Mono', 'Courier New', monospace; letter-spacing: .06em; cursor: pointer; }
+.pc-more span { display: inline-block; transition: transform .2s; }
+.project-card:hover .pc-more span, .pc-more:focus-visible span { transform: translate(3px, -3px); }
+.pc-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+html[data-theme="light"] .pc-more { color: #2a4ac2; }
+@media (max-width: 980px) { .project-grid.is-compact { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .project-grid.is-compact .project-card { grid-template-columns: 108px minmax(0, 1fr); }
+  .project-grid.is-compact .project-visual { min-height: 0 !important; }
+  .project-grid.is-compact .project-body { padding: 12px 14px 11px; }
+  .project-grid.is-compact .project-body p { -webkit-line-clamp: 2; line-clamp: 2; font-size: .76rem; }
+  .project-grid.is-compact .tech-tags span:nth-child(n+3) { display: none; }
+  .project-grid.is-compact .status-chip { font-size: .62rem; }
+}
+
+/* the folder shelf is now the filter: status line + folder highlight */
+.pf-status { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: -14px 0 18px; font-size: .84rem; color: var(--muted); }
+.pf-status button { padding: 3px 11px; border: 1px solid var(--line); border-radius: 99px; background: transparent; color: var(--accent); font: 600 .72rem 'JetBrains Mono', monospace; cursor: pointer; }
+.pf-status button:hover { border-color: var(--accent); }
+.pf.is-filter .pf-btn { filter: drop-shadow(0 0 0 var(--pf)) drop-shadow(0 10px 18px color-mix(in srgb, var(--pf) 55%, transparent)); }
+.pf.is-filter .pf-btn::after { content: "showing"; position: absolute; left: 50%; bottom: -12px; translate: -50% 0; padding: 2px 9px; border-radius: 99px; background: var(--pf); color: #0a1020; font: 700 .58rem 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.pf-btn { position: relative; }
+
+/* ---------- case-file dialog ---------- */
+.pd { width: min(940px, 94vw); max-width: none; padding: 0; border: 1px solid var(--line); border-radius: 22px; background: var(--panel); color: var(--ink); }
+.pd .project-dialog-content { padding: clamp(20px, 3.4vw, 32px); }
+.pd-top { display: flex; align-items: center; gap: 10px; margin: 0 40px 4px 0; flex-wrap: wrap; }
+.pd-top .section-kicker { margin: 0; }
+.pd h2 { margin: 2px 40px 10px 0; font-size: clamp(1.4rem, 3.4vw, 1.9rem); line-height: 1.2; }
+.pd-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.pd-chips .status-chip { margin: 0; }
+.pd-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(16px, 3vw, 28px); align-items: start; }
+.pd-visual .project-visual { height: auto !important; min-height: 240px !important; border-radius: 14px; overflow: hidden; display: flex; }
+.pd-visual .project-visual img.shot { width: 100%; height: auto; object-fit: contain; }
+.pd-visual .visual-open { display: none !important; }
+.pd-text p { min-height: 0 !important; margin: 0 0 14px; font-size: .9rem; line-height: 1.75; color: var(--muted); }
+.pd-text .private-note { padding: 10px 12px; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 0 8px 8px 0; }
+.pd-text .tech-tags { margin: 4px 0 16px; }
+.pd-text .project-link { margin-top: 0; }
+.pd-text .pd-also { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 14px 0 0; font: 600 .66rem 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pd-text .pd-also i { font-style: normal; padding: 3px 9px; border-radius: 99px; border: 1px solid var(--pf, var(--line)); color: var(--ink); background: color-mix(in srgb, var(--pf, transparent) 14%, transparent); }
+.pd-case { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.pd-case h4 { margin: 0 0 8px; font: 700 .68rem 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.pd-case .case-study-content { padding: 0; }
+.pd-case p { font-size: .84rem; margin-bottom: 10px; }
+.pd-nav { display: flex; align-items: center; gap: 10px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); font: 600 .72rem 'JetBrains Mono', monospace; color: var(--muted); }
+.pd-nav button { padding: 8px 14px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.pd-nav button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.pd-nav button:disabled { opacity: .35; cursor: default; }
+.pd-nav .pd-count { margin: 0 auto; }
+html[data-theme="light"] .pd { background: #fbf8f1; }
+.pd[open] { animation: pd-in .26s cubic-bezier(.2,.8,.3,1); }
+@keyframes pd-in { from { opacity: 0; transform: translateY(14px) scale(.985); } }
+@media (max-width: 760px) { .pd-grid { grid-template-columns: minmax(0, 1fr); } .pd-visual .project-visual { min-height: 190px !important; } }
+@media (prefers-reduced-motion: reduce) { .pd[open] { animation: none; } .pc-more span { transition: none; } }
+
+/* ---------- "Also on the bench": slim rows for projects that are not featured ---------- */
+.project-also { margin-top: 30px; }
+.project-also[hidden] { display: none; }
+.pa-head { margin: 0 0 10px; font: 600 .72rem 'JetBrains Mono', 'Courier New', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.pa-list { border-top: 1px solid var(--line); }
+.pa-list .project-card { display: grid !important; grid-template-columns: 150px minmax(0, 1fr) auto; align-items: center; gap: 4px 22px; padding: 14px 4px !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; cursor: pointer; transform: none !important; }
+.pa-list .project-card:hover { background: color-mix(in srgb, var(--accent) 6%, transparent) !important; }
+.pa-list .project-visual, .pa-list .tech-tags, .pa-list .private-note, .pa-list .project-link, .pa-list .project-body p ~ p { display: none !important; }
+.pa-list .project-body { display: contents; }
+.pa-list .project-number { grid-column: 1; grid-row: 1; margin: 0; font-size: .64rem; letter-spacing: .12em; }
+.pa-list .status-chip { grid-column: 3; grid-row: 1; justify-self: end; margin: 0; }
+.pa-list .project-body h3 { grid-column: 2; grid-row: 1; margin: 0; font-size: .98rem; }
+.pa-list .project-card { min-height: 0 !important; height: auto !important; }
+.pa-list .project-card::before, .pa-list .project-card::after { display: none !important; }
+.pa-list .project-body p { grid-column: 2; grid-row: 2; margin: 0 !important; min-height: 0 !important; font-size: .8rem; line-height: 1.55; display: -webkit-box !important; -webkit-line-clamp: 1 !important; line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); }
+.pa-list .pc-more { grid-column: 3; grid-row: 2; justify-self: end; margin: 0; }
+@media (max-width: 700px) { .pa-list .project-card { grid-template-columns: minmax(0, 1fr) auto; } .pa-list .project-number { grid-column: 1 / -1; } .pa-list .project-body h3, .pa-list .project-body p { grid-column: 1; } .pa-list .project-body h3 { grid-row: 2; } .pa-list .project-body p { grid-row: 3; } .pa-list .status-chip { grid-row: 2; } .pa-list .pc-more { grid-row: 3; } }
+
+/* ebooks: a quiet strip, no banners */
+#ebooks { padding-block: 38px 30px !important; }
+#ebooks h2 { font-size: 1.35rem !important; margin-bottom: 4px !important; }
+#ebooks .ebook-shot { display: none !important; }

@@ -1,0 +1,33 @@
+/* Landscape background (landscape.js): sky, far mountains, mid hills with trees, near hills with framing trees.
+   Scrolling moves a slow "camera" through it (zoom + drift) and the light moves from dawn to night. Ambient only. */
+#land { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; background: #05070f;
+  --ld-far: #1b2850; --ld-mid: #111b38; --ld-near: #080d1e; --ld-snow: rgba(190,204,255,.55); --ld-veil: 8,11,18; }
+html[data-theme="light"] #land { background: #dfe8fa; --ld-far: #a9bbe4; --ld-mid: #86a9c4; --ld-near: #5f8da1; --ld-snow: rgba(255,255,255,.92); --ld-veil: 238,243,252; }
+#land > * { position: absolute; }
+.ld-sky { inset: 0; }
+.ld-stars { inset: 0 0 35% 0; opacity: 0; background-repeat: repeat; }
+.ld-sun { left: 0; top: 0; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; will-change: transform, opacity; }
+.ld-layer { left: -15vw; width: 130vw; bottom: -140px; will-change: transform; transform-origin: 50% 100%; }
+.ld-layer canvas { display: block; width: 100%; height: 100%; }
+.ld-haze { left: 0; right: 0; height: 24vh; will-change: opacity; }
+.ld-fx { inset: 0; width: 100%; height: 100%; }
+.ld-tint { inset: 0; }
+.ld-scrim { inset: 0; background: linear-gradient(90deg, rgba(var(--ld-veil), .5) 0%, rgba(var(--ld-veil), .18) 46%, transparent 72%); }
+
+html.land-on body { background: transparent !important; }
+html.land-on main { background: transparent !important; }
+html.land-on[data-theme="light"] body::after { background: radial-gradient(440px circle at var(--pointer-x) var(--pointer-y), rgba(89,52,165,.075), transparent 68%) !important; }
+
+/* readability: sections sit on a veil of the page colour; the hero and the first part of About stay scenic */
+html.land-on main > section { --a: .78; background-color: rgba(8,11,18, var(--a)) !important; }
+html.land-on[data-theme="light"] main > section { background-color: rgba(238,243,252, var(--a)) !important; }
+html.land-on main > section#home { --a: 0; background-image: none !important; }
+html.land-on main > section#about { --a: .22; }
+html.land-on main > section#project { --a: .66; }
+html.land-on main > section:is(#career-lab, #terminal, #contact) { --a: .84; }
+html.land-on main > section:is(#exper, #leadership, #skills) { --a: .82; }
+html.land-on .firstsection::before { opacity: .22; }
+html.land-on[data-theme="light"] .firstsection::before { opacity: .12; }
+
+@media (max-width: 700px) { .ld-sun { width: 100px; height: 100px; margin: -50px 0 0 -50px; } html.land-on main > section { --a: .84; } html.land-on main > section#about { --a: .4; } }
+@media print { #land { display: none; } }

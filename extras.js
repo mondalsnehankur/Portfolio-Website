@@ -1,47 +1,9 @@
-/* Extras: (1) hero photo morphs into the About avatar, then into the Projects card as you scroll,
-           (2) project folders grouped by skill / tech stack, (3) animated city footer.
-   Everything is optional: with JS off, the slots simply show the photo, and the project grid and footer work as before. */
+/* Extras: (1) project folders grouped by skill / tech stack, (2) animated city footer.
+   Everything is optional: with JS off the project grid and footer work as before. */
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const root = document.documentElement;
-
-  /* ---------- 1. photo morph ---------- */
-  (() => {
-    const hero = $('.profile-frame img'), slotA = $('[data-slot="about"]'), slotP = $('[data-slot="proj"]');
-    if (reduced || !hero || !slotA || !slotP) return;
-    const ghost = document.createElement('div'); ghost.className = 'morph-ghost'; ghost.setAttribute('aria-hidden', 'true');
-    const img = new Image(); img.alt = ''; img.decoding = 'async'; img.src = hero.currentSrc || hero.src; ghost.append(img); document.body.append(ghost);
-    root.classList.add('morph-on');
-    const lerp = (a, b, t) => a + (b - a) * t, ease = (t) => (t = Math.max(0, Math.min(1, t))) * t * (3 - 2 * t);
-    const corners = (el, r) => ['TopLeft', 'TopRight', 'BottomRight', 'BottomLeft'].map((c) => { const v = getComputedStyle(el)['border' + c + 'Radius'].split(' ')[0]; return v.endsWith('%') ? parseFloat(v) / 100 * Math.min(r.width, r.height) : parseFloat(v) || 0; });
-    let rH, rA, rP, heroFilter, heroPosY = 50;
-    const measure = () => { const h = hero.getBoundingClientRect(), a = slotA.getBoundingClientRect(), p = slotP.getBoundingClientRect(); rH = corners(hero, h); rA = corners(slotA, a); rP = corners(slotP, p); const cs = getComputedStyle(hero); heroFilter = cs.filter === 'none' ? '' : cs.filter; heroPosY = parseFloat((cs.objectPosition || '50% 50%').split(' ')[1]) || 50; img.style.filter = heroFilter; };
-    let queued = false;
-    const frame = () => {
-      queued = false;
-      const H = hero.getBoundingClientRect(), A = slotA.getBoundingClientRect(), P = slotP.getBoundingClientRect();
-      if (!H.width || !A.width || !P.width) { ghost.style.display = 'none'; return; } ghost.style.display = '';
-      const s = scrollY, vh = innerHeight, Ad = A.top + s, Pd = P.top + s;
-      const sA = Math.max(80, Ad - vh * .42), sP = Math.max(sA + 240, Pd - vh * .42);
-      let f, g, fr, gr, t, k;
-      if (s < sA) { t = ease(s / sA); f = H; g = A; fr = rH; gr = rA; k = t; }
-      else if (s < sP) { t = ease((s - sA) / (sP - sA)); f = A; g = P; fr = rA; gr = rP; k = 1; }
-      else { t = 1; f = A; g = P; fr = rA; gr = rP; k = 1; }
-      const q = ease(Math.min(1, t * 2.2)); /* shrinks to its small size early, then glides */
-      const w = lerp(f.width, g.width, q), h = lerp(f.height, g.height, q);
-      const cx = lerp(f.left + f.width / 2, g.left + g.width / 2, t), cy = lerp(f.top + f.height / 2, g.top + g.height / 2, t);
-      ghost.style.width = w + 'px'; ghost.style.height = h + 'px'; ghost.style.transform = `translate3d(${cx - w / 2}px,${cy - h / 2}px,0)`;
-      ghost.style.borderRadius = fr.map((v, i) => lerp(v, gr[i], q).toFixed(1) + 'px').join(' ');
-      ghost.style.setProperty('--ring', (s < sA ? k : 1).toFixed(2)); img.style.objectPosition = `50% ${lerp(heroPosY, 24, s < sA ? q : 1).toFixed(1)}%`;
-      const bottom = cy + h / 2, top = cy - h / 2; ghost.style.visibility = bottom < -20 || top > vh + 20 ? 'hidden' : 'visible';
-    };
-    const need = () => { if (!queued) { queued = true; requestAnimationFrame(frame); } };
-    addEventListener('scroll', need, { passive: true }); addEventListener('resize', () => { measure(); need(); });
-    new ResizeObserver(() => { measure(); need(); }).observe(document.body);
-    img.addEventListener('load', need); measure(); need();
-    window.MorphPhoto = { frame };
-  })();
 
   /* ---------- 2. project folders ---------- */
   (() => {
@@ -84,7 +46,7 @@
         const others = c.dataset.folders.split(/\s+/).filter((k) => k !== f.key).map((k) => FOLDERS.find((x) => x.key === k)?.name).filter(Boolean);
         if (tags) { const sm = document.createElement('small'); sm.textContent = tags; a.append(sm); }
         if (others.length) { const al = document.createElement('i'); al.textContent = 'Also in: ' + others.join(', '); a.append(al); }
-        a.addEventListener('click', (e) => { e.preventDefault(); close(); show(c); });
+        a.addEventListener('click', (e) => { e.preventDefault(); close(); if (window.ProjectDetail) window.ProjectDetail.open(c); else show(c); });
         panel.append(a);
       });
       row.append(el); folders.push(el);

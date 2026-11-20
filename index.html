@@ -31,8 +31,11 @@
     <link rel="stylesheet" href="visual.css">
     <link rel="stylesheet" href="light.css">
     <link rel="stylesheet" href="skeuo.css">
-    <link rel="stylesheet" href="scenery.css">
     <link rel="stylesheet" href="play.css">
+    <link rel="stylesheet" href="idcard.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="landscape.css">
+    <link rel="stylesheet" href="refine.css">
 
     <script src="gate.js"></script>
 </head>
@@ -79,9 +82,9 @@
     <main>
         <section class="firstsection" id="home">
             <div class="leftsection">
-                <p class="eyebrow">SOFTWARE • SCIENTIFIC COMPUTING • DATA</p>
+                <p class="eyebrow">MCA STUDENT · PHYSICIST BY TRAINING</p>
                 <h1>Hi, I'm <span class="name-edit">Snehankur Mondal</span>.</h1>
-                <p class="hero-copy">I build practical software solutions with a researcher's mindset — connecting computer science, scientific computing, and data-driven problem solving.</p>
+                <p class="hero-copy">I build software with a researcher's mindset, bringing a physics background to code and data.</p>
                 <p class="hero-status"><span class="pulse" aria-hidden="true"></span>Open to internships in software development, data science and AI/ML</p>
                 <div class="interest"><span class="typing-prefix">Currently exploring</span><span id="element" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">▍</span></div>
                 <div class="hero-actions">
@@ -90,10 +93,42 @@
                 </div>
             </div>
             <div class="rightsection">
-                <div class="profile-frame">
-                    <img src="pfpic.jpeg" alt="Portrait of Snehankur Mondal">
-                    <span class="profile-caption">Curious by nature. Builder by practice.</span>
+                <div class="id-rig" id="id-rig">
+                    <svg class="id-strap" id="id-strap" aria-hidden="true" focusable="false"></svg>
+                    <div class="id-card" id="id-card">
+                        <article class="idc" aria-label="Identity card: Snehankur Mondal">
+                            <span class="idc-clip" aria-hidden="true"></span>
+                            <div class="idc-top"><span class="idc-org">Christ University</span><span class="idc-kind">MCA</span></div>
+                            <div class="idc-photo"><img src="pfpic.jpeg" alt="Portrait of Snehankur Mondal" width="240" height="240"><i class="idc-corners" aria-hidden="true"></i><span class="idc-holo" aria-hidden="true"></span></div>
+                            <p class="idc-name">Snehankur Mondal</p>
+                            <p class="idc-role">MCA student, physicist by training</p>
+                            <dl class="idc-meta"><div><dt>ID</dt><dd>150102</dd></div><div><dt>Base</dt><dd>Delhi NCR</dd></div><div><dt>Also</dt><dd>M.Sc. Physics</dd></div></dl>
+                            <ul class="idc-links" aria-label="Profiles">
+                                <li><a href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+                                <li><a href="https://www.linkedin.com/in/snehankur-mondal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.84v1.54h.06c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.7c0-1.12-.02-2.56-1.56-2.56-1.56 0-1.8 1.22-1.8 2.48V21h-4V9.75Z"/></svg></a></li>
+                                <li><a href="resume.pdf" target="_blank" rel="noopener" aria-label="Resume (PDF)" title="Resume"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm7 1.5V8h4.5L13 3.5ZM7 12h10v1.5H7V12Zm0 3.5h10V17H7v-1.5Z"/></svg></a></li>
+                                <li><a href="#contact" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.6 2L12 12.6 19.4 7H4.6Z"/></svg></a></li>
+                            </ul>
+                            <div class="idc-bar" aria-hidden="true"></div>
+                        </article>
+                    </div>
+                    <p class="id-hint" id="id-hint" aria-hidden="true">give it a swing &#8599;</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="secondsection" id="about">
+            <h2>From understanding systems to building them.</h2>
+            <div class="description-wrap about-layout">
+                <div class="description about-points">
+                    <ol class="ap-list"><li style="--i:0"><span class="ap-k">Studying</span><p>MCA student at Christ University, Delhi NCR.</p></li><li style="--i:1"><span class="ap-k">Background</span><p>Completed M.Sc. in Physics, with a foundation in scientific and computational problem-solving.</p></li><li style="--i:2"><span class="ap-k">The pivot</span><p>Moving from physics into computer science lets me bring analytical thinking to software engineering, data analysis and AI/ML applications.</p></li><li style="--i:3"><span class="ap-k">Builds</span><p>Python-based scientific tools, numerical simulations and interactive web applications.</p></li><li style="--i:4"><span class="ap-k">Approach</span><p>Breaking complex problems into manageable parts, learning by building, and making technical work clear and useful.</p></li><li style="--i:5"><span class="ap-k">Looking for</span><p>Internships in software development, data science and AI/ML, to contribute to real projects while continuing to grow as an engineer.</p></li></ol>
+                </div>
+                <figure class="about-er idb" id="id-dock">
+                    <span class="idb-slot" aria-hidden="true"></span>
+                    <div class="idb-head"><span>150102</span><b>PROFILE RECORD</b><em id="idb-state">verified &#10003;</em></div>
+                    <div class="idb-body"><svg class="er-svg" viewBox="0 0 520 584" role="img" aria-labelledby="er-t er-d"><title id="er-t">Class diagram of this portfolio</title><desc id="er-d">A central Person class, Snehankur Mondal, studies (Education class), builds (Projects class) and has Skills; projects use skills.</desc><defs><marker id="cd-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" class="cd-mark"/></marker><marker id="cd-dep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" class="cd-mark"/></marker><marker id="cd-dia" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="12" markerHeight="9" orient="auto"><path d="M1 5 L7 1 L13 5 L7 9Z" class="cd-dia"/></marker></defs><path class="er-line" d="M190 240 L132 126" marker-end="url(#cd-open)"/><text class="er-rel" x="128" y="187" text-anchor="end">studied</text><text class="cd-mult" x="196" y="234">1</text><text class="cd-mult" x="104" y="140">1..*</text><path class="er-line" d="M330 240 L397 190" marker-end="url(#cd-open)"/><text class="er-rel" x="372" y="229">builds</text><text class="cd-mult" x="322" y="234">1</text><text class="cd-mult" x="402" y="204">0..*</text><path class="er-line" d="M260 422 L260 468" marker-start="url(#cd-dia)"/><text class="er-rel" x="270" y="449">has</text><text class="cd-mult" x="236" y="462">1..*</text><path class="er-line cd-dash" d="M505 190 V522.0 H415" marker-end="url(#cd-dep)"/><text class="er-rel" x="498" y="409" text-anchor="end" transform="rotate(0)">uses</text><g class="cd" style="--h:var(--c-sky)" id="cd-edu"><rect class="er-box" x="8" y="8" width="236" height="118" rx="7"/><path class="er-head" d="M8 15 a7 7 0 0 1 7 -7 h222 a7 7 0 0 1 7 7 V42 H8Z"/><text class="cd-stereo" x="126.0" y="21" text-anchor="middle">&#171;Education&#187;</text><text class="er-title" x="126.0" y="35" text-anchor="middle">Education</text><text class="er-attr" x="18" y="58"><tspan class="cd-vis">+</tspan> current<tspan class="cd-type"> : MCA, Christ Univ.</tspan></text><text class="er-attr" x="18" y="74"><tspan class="cd-vis">+</tspan> masters<tspan class="cd-type"> : M.Sc. Physics</tspan></text><text class="er-attr" x="18" y="90"><tspan class="cd-vis">+</tspan> bachelors<tspan class="cd-type"> : B.Sc. (Hons) Physics</tspan></text><line class="er-line cd-div" x1="8" y1="95" x2="244" y2="95"/><text class="er-attr" x="18" y="110"><tspan class="cd-vis">+</tspan> keepLearning()</text></g><g class="cd" style="--h:var(--c-teal)" id="cd-prj"><rect class="er-box" x="282" y="8" width="230" height="182" rx="7"/><path class="er-head" d="M282 15 a7 7 0 0 1 7 -7 h216 a7 7 0 0 1 7 7 V42 H282Z"/><text class="cd-stereo" x="397.0" y="21" text-anchor="middle">&#171;Projects&#187;</text><text class="er-title" x="397.0" y="35" text-anchor="middle">Projects</text><text class="er-attr" x="292" y="58"><tspan class="cd-vis">+</tspan> BakeVerse<tspan class="cd-type"> : web app</tspan></text><text class="er-attr" x="292" y="74"><tspan class="cd-vis">+</tspan> SpaceMission<tspan class="cd-type"> : C / WASM</tspan></text><text class="er-attr" x="292" y="90"><tspan class="cd-vis">+</tspan> MarineData<tspan class="cd-type"> : Python, private</tspan></text><text class="er-attr" x="292" y="106"><tspan class="cd-vis">+</tspan> Adaptigrade<tspan class="cd-type"> : LiDAR + ML</tspan></text><text class="er-attr" x="292" y="122"><tspan class="cd-vis">+</tspan> Atlas<tspan class="cd-type"> : data tool</tspan></text><text class="er-attr" x="292" y="138"><tspan class="cd-vis">+</tspan> SahaayOS<tspan class="cd-type"> : OS / C</tspan></text><text class="er-attr" x="292" y="154"><tspan class="cd-vis">+</tspan> LocaLens<tspan class="cd-type"> : travel AI</tspan></text><line class="er-line cd-div" x1="282" y1="159" x2="512" y2="159"/><text class="er-attr" x="292" y="174"><tspan class="cd-vis">+</tspan> ship()</text></g><g class="cd" style="--h:var(--c-violet)" id="cd-me"><rect class="er-box" x="125" y="240" width="270" height="182" rx="7"/><path class="er-head" d="M125 247 a7 7 0 0 1 7 -7 h256 a7 7 0 0 1 7 7 V274 H125Z"/><text class="cd-stereo" x="260.0" y="253" text-anchor="middle">&#171;Person&#187;</text><text class="er-title" x="260.0" y="267" text-anchor="middle">SnehankurMondal</text><text class="er-attr" x="135" y="290"><tspan class="cd-vis">+</tspan> course<tspan class="cd-type"> : MCA, Christ University</tspan></text><text class="er-attr" x="135" y="306"><tspan class="cd-vis">+</tspan> base<tspan class="cd-type"> : Delhi NCR</tspan></text><text class="er-attr" x="135" y="322"><tspan class="cd-vis">+</tspan> status<tspan class="cd-type"> : &quot;Open to internships&quot;</tspan></text><text class="er-attr" x="135" y="338"><tspan class="cd-vis">+</tspan> goals<tspan class="cd-type"> : [SWE, Data, AI/ML]</tspan></text><text class="er-attr" x="135" y="354"><tspan class="cd-vis">+</tspan> focus<tspan class="cd-type"> : Scientific computing</tspan></text><line class="er-line cd-div" x1="125" y1="359" x2="395" y2="359"/><text class="er-attr" x="135" y="374"><tspan class="cd-vis">+</tspan> build()</text><text class="er-attr" x="135" y="390"><tspan class="cd-vis">+</tspan> learn()</text><text class="er-attr" x="135" y="406"><tspan class="cd-vis">+</tspan> solve()</text></g><g class="cd" style="--h:var(--c-amber)" id="cd-skl"><rect class="er-box" x="105" y="468" width="310" height="108" rx="7"/><path class="er-head" d="M105 475 a7 7 0 0 1 7 -7 h296 a7 7 0 0 1 7 7 V502 H105Z"/><text class="cd-stereo" x="260.0" y="481" text-anchor="middle">&#171;Skills&#187;</text><text class="er-title" x="260.0" y="495" text-anchor="middle">Skills</text><text class="er-attr" x="115" y="518"><tspan class="cd-vis">+</tspan> languages<tspan class="cd-type"> : Python, C/C++, Java</tspan></text><text class="er-attr" x="115" y="534"><tspan class="cd-vis">+</tspan> science<tspan class="cd-type"> : NumPy, SciPy, Matplotlib</tspan></text><text class="er-attr" x="115" y="550"><tspan class="cd-vis">+</tspan> web<tspan class="cd-type"> : HTML, CSS, JS, React</tspan></text><text class="er-attr" x="115" y="566"><tspan class="cd-vis">+</tspan> tools<tspan class="cd-type"> : Git, LaTeX</tspan></text></g></svg><span class="idb-scan" aria-hidden="true"></span></div>
+                    <figcaption>Read as a class diagram: one Person, with an education, a set of projects and a set of skills. I like turning messy real-world facts into clean models.</figcaption>
+                </figure>
             </div>
         </section>
 
@@ -134,25 +169,6 @@
             </div>
         </section>
 
-        <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 40px 80px">
-
-        <section class="secondsection" id="about">
-            <div class="me-chip"><span class="morph-slot" data-slot="about" aria-hidden="true"></span><div class="me-chip-text"><strong>Snehankur Mondal</strong><span>MCA &middot; Christ University</span><span>M.Sc. Physics</span></div></div>
-            <p class="section-kicker">A LITTLE ABOUT ME</p>
-            <h2>From understanding systems to building them.</h2>
-            <div class="description-wrap about-layout">
-                <div class="description">
-                <p>I am an MCA student at Christ University, Delhi NCR, with a completed M.Sc. in Physics and a foundation in scientific and computational problem-solving. Moving from physics into computer science lets me bring analytical thinking to software engineering, data analysis, and AI/ML applications.</p>
-                <p>My work ranges from Python-based scientific tools and numerical simulations to interactive web applications. I enjoy breaking complex problems into manageable parts, learning by building, and making technical work clear and useful.</p>
-                <p>I am currently looking for internship opportunities in software development, data science, and AI/ML where I can contribute to real projects while continuing to grow as an engineer.</p>
-            </div>
-            <figure class="about-er">
-                    <div class="er-bar"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><b>portfolio.class</b><em>class diagram</em></div>
-                    <svg class="er-svg" viewBox="0 0 520 584" role="img" aria-labelledby="er-t er-d"><title id="er-t">Class diagram of this portfolio</title><desc id="er-d">A central Person class, Snehankur Mondal, studies (Education class), builds (Projects class) and has Skills; projects use skills.</desc><defs><marker id="cd-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" class="cd-mark"/></marker><marker id="cd-dep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" class="cd-mark"/></marker><marker id="cd-dia" viewBox="0 0 14 10" refX="1" refY="5" markerWidth="12" markerHeight="9" orient="auto"><path d="M1 5 L7 1 L13 5 L7 9Z" class="cd-dia"/></marker></defs><path class="er-line" d="M190 240 L132 126" marker-end="url(#cd-open)"/><text class="er-rel" x="128" y="187" text-anchor="end">studied</text><text class="cd-mult" x="196" y="234">1</text><text class="cd-mult" x="104" y="140">1..*</text><path class="er-line" d="M330 240 L397 190" marker-end="url(#cd-open)"/><text class="er-rel" x="372" y="229">builds</text><text class="cd-mult" x="322" y="234">1</text><text class="cd-mult" x="402" y="204">0..*</text><path class="er-line" d="M260 422 L260 468" marker-start="url(#cd-dia)"/><text class="er-rel" x="270" y="449">has</text><text class="cd-mult" x="236" y="462">1..*</text><path class="er-line cd-dash" d="M505 190 V522.0 H415" marker-end="url(#cd-dep)"/><text class="er-rel" x="498" y="409" text-anchor="end" transform="rotate(0)">uses</text><g class="cd" style="--h:var(--c-sky)" id="cd-edu"><rect class="er-box" x="8" y="8" width="236" height="118" rx="7"/><path class="er-head" d="M8 15 a7 7 0 0 1 7 -7 h222 a7 7 0 0 1 7 7 V42 H8Z"/><text class="cd-stereo" x="126.0" y="21" text-anchor="middle">&#171;Education&#187;</text><text class="er-title" x="126.0" y="35" text-anchor="middle">Education</text><text class="er-attr" x="18" y="58"><tspan class="cd-vis">+</tspan> current<tspan class="cd-type"> : MCA, Christ Univ.</tspan></text><text class="er-attr" x="18" y="74"><tspan class="cd-vis">+</tspan> masters<tspan class="cd-type"> : M.Sc. Physics</tspan></text><text class="er-attr" x="18" y="90"><tspan class="cd-vis">+</tspan> bachelors<tspan class="cd-type"> : B.Sc. (Hons) Physics</tspan></text><line class="er-line cd-div" x1="8" y1="95" x2="244" y2="95"/><text class="er-attr" x="18" y="110"><tspan class="cd-vis">+</tspan> keepLearning()</text></g><g class="cd" style="--h:var(--c-teal)" id="cd-prj"><rect class="er-box" x="282" y="8" width="230" height="182" rx="7"/><path class="er-head" d="M282 15 a7 7 0 0 1 7 -7 h216 a7 7 0 0 1 7 7 V42 H282Z"/><text class="cd-stereo" x="397.0" y="21" text-anchor="middle">&#171;Projects&#187;</text><text class="er-title" x="397.0" y="35" text-anchor="middle">Projects</text><text class="er-attr" x="292" y="58"><tspan class="cd-vis">+</tspan> BakeVerse<tspan class="cd-type"> : web app</tspan></text><text class="er-attr" x="292" y="74"><tspan class="cd-vis">+</tspan> SpaceMission<tspan class="cd-type"> : C / WASM</tspan></text><text class="er-attr" x="292" y="90"><tspan class="cd-vis">+</tspan> MarineData<tspan class="cd-type"> : Python, private</tspan></text><text class="er-attr" x="292" y="106"><tspan class="cd-vis">+</tspan> Adaptigrade<tspan class="cd-type"> : LiDAR + ML</tspan></text><text class="er-attr" x="292" y="122"><tspan class="cd-vis">+</tspan> Atlas<tspan class="cd-type"> : data tool</tspan></text><text class="er-attr" x="292" y="138"><tspan class="cd-vis">+</tspan> SahaayOS<tspan class="cd-type"> : OS / C</tspan></text><text class="er-attr" x="292" y="154"><tspan class="cd-vis">+</tspan> LocaLens<tspan class="cd-type"> : travel AI</tspan></text><line class="er-line cd-div" x1="282" y1="159" x2="512" y2="159"/><text class="er-attr" x="292" y="174"><tspan class="cd-vis">+</tspan> ship()</text></g><g class="cd" style="--h:var(--c-violet)" id="cd-me"><rect class="er-box" x="125" y="240" width="270" height="182" rx="7"/><path class="er-head" d="M125 247 a7 7 0 0 1 7 -7 h256 a7 7 0 0 1 7 7 V274 H125Z"/><text class="cd-stereo" x="260.0" y="253" text-anchor="middle">&#171;Person&#187;</text><text class="er-title" x="260.0" y="267" text-anchor="middle">SnehankurMondal</text><text class="er-attr" x="135" y="290"><tspan class="cd-vis">+</tspan> course<tspan class="cd-type"> : MCA, Christ University</tspan></text><text class="er-attr" x="135" y="306"><tspan class="cd-vis">+</tspan> base<tspan class="cd-type"> : Delhi NCR</tspan></text><text class="er-attr" x="135" y="322"><tspan class="cd-vis">+</tspan> status<tspan class="cd-type"> : &quot;Open to internships&quot;</tspan></text><text class="er-attr" x="135" y="338"><tspan class="cd-vis">+</tspan> goals<tspan class="cd-type"> : [SWE, Data, AI/ML]</tspan></text><text class="er-attr" x="135" y="354"><tspan class="cd-vis">+</tspan> focus<tspan class="cd-type"> : Scientific computing</tspan></text><line class="er-line cd-div" x1="125" y1="359" x2="395" y2="359"/><text class="er-attr" x="135" y="374"><tspan class="cd-vis">+</tspan> build()</text><text class="er-attr" x="135" y="390"><tspan class="cd-vis">+</tspan> learn()</text><text class="er-attr" x="135" y="406"><tspan class="cd-vis">+</tspan> solve()</text></g><g class="cd" style="--h:var(--c-amber)" id="cd-skl"><rect class="er-box" x="105" y="468" width="310" height="108" rx="7"/><path class="er-head" d="M105 475 a7 7 0 0 1 7 -7 h296 a7 7 0 0 1 7 7 V502 H105Z"/><text class="cd-stereo" x="260.0" y="481" text-anchor="middle">&#171;Skills&#187;</text><text class="er-title" x="260.0" y="495" text-anchor="middle">Skills</text><text class="er-attr" x="115" y="518"><tspan class="cd-vis">+</tspan> languages<tspan class="cd-type"> : Python, C/C++, Java</tspan></text><text class="er-attr" x="115" y="534"><tspan class="cd-vis">+</tspan> science<tspan class="cd-type"> : NumPy, SciPy, Matplotlib</tspan></text><text class="er-attr" x="115" y="550"><tspan class="cd-vis">+</tspan> web<tspan class="cd-type"> : HTML, CSS, JS, React</tspan></text><text class="er-attr" x="115" y="566"><tspan class="cd-vis">+</tspan> tools<tspan class="cd-type"> : Git, LaTeX</tspan></text></g></svg>
-                    <figcaption>Read as a class diagram: one Person, with an education, a set of projects and a set of skills. I like turning messy real-world facts into clean models.</figcaption>
-                </figure>
-            </div>
-        </section>
 
         <dialog class="project-dialog gallery-dialog" id="poster-gallery" aria-labelledby="poster-gallery-title">
             <div class="project-dialog-content">
@@ -208,13 +224,12 @@
         <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
 
         <section class="thirdsection" id="project">
-            <p class="section-kicker">SELECTED WORK</p>
             <div class="section-heading-row">
                 <div>
                     <h2>Projects that turn ideas into working systems.</h2>
-                    <p class="section-intro">A selection across full-stack development, scientific software, data analysis, perception and systems.</p>
+                    <p class="section-intro">A few things I've built, from a bakery marketplace to a LiDAR mapping pipeline.</p>
                 </div>
-                <div class="me-card"><span class="morph-slot" data-slot="proj" aria-hidden="true"></span><div class="me-card-text"><strong>Built by Snehankur</strong><span class="project-count">07 FEATURED PROJECTS</span></div></div>
+                <span class="project-count">05 FEATURED PROJECTS</span>
             </div>
 
             <div class="project-explorer" aria-label="Filter projects by category">
@@ -268,7 +283,7 @@
                     </div>
                 </article>
 
-                <article class="project-card project-marine" data-category="data" data-project-name="Marine Data Analysis" data-folders="data sci">
+                <article class="project-card project-marine" data-category="data" data-project-name="Marine Data Analysis" data-tier="also" data-folders="data sci">
                     <div class="project-visual is-private" role="img" aria-label="Illustration of a marine data chart. This is a private project.">
                         <span class="visual-label">DATA ANALYSIS</span>
                         <div class="chart-scene" aria-hidden="true"><div class="chart-grid"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="chart-caption">MARINE DATA / PYTHON WORKFLOW</div></div>
@@ -276,7 +291,7 @@
                     </div>
                     <div class="project-body">
                         <span class="status-chip is-private">Private</span> <span class="status-chip is-wip">Research in progress</span>
-                        <div class="project-number">03 / PYTHON & DATA</div>
+                        <div class="project-number">ALSO / PYTHON & DATA</div>
                         <h3>Marine Data Analysis Tool</h3>
                         <p>Python-based workflows for processing, analysing, and visualising marine science datasets to support clearer interpretation of environmental data.</p>
                         <p class="private-note"><strong>Private project.</strong> This is a novelty piece of work toward a research paper that is still being prepared, so the code and data are not public.</p>
@@ -289,7 +304,7 @@
                     <a class="project-visual has-shot is-diagram" href="img/projects/adaptigrade.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full Adaptive LiDAR 2.5D mapping diagram"><span class="visual-label">SMART INDIA HACKATHON</span><img class="shot" src="img/projects/adaptigrade.webp" width="1672" height="941" loading="lazy" alt="Adaptive LiDAR 2.5D Mapping System: LiDAR point-cloud input, an AI pipeline of semantic segmentation, adaptive projection, 2.5D grid mapping and detection and tracking, and a colour-coded semantic map of terrain, static objects, dynamic objects and unknowns"></a>
                     <div class="project-body">
                         <span class="status-chip is-wip">Results awaited</span>
-                        <div class="project-number">04 / LIDAR &amp; PERCEPTION</div>
+                        <div class="project-number">03 / LIDAR &amp; PERCEPTION</div>
                         <h3>Adaptigrade: Adaptive LiDAR 2.5D Mapping System</h3>
                         <p>Built for Smart India Hackathon on a DRDO problem statement. Deep-learning (PointNet) semantic perception for LiDAR: a pipeline of semantic segmentation, adaptive projection, 2.5D grid mapping, and detection and tracking turns 3D point clouds into an adaptive map with variable resolution (5 cm to 50 cm). Terrain, static objects, dynamic objects and unknowns are shown in real time, so the system can alert a driver or, for self-driving vehicles, help adjust the direction of travel.</p>
                         
@@ -300,7 +315,7 @@
                     <div class="project-visual has-shot"><span class="visual-label">DATA ANALYSIS PLATFORM</span><img class="shot" src="img/projects/atlas.webp" width="1400" height="788" loading="lazy" alt="Atlas dashboard: sidebar navigation, dataset, experiment, model and report counts, an active model-training run and an insights chart"></div>
                     <div class="project-body">
                         
-                        <div class="project-number">05 / DATA &amp; MODELS</div>
+                        <div class="project-number">04 / DATA &amp; MODELS</div>
                         <h3>Atlas: Automated Data Analysis Platform</h3>
                         <p>Upload any dataset and the software analyses it: it counts and profiles the data, runs models, identifies what is possible with it, points to research opportunities, and produces a report of the findings. The interface covers datasets, experiments, models, predictions and reports, with an agent mode for asking questions about the data.</p>
                         
@@ -311,18 +326,18 @@
                     <a class="project-visual has-shot is-diagram" href="img/projects/sahaayos.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full SahaayOS graphic"><span class="visual-label">OPERATING SYSTEMS</span><img class="shot" src="img/projects/sahaayos.webp" width="1672" height="941" loading="lazy" alt="SahaayOS: an assistance-oriented operating system with a terminal showing FAT16 mount and stat commands, and feature highlights"></a>
                     <div class="project-body">
                         <span class="status-chip is-wip">In progress · nearly complete</span>
-                        <div class="project-number">06 / SYSTEMS</div>
+                        <div class="project-number">05 / SYSTEMS</div>
                         <h3>SahaayOS: An Assistance-Oriented Operating System</h3>
                         <p>A command-line mini operating system with very low hardware and software requirements, designed for natural calamities and disaster situations. It has an intuitive shell, FAT16 filesystem support (mount, browse and read files) and file metadata inspection with <code>stat</code>. It is nearly complete and I plan to publish it.</p>
                         
                         <div class="tech-tags"><span>Operating systems</span><span>CLI</span><span>FAT16</span><span>Low-resource</span></div>
                     </div>
                 </article>
-                <article class="project-card project-trip" data-category="web" data-project-name="Local Travel Planner" data-folders="web ml">
+                <article class="project-card project-trip" data-category="web" data-project-name="Local Travel Planner" data-tier="also" data-folders="web ml">
                     <a class="project-visual has-shot is-diagram" href="img/projects/localens.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full LocaLens graphic"><span class="visual-label">TRAVEL PLANNER</span><img class="shot" src="img/projects/localens.webp" width="1672" height="941" loading="lazy" alt="LocaLens: an AI-powered travel companion, with a four-step flow from preferences to recommendations to route planning, and an app view showing nearby places and a route map"></a>
                     <div class="project-body">
                         <span class="status-chip is-wip">In progress</span>
-                        <div class="project-number">07 / APPS &amp; ROUTING</div>
+                        <div class="project-number">ALSO / APPS &amp; ROUTING</div>
                         <h3>LocaLens: Local-First Travel Planner</h3>
                         <p>An AI-powered travel companion that surfaces what locals actually recommend instead of only sponsored or top-rated listings. You tell it your preferences, it gives personalised recommendations, and it plans your route with departure and arrival timing and local food stops along the way. Locals can upload their own preferences to guide other travellers. Built for students, tourists, locals and remote professionals, and inspired by a Durga Puja pandal-hopping app that forgot your route once it was closed, so saving routes and history is part of the plan.</p>
                         
@@ -333,16 +348,16 @@
 
             <div class="case-study-grid" aria-label="Project case studies">
                 <details class="case-study-card">
-                    <summary><span class="case-study-number">CASE STUDY 01</span><strong>BakeVerse</strong><span class="case-study-summary">Product thinking · Marketplace flow · Full-stack architecture</span><span class="case-study-toggle">＋</span></summary>
-                    <div class="case-study-content"><p><strong>Problem space</strong><br>Custom cake discovery and ordering can involve scattered communication between customers and bakeries.</p><p><strong>Approach</strong><br>Designed a marketplace experience around customer browsing, custom cake requests, and bakery-side workflows. The project is being developed iteratively, so AI generation and other unfinished integrations should be described as planned or in progress rather than production-ready.</p><p><strong>What to inspect</strong><br>Explore the deployed interface and source repository to review the current implementation.</p><div class="case-study-links"><a href="https://bakeverse-orcin.vercel.app/" target="_blank" rel="noopener noreferrer">Live website ↗</a><a href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div>
+                    <summary><span class="case-study-number">CASE STUDY 01</span><strong>BakeVerse</strong><span class="case-study-summary">Marketplace flow and full-stack build</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Problem space</strong><br>Custom cake ordering usually means scattered chats between customers and bakeries.</p><p><strong>Approach</strong><br>A marketplace built around browsing, custom cake requests and bakery-side order handling. It is still under active development, and the AI-assisted features are in progress.</p><div class="case-study-links"><a href="https://bakeverse-orcin.vercel.app/" target="_blank" rel="noopener noreferrer">Live website ↗</a><a href="https://github.com/mondalsnehankur/Bakeverse" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div>
                 </details>
                 <details class="case-study-card">
-                    <summary><span class="case-study-number">CASE STUDY 02</span><strong>Physics Simulator</strong><span class="case-study-summary">C programming · Physics calculations · Computational logic</span><span class="case-study-toggle">＋</span></summary>
-                    <div class="case-study-content"><p><strong>Goal</strong><br>Apply programming fundamentals to physics-oriented and space-mission calculations.</p><p><strong>Engineering focus</strong><br>Organise calculations into understandable steps, keep inputs and outputs clear, and make scientific concepts easier to explore through software.</p><p><strong>Next improvements</strong><br>Document formulas and units, add input validation and edge-case tests, and include sample runs in the repository README.</p><div class="case-study-links"><a href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></div>
+                    <summary><span class="case-study-number">CASE STUDY 02</span><strong>Physics Simulator</strong><span class="case-study-summary">C and WebAssembly</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Goal</strong><br>Apply programming fundamentals to physics-oriented and space-mission calculations.</p><p><strong>How it works</strong><br>Each calculation is split into clear steps with explicit inputs and outputs, and the C code also runs in the browser through WebAssembly.</p><div class="case-study-links"><a href="https://github.com/mondalsnehankur/Physics-Simulator" target="_blank" rel="noopener noreferrer">View repository ↗</a></div></div>
                 </details>
                 <details class="case-study-card">
-                    <summary><span class="case-study-number">CASE STUDY 03</span><strong>Marine Automation</strong><span class="case-study-summary">Python · Scientific data · Visual analysis</span><span class="case-study-toggle">＋</span></summary>
-                    <div class="case-study-content"><p><strong>Goal</strong><br>Make marine and environmental data easier to process and interpret using repeatable Python workflows.</p><p><strong>Approach</strong><br>Use data processing and visualisation to turn tabular observations into outputs that are easier to inspect and discuss.</p><p><strong>Status</strong><br>Private project. It is a novelty piece of work toward a research paper that is still being prepared, so the code and data are not published.</p></div>
+                    <summary><span class="case-study-number">CASE STUDY 03</span><strong>Marine Automation</strong><span class="case-study-summary">Python and marine data</span><span class="case-study-toggle">＋</span></summary>
+                    <div class="case-study-content"><p><strong>Goal</strong><br>Make marine and environmental data easier to process and interpret using repeatable Python workflows.</p><p><strong>Status</strong><br>Private project. It is a novelty piece of work toward a research paper that is still being prepared, so the code and data are not published.</p></div>
                 </details>
             </div>
 
@@ -352,8 +367,7 @@
         </section>
 
         <section class="ebooks-section" id="ebooks" aria-labelledby="ebooks-title">
-            <p class="section-kicker">WEB PROJECTS · AI</p>
-            <div class="section-heading-row"><div><h2 id="ebooks-title">AI-powered ebooks.</h2><p class="section-intro">Course assignments where each ebook was published as a web page with AI built in: instead of searching a PDF, you can ask a question about the book and get an answer.</p></div></div>
+            <div class="section-heading-row"><div><h2 id="ebooks-title">AI-powered ebooks.</h2><p class="section-intro">Course assignments published as web pages, each with an AI that answers questions about the book.</p></div></div>
             <div class="cred-grid" data-hscroll aria-label="AI-powered ebooks">
                 <article class="cred-item ebook-item">
                     <img class="ebook-shot" data-shot="img/projects/ebook-software-process" width="640" height="400" loading="lazy" alt="Software Process Models ebook: a hero titled Choosing the Right Software Process Model with a spiral and waterfall diagram">
@@ -464,7 +478,7 @@
                 </div>
             </div>
             <div class="skills-explorer">
-                <div class="skills-explorer-heading"><div><p class="section-kicker">CONNECT SKILLS TO EVIDENCE</p><h2>Explore the skills map</h2><p>Choose a skill to see where it fits into the work shown on this page.</p></div><span class="skills-map-hint">Interactive · Select a skill</span></div>
+                <div class="skills-explorer-heading"><div><h2>Explore the skills map</h2><p>Choose a skill to see where it fits into the work shown on this page.</p></div><span class="skills-map-hint">Interactive · Select a skill</span></div>
                 <div class="skills-map" role="group" aria-label="Choose a skill">
                     <button type="button" class="skill-node is-selected" data-skill="JavaScript">JavaScript</button>
                     <button type="button" class="skill-node" data-skill="React">React</button>
@@ -484,7 +498,6 @@
         <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
 
         <section class="fivesection" id="exper">
-            <p class="section-kicker">WHERE I'VE CONTRIBUTED</p>
             <h2 class="exper">Experience & Research</h2>
             <div class="expcontainer">
                 <article class="expercard">
@@ -520,7 +533,6 @@
         <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
 
         <section class="sixsection" id="education">
-            <p class="section-kicker">ACADEMIC BACKGROUND</p>
             <h2 class="edu">Education</h2>
             <div class="educontainer">
                 <div class="timerow ongoing" data-year="2026 – Now">
@@ -562,7 +574,6 @@
         <hr style="border: 0; background:rgb(80, 79, 79); height: 1.2px; margin: 20px 80px">
 
         <section class="leadership-section" id="leadership">
-            <p class="section-kicker">BEYOND THE CLASSROOM</p>
             <h2>Leadership & Recognition</h2>
             <div class="leadership-grid">
                 <article class="recognition-card has-preview" data-preview="img/recognition/flpc" data-preview-count="5" data-preview-ext="webp" data-preview-hint="Click to open the full gallery">
@@ -581,8 +592,7 @@
         </section>
 
         <section class="credentials-section" id="credentials">
-            <p class="section-kicker">PROOF OF LEARNING</p>
-            <div class="section-heading-row credentials-heading"><div><h2>Credentials & milestones.</h2><p class="section-intro">Verifiable learning, recognition, and evidence of progress, with links to each issuer's own verification page where one exists.</p></div><a class="text-link" href="https://www.linkedin.com/in/snehankur-mondal/details/certifications/" target="_blank" rel="noopener noreferrer">View all on LinkedIn ↗</a></div>
+            <div class="section-heading-row credentials-heading"><div><h2>Credentials & milestones.</h2><p class="section-intro">Courses, badges and awards, with a link to the issuer's page where there is one.</p></div><a class="text-link" href="https://www.linkedin.com/in/snehankur-mondal/details/certifications/" target="_blank" rel="noopener noreferrer">View all on LinkedIn ↗</a></div>
             <ol class="year-timeline" aria-label="2026 learning timeline"><li style="--hue: var(--c-violet)"><h4>Feb 2026</h4><ul><li>Full Stack Web Development internship, Future Interns (1 month)</li><li>Geodata Processing course, IIRS-ISRO (9–20 Feb)</li><li>IBM Web Development Fundamentals (20 Feb) and AI Fundamentals (21 Feb)</li><li>Microsoft Azure Data, four modules (21–24 Feb)</li></ul></li><li style="--hue: var(--c-rose)"><h4>Mar 2026</h4><ul><li>Best Poster Award, ICAME2 (13–15 Mar)</li></ul></li><li style="--hue: var(--c-teal)"><h4>Apr 2026</h4><ul><li>Introduction to Data Analysis Using Python, Coursera (25 Apr)</li></ul></li><li style="--hue: var(--c-amber)"><h4>Jun 2026</h4><ul><li>Share Data Through the Art of Visualization, Google on Coursera (18 Jun)</li><li>Data Analytics job simulation, Deloitte via Forage</li></ul></li><li style="--hue: var(--c-sky)"><h4>Jul 2026</h4><ul><li>Foundations: Data, Data, Everywhere, Google on Coursera (11 Jul)</li><li>JavaScript by Example, Infosys Springboard (27 Jul)</li></ul></li><li style="--hue: var(--c-violet)"><h4>Aug 2026</h4><ul><li>Supervised Machine Learning, Stanford and DeepLearning.AI on Coursera (3 Aug)</li></ul></li></ol>
             <h3 class="cred-group-title">Recognition &amp; research</h3>
             <div class="cred-grid" data-hscroll aria-label="Recognition and research">
@@ -605,23 +615,21 @@
                 <article class="cred-item"><span class="cred-tag">Badge</span><h4>Artificial Intelligence Fundamentals</h4><p class="cred-issuer">IBM SkillsBuild</p><p class="cred-meta">21 Feb 2026</p><a class="cred-verify" href="https://www.credly.com/badges/dc35351a-d1a4-4651-8be6-56f1aa68692a" target="_blank" rel="noopener noreferrer">Verify on Credly <span aria-hidden="true">↗</span></a></article>
                 <article class="cred-item"><span class="cred-tag">Badge</span><h4>Web Development Fundamentals</h4><p class="cred-issuer">IBM SkillsBuild</p><p class="cred-meta">20 Feb 2026</p><a class="cred-verify" href="https://www.credly.com/badges/52cc5d18-b8ac-4ec7-b2f3-8ccd2d682fda" target="_blank" rel="noopener noreferrer">Verify on Credly <span aria-hidden="true">↗</span></a></article>
             </div>
-            <p class="credentials-note">Details are transcribed from the issued certificates. Verification links open the issuer's own page; entries marked "on request" have no public verification page, so I can share the certificate directly.</p>
+            <p class="credentials-note">Verification links open the issuer's own page. Where a certificate has no public page, I can share it directly.</p>
         </section>
 
         <section class="metrics-section" id="project-metrics">
-            <p class="section-kicker">THE WORK AT A GLANCE</p>
-            <div class="section-heading-row"><div><h2>A small dashboard of my work.</h2><p class="section-intro">A quick overview based on the projects and experience documented on this page—not inflated performance claims.</p></div></div>
+            <div class="section-heading-row"><div><h2>A small dashboard of my work.</h2><p class="section-intro">A quick overview of the projects and experience on this page.</p></div></div>
             <div class="portfolio-metrics">
-                <a class="portfolio-metric" href="#project"><strong data-count="7">07</strong><span>Featured projects</span><small>Web · Science · Data · Systems</small></a>
-                <a class="portfolio-metric" href="#skills"><strong data-count="4">04</strong><span>Skill domains</span><small>Programming to tooling</small></a>
+                <a class="portfolio-metric" href="#project"><strong data-count="7">07</strong><span>Featured projects</span><small>From a bakery site to an OS</small></a>
+                <a class="portfolio-metric" href="#skills"><strong data-count="4">04</strong><span>Skill domains</span><small>Grouped by what I use them for</small></a>
                 <a class="portfolio-metric" href="#leadership"><strong data-count="1">01</strong><span>Featured leadership programme</span><small>FLPC at Christ University</small></a>
                 <a class="portfolio-metric" href="#github-activity"><strong id="metric-public-repos">Live</strong><span>Public repositories</span><small>Fetched from GitHub when available</small></a>
             </div>
         </section>
 
         <section class="github-section" id="github-activity">
-            <p class="section-kicker">OPEN SOURCE / BUILD IN PUBLIC</p>
-            <div class="section-heading-row"><div><h2>GitHub, lately.</h2><p class="section-intro">My profile and repositories, laid out the way they appear on GitHub. Counts load live when GitHub is reachable.</p></div><a class="text-link" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
+            <div class="section-heading-row"><div><h2>GitHub, lately.</h2><p class="section-intro">My profile and repositories on GitHub.</p></div><a class="text-link" href="https://github.com/mondalsnehankur" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
             <div class="gh-shell">
                 <aside class="gh-profile" aria-label="GitHub profile">
                     <img class="gh-avatar" src="https://github.com/mondalsnehankur.png?size=300" onerror="this.onerror=null;this.src='pfpic.jpeg'" width="150" height="150" alt="Snehankur Mondal's GitHub profile picture">
@@ -644,7 +652,6 @@
         </section>
 
         <section class="notes-section" id="notes" aria-labelledby="notes-title">
-            <p class="section-kicker">NOTES · WRITING</p>
             <div class="section-heading-row"><div><h2 id="notes-title">Notes and write-ups.</h2><p class="section-intro">Short posts on what I build and learn. These are placeholders for now; real posts will replace them over time.</p></div></div>
             <div class="cred-grid" data-hscroll aria-label="Notes and write-ups">
                 <article class="cred-item note-item">
@@ -672,7 +679,6 @@
         </section>
 
         <section class="career-lab" id="career-lab" aria-labelledby="career-lab-title">
-            <p class="section-kicker">CAREER LAB</p>
             <div class="section-heading-row"><div><h2 id="career-lab-title">Score the portfolio. Compare it to a role.</h2><p class="section-intro" id="cl-intro" data-owner="Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import." data-visitor="Compare your CV or a job posting against my CV, and import LinkedIn / Coursera credentials.">Four tools that work from this portfolio and my CV: a rigorous evaluator, a CV comparison for any job posting, project and internship recommendations, and LinkedIn / Coursera import.</p></div></div>
             <p class="cl-privacy">Privacy: everything runs in your browser. PDFs you choose are read locally and never uploaded. Imported profile data is stored only in this browser (localStorage) and can be cleared at any time.</p>
             <div class="cl-baseline" id="cl-baseline" aria-live="polite">Loading CV baseline…</div>
@@ -759,7 +765,7 @@
         </section>
 
         <section class="terminal-section" id="terminal">
-            <p class="section-kicker">A LITTLE INTERACTIVE CORNER</p><h2>Explore my portfolio from the terminal.</h2><p class="section-intro">Try <code>help</code>, <code>about</code>, <code>projects</code>, <code>skills</code>, or <code>contact</code>.</p>
+<h2>Explore my portfolio from the terminal.</h2><p class="section-intro">Try <code>help</code>, <code>about</code>, <code>projects</code>, <code>skills</code>, or <code>contact</code>.</p>
             <div class="terminal-window"><div class="terminal-topbar"><span class="terminal-lights"><i></i><i></i><i></i></span><span>ankur@portfolio:~</span><button type="button" id="terminal-clear">Clear</button></div><div class="terminal-output" id="terminal-output" role="log" aria-live="polite"><p class="terminal-welcome">Welcome. Type <strong>help</strong> to see available commands.</p></div><form class="terminal-form" id="terminal-form"><label for="terminal-input">ankur@portfolio:~$</label><input id="terminal-input" name="command" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command…"><button type="submit">Run ↵</button></form></div>
         </section>
 
@@ -933,8 +939,8 @@
             }, { passive: true });
         }
         if ('IntersectionObserver' in window && !reduceMotion) {
-            const revealItems = document.querySelectorAll('.project-card, .recognition-card, .credential-card, .github-repo-card, .case-study-card, .miles-quote');
-            revealItems.forEach((item) => item.classList.add('reveal-ready'));
+            const revealItems = document.querySelectorAll('.project-card, .recognition-card, .miles-quote');
+            revealItems.forEach((item, i) => { item.style.setProperty('--ri', i % 2); item.classList.add('reveal-ready'); });
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
             }, { threshold: 0.12 });
@@ -1135,6 +1141,10 @@
     <script src="leetcode.js"></script>
     <script src="play.js"></script>
     <script src="extras.js"></script>
+    <script src="projects.js"></script>
+    <script src="motion.js"></script>
+    <script src="landscape.js"></script>
+    <script src="idcard.js"></script>
     <script src="intro.js"></script>
     <script src="analytics.js"></script>
 

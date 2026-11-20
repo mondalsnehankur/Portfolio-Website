@@ -100,7 +100,7 @@
     const top = mixc(hex(a[1]), hex(b[1]), k), bot = mixc(hex(a[2]), hex(b[2]), k), tn = mixc(a[3], b[3], k), hz = mixc(a[4], b[4], k), sc = mixc(hex(a[5]), hex(b[5]), k);
     sky.style.background = `linear-gradient(180deg, ${rgb(top)} 0%, ${rgb(bot)} 78%)`;
     tint.style.background = rgb(tn, tn[3]);
-    const hz1 = `linear-gradient(180deg, transparent, ${rgb(hz, hz[3])} 70%, transparent)`; h1.style.background = hz1; h2.style.background = `linear-gradient(180deg, transparent, ${rgb(hz, hz[3] * .8)} 70%, transparent)`;
+    const hz1 = `linear-gradient(180deg, transparent, ${rgb(hz, hz[3] * .5)} 70%, transparent)`; h1.style.background = hz1; h2.style.background = `linear-gradient(180deg, transparent, ${rgb(hz, hz[3] * .4)} 70%, transparent)`;
     const W = innerWidth, H = innerHeight, t = c.t, moon = t >= .62, u = moon ? (t - .62) / .38 : t / .62;
     const px = moon ? W * (.2 + .6 * u) : W * (.12 + .74 * u), py = moon ? H * (.3 - .16 * Math.sin(Math.PI * u)) : H * (.5 - .3 * Math.sin(Math.PI * u) + .06);
     const day = root.getAttribute('data-theme') === 'light';

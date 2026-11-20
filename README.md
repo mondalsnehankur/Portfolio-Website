@@ -203,5 +203,5 @@ A fixed layer behind the whole page: sky, far snow peaks, mid hills with pines, 
 - **Pin tooltips:** each pin on the lanyard has a `hint` in the `PINS` array in `idcard.js`. Hover, keyboard focus or a tap shows it.
 - **Pause motion:** the button in the nav (next to the theme toggle) adds `html.motion-off`, stopping leaves, card swing and CSS animations. The choice is saved in `localStorage` (`portfolio-motion`) and defaults to on if the visitor's system asks for reduced motion.
 - **Low-power mode:** `motion.js` adds `html.lite` automatically on weak hardware (2 cores or less, 2 GB or less, Save-Data) or when the first seconds run under about 33 fps. It drops the leaves and backdrop blur.
-- **Readability:** the section veil strengths are the `--a` values in `landscape.css`.
+- **Readability:** the dark theme puts a light veil over each section (`--a` values in `landscape.css`); the light theme has none, because `skeuo.css` makes sections transparent there. The left-edge scrim and the haze bands are also in `landscape.css` / `landscape.js` (`ld-scrim`, `hz[3]`).
 - **ID number:** the card shows `150102`. Change it in `index.html` (`.id-rig` and the `#id-dock` head) and in `idcard.css`.

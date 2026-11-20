@@ -47,3 +47,23 @@ html.lite .id-card { filter: none !important; }
 .pin-tip b { display: block; font: 700 .62rem 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #5a4bb8; margin-bottom: 2px; }
 .id-strap .pin:focus-visible { outline: none; }
 .id-strap .pin:focus-visible .pin-in { filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 5px #6aa8ff); }
+
+/* ---------- Education: back to a horizontal timeline; the current stage is the green dot ---------- */
+@media (min-width: 861px) {
+  :is(html, html[data-theme]) .educontainer { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 26px; padding: 40px 0 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+  :is(html, html[data-theme]) .educontainer::before { left: 6px; right: 6px; top: 13px; bottom: auto; width: auto; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #22c55e 0, #22c55e 33%, color-mix(in srgb, var(--c-violet) 70%, transparent) 33%, color-mix(in srgb, var(--c-violet) 35%, transparent) 100%); }
+  .timerow { display: block !important; margin: 0 !important; }
+  .timerow .timeline-dot { left: 0 !important; top: -35px !important; }
+  .timerow .timelineitem { margin: 0 !important; height: 100%; padding: 20px 22px !important; box-sizing: border-box; }
+  .timerow .timeline-content h3 { font-size: 1.02rem; }
+  .timerow .timeline-content p { font-size: .84rem; }
+  .timerow .education-meta { display: block; }
+}
+:is(html, html[data-theme]) .timerow .timeline-dot { background: var(--c-violet) !important; box-shadow: 0 0 0 5px color-mix(in srgb, var(--c-violet) 25%, transparent) !important; }
+:is(html, html[data-theme]) .timerow.ongoing .timeline-dot { background: #22c55e !important; box-shadow: 0 0 0 5px rgba(34,197,94,.28) !important; animation: edu-live 2.4s ease-in-out infinite; }
+@keyframes edu-live { 50% { box-shadow: 0 0 0 9px rgba(34,197,94,.1); } }
+html[data-theme="light"] .timerow.ongoing .timeline-dot { background: #16a34a !important; }
+
+/* ---------- B2: no per-section line art over the landscape (graph-paper grid, contour rings); the soft colour wash stays ---------- */
+html.land-on :is(#project, #exper, #credentials, #notes, #terminal) { background-image: linear-gradient(180deg, color-mix(in srgb, var(--hue) 8%, transparent), transparent 50%) !important; background-size: auto !important; }
+html.land-on .current-work::before, html.land-on .current-work::after { display: none !important; }

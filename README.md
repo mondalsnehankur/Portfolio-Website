@@ -205,3 +205,19 @@ A fixed layer behind the whole page: sky, far snow peaks, mid hills with pines, 
 - **Low-power mode:** `motion.js` adds `html.lite` automatically on weak hardware (2 cores or less, 2 GB or less, Save-Data) or when the first seconds run under about 33 fps. It drops the leaves and backdrop blur.
 - **Readability:** the dark theme puts a light veil over each section (`--a` values in `landscape.css`); the light theme has none, because `skeuo.css` makes sections transparent there. The left-edge scrim and the haze bands are also in `landscape.css` / `landscape.js` (`ld-scrim`, `hz[3]`).
 - **ID number:** the card shows `150102`. Change it in `index.html` (`.id-rig` and the `#id-dock` head) and in `idcard.css`.
+
+## Living scene (`scene.js`, with `landscape.js`)
+- **Behind the peaks:** two depths of clouds, bird flocks every 15-40 s (daytime only), an aurora near the end of the page.
+- **Between the hills:** a lake that mirrors the mid hills (painted once per theme/resize) with a CSS glint, and mist that the cursor pushes aside.
+- **In front:** rain with the odd flash around Skills/Experience, fireflies at night that drift toward the cursor, a soft light under the cursor.
+- **Weather** comes from the time-of-day value `cur.t`: rain peaks at `t = .46`, aurora fades in after `t = .78` (see `weather()` in `scene.js`).
+- **Art:** `paintLayers()` in `landscape.js` adds a lit edge on every ridge/treetop and a top-to-foot shading; the near hills have grass blades.
+- **Camera:** `y` values in `SHOTS` tilt the camera per section.
+- Pause motion or lite mode leave still clouds only. Remove the `scene.js` script tag to turn the whole scene off.
+
+## Live clock + weather (`weather.js`)
+- A chip in the nav shows a live clock (of the place whose weather is shown) and the temperature; clicking it opens a small panel.
+- **Place:** Delhi NCR by default. "Use my location" asks the browser for permission; coordinates are never stored, only the preference. A returning visitor who already allowed it gets their own weather without a new prompt.
+- **Data:** Open-Meteo (no key), place name from BigDataCloud (falls back to "Your location"). Cached for 10 minutes, refreshed every 15. If a request fails, the clock stays and the scene stays calm.
+- **Scene:** weather codes steer cloud cover, mist, rain, snow, thunder flashes and wind speed (`window.LiveWeather`, read by `scene.js` and the leaves in `landscape.js`). The scripted rain patch is gone; it only rains when it rains.
+- **Preview** any condition: add `?wx=clear`, `cloudy`, `fog`, `rain`, `storm` or `snow` to the page URL.

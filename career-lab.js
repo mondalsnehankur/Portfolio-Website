@@ -244,7 +244,10 @@
   let baselinePromise = null;
   const $P = (sel) => $$(sel, document).filter((e) => !root.contains(e));
   const $P1 = (sel) => $P(sel)[0] || null;
-  const siteText = (sel) => $$(sel, document).map((el) => el.textContent).join('\n');
+  /* text of the elements with a space between every text node: tag chips are separate <span>s, and textContent would glue
+     them into "PythonPandasMatplotlib", which no skill matcher can find */
+  const spacedText = (el) => { const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), out = []; while (w.nextNode()) out.push(w.currentNode.nodeValue); return out.join(' '); };
+  const siteText = (sel) => $$(sel, document).map(spacedText).join('\n');
   function resetBaseline() { baselinePromise = null; }
   function getBaseline() {
     if (baselinePromise) return baselinePromise;

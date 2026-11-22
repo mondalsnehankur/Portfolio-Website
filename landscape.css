@@ -1,8 +1,8 @@
 /* Landscape background (landscape.js): sky, far mountains, mid hills with trees, near hills with framing trees.
    Scrolling moves a slow "camera" through it (zoom + drift) and the light moves from dawn to night. Ambient only. */
 #land { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; background: #05070f;
-  --ld-far: #1b2850; --ld-mid: #111b38; --ld-near: #080d1e; --ld-snow: rgba(190,204,255,.55); --ld-veil: 8,11,18; }
-html[data-theme="light"] #land { background: #dfe8fa; --ld-far: #a9bbe4; --ld-mid: #86a9c4; --ld-near: #5f8da1; --ld-snow: rgba(255,255,255,.92); --ld-veil: 238,243,252; }
+  --ld-far: #1b2850; --ld-mid: #111b38; --ld-near: #080d1e; --ld-snow: rgba(190,204,255,.55); --ld-veil: 8,11,18; --ld-rim: rgba(150,172,255,.34); }
+html[data-theme="light"] #land { background: #dfe8fa; --ld-far: #a9bbe4; --ld-mid: #86a9c4; --ld-near: #5f8da1; --ld-snow: rgba(255,255,255,.92); --ld-veil: 238,243,252; --ld-rim: rgba(255,248,232,.9); }
 #land > * { position: absolute; }
 .ld-sky { inset: 0; }
 .ld-stars { inset: 0 0 35% 0; opacity: 0; background-repeat: repeat; }
@@ -31,3 +31,19 @@ html.land-on[data-theme="light"] .firstsection::before { opacity: .12; }
 
 @media (max-width: 700px) { .ld-sun { width: 100px; height: 100px; margin: -50px 0 0 -50px; } html.land-on main > section { --a: .66; } html.land-on main > section#about { --a: .4; } }
 @media print { #land { display: none; } }
+
+/* layers can slide further now: solid ground continues below each one so no gap ever shows */
+.ld-far::after, .ld-mid::after, .ld-near::after { content: ""; position: absolute; left: 0; right: 0; top: calc(100% - 2px); height: 420px; }
+.ld-far::after { background: var(--ld-far); } .ld-mid::after { background: var(--ld-mid); } .ld-near::after { background: var(--ld-near); }
+.ld-stars { will-change: transform; } .ld-haze { will-change: transform, opacity; }
+
+/* living scene (scene.js): clouds + birds + aurora behind the peaks, lake, mist, rain/fireflies/cursor light in front */
+.ld-sky2, .ld-mist, .ld-front { inset: 0; width: 100%; height: 100%; }
+.ld-mist { transform-origin: 50% 100%; will-change: transform; }
+.ld-lake canvas { display: block; width: 100%; height: 100%; }
+.ld-glint { position: absolute; left: 0; right: 0; pointer-events: none; opacity: .4; animation: ld-glint 18s linear infinite;
+  background-image: radial-gradient(ellipse 28px 1.4px at 50% 50%, rgba(255,255,255,.9), transparent), radial-gradient(ellipse 15px 1px at 50% 50%, rgba(255,255,255,.65), transparent), linear-gradient(180deg, rgba(255,255,255,.14), transparent 45%);
+  background-size: 140px 13px, 91px 9px, 100% 100%; -webkit-mask-image: linear-gradient(180deg, transparent, #000 25%, #000 80%, transparent); mask-image: linear-gradient(180deg, transparent, #000 25%, #000 80%, transparent); }
+html[data-theme="light"] .ld-glint { opacity: .75; }
+@keyframes ld-glint { to { background-position: -280px 0, 182px 0, 0 0; } }
+html.lite .ld-glint, html.motion-off .ld-glint { display: none; }

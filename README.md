@@ -221,3 +221,8 @@ A fixed layer behind the whole page: sky, far snow peaks, mid hills with pines, 
 - **Data:** Open-Meteo (no key), place name from BigDataCloud (falls back to "Your location"). Cached for 10 minutes, refreshed every 15. If a request fails, the clock stays and the scene stays calm.
 - **Scene:** weather codes steer cloud cover, mist, rain, snow, thunder flashes and wind speed (`window.LiveWeather`, read by `scene.js` and the leaves in `landscape.js`). The scripted rain patch is gone; it only rains when it rains.
 - **Preview** any condition: add `?wx=clear`, `cloudy`, `fog`, `rain`, `storm` or `snow` to the page URL.
+
+## Quote sky and light-theme contrast (`quote-stars.js`, end of `refine.css`)
+- The "A line I carry with me" section has a small star field and three constellations (Saptarshi pointing to Polaris, Cassiopeia, Orion) that draw themselves when the section scrolls into view. Star data is at the top of `quote-stars.js` (`CONS`).
+- In the light theme that section becomes a night-sky panel so the stars can glow.
+- Light theme contrast: darker ink/muted text, firmer card borders and shadows, more opaque glass, and a slightly deeper landscape palette (`landscape.css`).

@@ -2,7 +2,7 @@
    Scrolling moves a slow "camera" through it (zoom + drift) and the light moves from dawn to night. Ambient only. */
 #land { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; background: #05070f;
   --ld-far: #1b2850; --ld-mid: #111b38; --ld-near: #080d1e; --ld-snow: rgba(190,204,255,.55); --ld-veil: 8,11,18; --ld-rim: rgba(150,172,255,.34); }
-html[data-theme="light"] #land { background: #dfe8fa; --ld-far: #a9bbe4; --ld-mid: #86a9c4; --ld-near: #5f8da1; --ld-snow: rgba(255,255,255,.92); --ld-veil: 238,243,252; --ld-rim: rgba(255,248,232,.9); }
+html[data-theme="light"] #land { background: #dfe8fa; --ld-far: #8fa6d8; --ld-mid: #6c95b6; --ld-near: #487b92; --ld-snow: rgba(255,255,255,.92); --ld-veil: 238,243,252; --ld-rim: rgba(255,248,232,.9); }
 #land > * { position: absolute; }
 .ld-sky { inset: 0; }
 .ld-stars { inset: 0 0 35% 0; opacity: 0; background-repeat: repeat; }

@@ -85,7 +85,7 @@ html[data-theme="light"] .wx-pop { background: #fbf8f1; }
 
 /* ---------- "A line I carry with me": small glowing stars + traced constellations (quote-stars.js) ---------- */
 .miles-quote-section { overflow: hidden; }
-.mq-sky { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.miles-quote-section > .mq-sky { position: absolute !important; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 .miles-quote-section .section-kicker, .miles-quote-section .miles-quote { position: relative; z-index: 1; }
 .mq-s { fill: #e6ecff; animation: mq-tw 4s ease-in-out infinite; }
 .mq-cs { fill: #fff; filter: drop-shadow(0 0 3px #b8c8ff) drop-shadow(0 0 9px rgba(130,160,255,.95)); }
@@ -121,3 +121,5 @@ html[data-theme="light"] {
 }
 html[data-theme="light"] :is(h1, h2, h3, h4) { color: #070f22; }
 html[data-theme="light"] :is(.project-card, .recognition-card, .expercard, .timelineitem, .skillbox, .cred-item) { border-color: rgba(15,27,51,.24) !important; }
+
+.mq-narrow .mq-con { opacity: .5; } .mq-narrow .mq-label, .mq-narrow .mq-name { display: none; }

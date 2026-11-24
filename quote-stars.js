@@ -29,9 +29,11 @@
     svg.append(field);
     const wide = W >= 1000, sc = wide ? Math.max(.7, Math.min(1.15, W / 1380)) : Math.max(.5, Math.min(.8, W / 640));
     const place = wide
-      ? { dipper: [W * .045, H * .1 + 56 * sc], cass: [W * .79, H * .08], orion: [W * .885, H * .42] }
+      ? { dipper: [W * .045, H * .1 + 56 * sc], cass: [W * .79, H * .08], orion: [W * .885, H * .37] }
       : { dipper: [W * .05, H * .03 + 52 * sc], cass: [W * .56, H * .03], orion: [W * .74, H * .8 - 140 * sc] };
+    svg.classList.toggle('mq-narrow', !wide);
     CONS.forEach((c, ci) => {
+      if (!wide && c.id === 'cass') return;
       const [ox, oy] = place[c.id], g = el('g', { class: 'mq-con' }), P = c.s.map((p) => [ox + p[0] * sc, oy + p[1] * sc, p[2]]);
       const seg = (a, b, cls, d) => { const p = el('path', { class: cls, d: `M${P[a][0].toFixed(1)} ${P[a][1].toFixed(1)}L${P[b][0].toFixed(1)} ${P[b][1].toFixed(1)}`, pathLength: 1 }); p.style.transitionDelay = d + 's'; g.append(p); };
       c.l.forEach((l, i) => seg(l[0], l[1], 'mq-line', (ci * .5 + i * .22).toFixed(2)));

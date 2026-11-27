@@ -20,14 +20,15 @@
     const poly = (f) => cats.map((c, i) => pt(i, f(c)).map((n) => n.toFixed(1)).join(',')).join(' ');
     const svg = mk('svg', { viewBox: `0 0 ${S} ${S}`, role: 'img', 'aria-label': 'Radar chart of skill areas: outer shape is everything listed, inner shape is skills shown in projects or experience' });
     [0.33, 0.66, 1].forEach((f) => svg.append(mk('polygon', { points: poly(() => f), class: 'rd-ring' })));
-    cats.forEach((c, i) => { const [x, y] = pt(i, 1); svg.append(mk('line', { x1: C, y1: C, x2: x, y2: y, class: 'rd-axis' })); const [lx, ly] = pt(i, 1.2); svg.append(mk('text', { x: lx, y: ly, class: 'rd-label', 'text-anchor': Math.abs(lx - C) < 8 ? 'middle' : lx > C ? 'start' : 'end', 'dominant-baseline': 'middle' }, c)); });
+    cats.forEach((c, i) => { const [x, y] = pt(i, 1); svg.append(mk('line', { x1: C, y1: C, x2: x, y2: y, class: 'rd-axis' })); const [lx, ly] = pt(i, 1.2); svg.append(mk('text', { x: lx, y: ly, class: 'rd-label', 'data-cat': c, tabindex: 0, role: 'button', 'text-anchor': Math.abs(lx - C) < 8 ? 'middle' : lx > C ? 'start' : 'end', 'dominant-baseline': 'middle' }, c)); });
     svg.append(mk('polygon', { points: poly((c) => tot(c) / max), class: 'rd-all' }), mk('polygon', { points: poly((c) => (ev[c] || 0) / max), class: 'rd-ev' }));
-    cats.forEach((c, i) => { const [x, y] = pt(i, (ev[c] || 0) / max); svg.append(mk('circle', { cx: x, cy: y, r: 3.5, class: 'rd-dot' })); });
+    cats.forEach((c, i) => { const [x, y] = pt(i, (ev[c] || 0) / max); svg.append(mk('circle', { cx: x, cy: y, r: 3.5, class: 'rd-dot', 'data-cat': c })); });
     const box = document.createElement('div'); box.className = 'skill-radar';
     const side = document.createElement('div'); side.className = 'rd-side';
     side.innerHTML = '<h3>Where my skills are strongest</h3><p>Built from this site and my CV, comparing my own areas with each other.</p><ul class="rd-legend"><li><i class="k-ev"></i>Shown in a project, role or credential</li><li><i class="k-all"></i>Listed in skills or CV</li></ul>';
     const list = document.createElement('ul'); list.className = 'rd-counts'; cats.sort((a, b) => tot(b) - tot(a)).forEach((c) => { const l = document.createElement('li'); l.textContent = `${c}: ${ev[c] || 0} shown, ${tot(c)} listed`; list.append(l); }); side.append(list);
     box.append(svg, side); host.before(box);
+    window.__radarCtx = { base, catOf }; document.dispatchEvent(new CustomEvent('radar-ready', { detail: window.__radarCtx }));
   }).catch(() => {});
 })();
 

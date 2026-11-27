@@ -226,3 +226,29 @@ A fixed layer behind the whole page: sky, far snow peaks, mid hills with pines, 
 - The "A line I carry with me" section has a small star field and three constellations (Saptarshi pointing to Polaris, Cassiopeia, Orion) that draw themselves when the section scrolls into view. Star data is at the top of `quote-stars.js` (`CONS`).
 - In the light theme that section becomes a night-sky panel so the stars can glow.
 - Light theme contrast: darker ink/muted text, firmer card borders and shadows, more opaque glass, and a slightly deeper landscape palette (`landscape.css`).
+
+## Campus Learning Management System (live Python demo)
+
+- `clms.html`, `clms.js`, `clms.css` and `clms/` run the Python project in the browser with [Pyodide](https://pyodide.org) (v0.26.4, loaded from jsDelivr only when the visitor clicks "Run the program").
+- `clms/py/` holds copies of the project's `.py` files, unchanged. `clms/runner.py` loads them: a page cannot block on `input()`, so the runner turns every function that reaches `input()` (in `utilities.py` and `main.py`) into an `async` function, in memory only. It also supplies `hashlib.pbkdf2_hmac` because Pyodide's default build lacks it; the result is identical to the native one.
+- Data (`users.json`, `courses.json`, `academic_records.json`) lives in the visitor's own `localStorage` under keys starting `clms-demo-`. "Reset demo data" clears it. Nothing is sent anywhere.
+- If you change the Python project, copy the changed `.py` files into `clms/py/` again.
+- It was tested end to end (login, faculty and student creation, enrolment, attendance, assignments, grading, reload persistence, reset) against a local copy of Pyodide. The live CDN download itself can only be checked once the site is online.
+
+## Projects carousel (replaces the card grid, the "Also on the bench" list and the case-study block)
+
+- `projects.js` / `projects.css` build a floating-card carousel directly under the folder shelf. The `<article class="project-card">` entries in `index.html` are still the single source of truth (title, number, chips, description, tags, links, image); the script hides that grid and builds the carousel and overlay from it. To add a project, add one more card there (and optionally a `.case-study-card` whose `<strong>` starts with the same first word as the project name); nothing else changes. Number the `.project-number` text yourself (`09 / TOPIC`).
+- The centre card is raised and shows more; hovering it expands it (tap once on phones); clicking it (second tap on phones) opens the multi-panel overlay: about, skills, case-study notes (each labelled paragraph becomes a panel), links and the screenshot. Panels with no content are left out.
+- Scroll down = next project, scroll up = previous (only while the pointer is over the carousel; at either end the page scrolls on). Drag, swipe, arrow buttons, the number rail and the arrow keys also work.
+- Clicking a folder plays a short scan (a beam across the carousel and the number rail marks the matches), then the carousel re-forms with just those projects. "Show all" resets it.
+- Overlay close rules on desktop: scroll, any key, a click on empty space, or moving the mouse outside the panels. Mouse movement inside the panels and clicks on links do not close it, so links stay usable. On phones it closes with the × button, Esc or a tap outside the panels, and scrolls inside.
+- Case studies now appear only inside the overlay (the old `.case-study-grid` is hidden by CSS but kept in the page as data).
+
+## Skill evidence cards
+
+- `skill-evidence.js` (with a few lines in `viz.js` and styles at the end of `refine.css`): hover, focus or tap any skill chip in the Skills section, or a label or dot on the radar, to see where it is used. For a skill it lists the project cards that mention it (click one to jump to it in the carousel) and says whether Experience, Research, Leadership or Credentials also mention it. For a radar axis it lists the skills shown in that area and the projects behind them.
+- It reads the page itself through `CareerLab.extractSkills`, so tagging a project with a skill updates the card automatically. A skill that no project mentions says so plainly ("Listed as a skill. I have not tagged a project on this page with it.").
+
+## FLPC gallery
+
+- The gallery now uses `img/recognition/flpc-1.webp` to `flpc-5.webp`. Captions and alt text describe only what is visible in each photo. Edit the `flpcPhotos` list near the end of `index.html` to change them.

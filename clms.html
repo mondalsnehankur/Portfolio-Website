@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Learning Management System, live | Snehankur Mondal</title>
+    <meta name="description" content="My Python Campus Learning Management System running in your browser through Pyodide: student, faculty and administrator menus, attendance, assignments and grading.">
+    <meta name="theme-color" content="#080b12">
+    <meta property="og:title" content="Campus Learning Management System, live (Python in the browser)">
+    <meta property="og:description" content="My object-oriented Python project, running in your browser.">
+    <meta property="og:image" content="https://mondalsnehankur.github.io/Portfolio-mY_wEBSITE/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simulator.css">
+    <link rel="stylesheet" href="clms.css">
+</head>
+<body>
+    <header class="sim-top">
+        <a class="sim-back" href="index.html#project">← Back to portfolio</a>
+        <div class="sim-top-actions">
+            <a class="sim-link" href="https://github.com/mondalsnehankur/Python/tree/main/Campus_Learning_Management_System" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>
+            <button type="button" id="theme-toggle" class="sim-icon-btn" aria-label="Switch theme" title="Switch theme">☾</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="sim-hero">
+            <p class="sim-kicker">PYTHON → PYODIDE</p>
+            <h1>Campus Learning Management System, running live.</h1>
+            <p class="sim-lead">This is my object-oriented Python project, running in your browser. Log in as the administrator, create faculty and student accounts, then enrol, mark attendance, set assignments and grade them. There is no server: everything runs on your device and the data stays in this browser.</p>
+        </section>
+
+        <section class="sim-card clms-wrap" aria-labelledby="term-title">
+            <h2 id="term-title">Terminal</h2>
+            <div class="clms-bar">
+                <button type="button" class="sim-btn" id="clms-start">Run the program</button>
+                <button type="button" class="sim-btn sim-btn-ghost" id="clms-restart" hidden>Restart</button>
+                <button type="button" class="sim-btn sim-btn-ghost" id="clms-reset" hidden>Reset demo data</button>
+                <p class="sim-status" id="clms-status" role="status">Click “Run the program” to load Python (about 10&nbsp;MB, once).</p>
+            </div>
+            <div class="clms-term" id="clms-term" role="log" aria-live="polite" aria-label="CLMS terminal" tabindex="-1">
+                <pre id="clms-out"></pre>
+                <form class="clms-line" id="clms-line" hidden>
+                    <span class="clms-prompt" id="clms-prompt"></span><input id="clms-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type your answer and press Enter">
+                </form>
+            </div>
+            <div class="clms-hints" id="clms-hints" hidden>
+                <span>Default administrator, tap to fill:</span>
+                <button type="button" data-fill="admin@clms.edu">admin@clms.edu</button>
+                <button type="button" data-fill="Admin@123">Admin@123</button>
+            </div>
+        </section>
+
+        <section class="sim-card">
+            <div class="clms-two">
+                <div>
+                    <h2>Try this</h2>
+                    <ol class="sim-muted">
+                        <li>Choose <code>1</code>, log in as the administrator and create a faculty account.</li>
+                        <li>Log in as that faculty member, create a course and an assignment.</li>
+                        <li>Choose <code>2</code> from the main menu to register a student, then enrol, submit and get graded.</li>
+                    </ol>
+                </div>
+                <div>
+                    <h2>How it runs here</h2>
+                    <p class="clms-note">The code is the same Python as in the repository. A browser page cannot stop and wait for <code>input()</code> the way a terminal does, so this page makes every function that reaches <code>input()</code> awaitable, in memory only, before running it. Files on GitHub and in this site are unchanged. Data is saved to your browser’s local storage, so other visitors never see your accounts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sim-card">
+            <h2>Source</h2>
+            <label for="clms-file">File</label>
+            <select id="clms-file"></select>
+            <div class="clms-src-wrap"><pre class="clms-src" id="clms-src" tabindex="0">Loading…</pre></div>
+        </section>
+    </main>
+    <footer class="sim-foot">©2026 Snehankur Mondal · An educational project, not a production college platform.</footer>
+
+    <script src="clms.js"></script>
+    <script src="site-config.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

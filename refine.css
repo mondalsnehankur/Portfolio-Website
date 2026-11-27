@@ -123,3 +123,26 @@ html[data-theme="light"] :is(h1, h2, h3, h4) { color: #070f22; }
 html[data-theme="light"] :is(.project-card, .recognition-card, .expercard, .timelineitem, .skillbox, .cred-item) { border-color: rgba(15,27,51,.24) !important; }
 
 .mq-narrow .mq-con { opacity: .5; } .mq-narrow .mq-label, .mq-narrow .mq-name { display: none; }
+
+/* CLMS card: terminal-style visual (no screenshot exists for this project) */
+.project-visual.clms-visual { display: flex; align-items: center; justify-content: center; }
+.clms-term { margin: 0; padding: 12px 16px; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #9fe8d6; background: rgba(8,23,28,.6); border: 1px solid rgba(103,232,209,.22); border-radius: 10px; white-space: pre; overflow: hidden; max-width: 86%; }
+html[data-theme="light"] .clms-term { color: #0b5f58; background: rgba(255,255,255,.75); border-color: rgba(8,117,110,.3); }
+
+/* ---- skill evidence cards (skill-evidence.js) ---- */
+.sk-trigger { cursor: pointer; }
+.sk-trigger:focus-visible, .rd-label:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.rd-label { cursor: pointer; } .rd-label:hover { fill: var(--accent); }
+.sk-pop { position: fixed; z-index: 2600; width: min(300px, calc(100vw - 20px)); padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel, #131a29); color: var(--ink); box-shadow: 0 20px 44px -18px rgba(0,0,0,.6); opacity: 0; transform: translateY(6px); transition: opacity .18s ease, transform .22s cubic-bezier(.2,.8,.25,1); }
+.sk-pop.is-on { opacity: 1; transform: none; }
+.sk-pop[hidden] { display: none; }
+.sk-h { display: block; font-size: .98rem; margin: 0 0 4px; }
+.sk-sub { margin: 0 0 8px; font-size: .78rem; line-height: 1.5; color: var(--muted); }
+.sk-also { margin: 8px 0 0; font-size: .72rem; color: var(--muted); }
+.sk-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.sk-proj { padding: 4px 10px; border: 1px solid var(--accent); border-radius: 99px; background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); font: 600 .72rem inherit; font-family: inherit; cursor: pointer; }
+.sk-proj:hover { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.sk-line { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border-top: 1px dashed var(--line); font-size: .76rem; }
+.sk-line b { flex: none; } .sk-line span { color: var(--muted); text-align: right; }
+html[data-theme="light"] .sk-pop { background: #fff; box-shadow: 0 18px 40px -20px rgba(30,40,80,.35); }
+@media (prefers-reduced-motion: reduce) { .sk-pop { transition: none; } }
